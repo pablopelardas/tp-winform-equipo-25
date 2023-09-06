@@ -76,7 +76,7 @@ namespace TpGestorArticulos
             return null;
         }
 
-        public async Task loadImage()
+        public async void loadImage()
         {
             try
             {

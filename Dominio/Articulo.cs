@@ -19,6 +19,16 @@ namespace Dominio
         // Categoria
         public Categoria Categoria { get; set; }
 
+        public Articulo() { }
+        public Articulo(int id, string nombre, string descripcion, float precio, Marca marca, Categoria categoria)
+        {
+            Id = id;
+            Nombre = nombre;
+            Descripcion = descripcion;
+            Precio = precio;
+            Marca = marca;
+            Categoria = categoria;
+        }
 
     }
 }
