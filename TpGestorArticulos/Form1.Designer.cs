@@ -1,4 +1,4 @@
-﻿namespace TpGestorArticulos
+﻿namespace App
 {
     partial class Form1
     {
