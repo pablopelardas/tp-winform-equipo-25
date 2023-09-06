@@ -11,9 +11,9 @@ namespace Dominio
         public Categoria() { }
         public Categoria(string str)
         {
-            categoria = str;
+            Nombre = str;
         }
-        public string categoria { get; set; }
+        public string Nombre { get; set; }
         public int idCategoria { get; set; }
 
     }
