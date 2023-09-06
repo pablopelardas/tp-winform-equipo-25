@@ -10,12 +10,14 @@ using System.Windows.Forms;
 
 namespace TpGestorArticulos
 {
-    public partial class Editor : Form
+    public partial class frmEditor : Form
     {
-        public Editor()
+        public frmEditor()
         {
             InitializeComponent();
         }
 
+        public LoadArticulo(Articulo)
     }
+
 }

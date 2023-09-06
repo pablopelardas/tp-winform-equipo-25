@@ -1,6 +1,6 @@
 ﻿namespace TpGestorArticulos
 {
-    partial class Editor
+    partial class frmEditor
     {
         /// <summary>
         /// Required designer variable.
@@ -178,7 +178,7 @@
             this.lblImagen.TabIndex = 17;
             this.lblImagen.Text = "URL";
             // 
-            // Editor
+            // frmEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -198,7 +198,8 @@
             this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblNombre);
-            this.Name = "Editor";
+            this.Name = "frmEditor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editor";
             ((System.ComponentModel.ISupportInitialize)(this.ptbImagen)).EndInit();
             this.ResumeLayout(false);
