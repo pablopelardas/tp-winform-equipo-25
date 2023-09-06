@@ -1,25 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.AxHost;
 
 namespace TpGestorArticulos
 {
     public partial class Slider : UserControl
     {
-        private List<string> Images;
-        private Dictionary<string, Image> ImageCache = new Dictionary<string, Image>();
-        private int CurrentImageIndex = 0;
-        private bool isEditMode = false;
+        private List<string> _images;
+        private Dictionary<string, Image> _imageCache = new Dictionary<string, Image>();
+        private int _currentImageIndex = 0;
+        private bool _isEditMode = false;
         public Slider()
         {
             InitializeComponent();
@@ -27,9 +21,10 @@ namespace TpGestorArticulos
 
         public void InitSlider(List<string> images)
         {
-            Images = images;
+            _images = images;
             loadImage();
-            btnPrevImagen.Enabled = CurrentImageIndex > 0;
+            // Desactivo los elementos de la interfaz que no se usan en modo visualización
+            btnPrevImagen.Enabled = _currentImageIndex > 0;
             txtUrlImagen.Visible = false;
             lblUrlImagen.Visible = false;
             btnEliminarImagen.Visible = false;
@@ -37,10 +32,10 @@ namespace TpGestorArticulos
         }
         public void InitSlider(ref List<string> images)
         {
-            Images = images;
-            isEditMode = true;
+            _images = images;
+            _isEditMode = true;
             loadImage();
-            btnPrevImagen.Enabled = CurrentImageIndex > 0;
+            btnPrevImagen.Enabled = _currentImageIndex > 0;
         }
 
         private async Task<Image> LoadImageAsync(string url)
@@ -48,10 +43,11 @@ namespace TpGestorArticulos
             try
             {
                 // Si la imagen ya esta en el cache, la devolvemos
-                if (ImageCache.ContainsKey(url))
+                if (_imageCache.TryGetValue(url, out Image imgFromCache))
                 {
-                    return ImageCache[url];
+                    return imgFromCache;
                 }
+
                 // Si no esta en el cache, la descargamos
                 using (HttpClient httpclient = new HttpClient())
                 {
@@ -61,41 +57,48 @@ namespace TpGestorArticulos
                         // Creamos una imagen a partir de los datos descargados
                         Image img = Image.FromStream(ms);
                         // Agregamos la imagen al cache
-                        ImageCache[url] = img;
+                        _imageCache[url] = img;
                         return img;
                     }
                 }
+
             }
-            catch (Exception)
+            catch (HttpRequestException ex)
             {
-                return null;
+                // Handle the specific exception
+                Console.WriteLine($"Error downloading image: {ex.Message}");
             }
+            catch (Exception ex)
+            {
+                // Handle any other exceptions
+                Console.WriteLine($"Error loading image: {ex.Message}");
+            }
+            return null;
         }
 
-        public async void loadImage()
+        public async Task loadImage()
         {
             try
             {
-                txtUrlImagen.Text = Images[CurrentImageIndex];
-                pbxImagen.Image = await LoadImageAsync(Images[CurrentImageIndex]);
-                txtIndexImagen.Text = (CurrentImageIndex + 1).ToString();
+                txtUrlImagen.Text = _images[_currentImageIndex];
+                pbxImagen.Image = await LoadImageAsync(_images[_currentImageIndex]);
+                txtIndexImagen.Text = (_currentImageIndex + 1).ToString();
                 if (pbxImagen.Image == null) throw new Exception();
 
             }
             catch (Exception)
             {
-                //Si ocurre una excepción, mostramos la imagen de error por defecto
                 pbxImagen.Load("https://i0.wp.com/casagres.com.ar/wp-content/uploads/2022/09/placeholder.png?ssl=1");
             }
         }
 
         private void btnPrevImagen_Click(object sender, EventArgs e)
         {
-            if (CurrentImageIndex > 0)
+            if (_currentImageIndex > 0)
             {
-                CurrentImageIndex--;
+                _currentImageIndex--;
                 // Si la imagen actual es la primera, deshabilitamos el boton prev
-                if (CurrentImageIndex == 0) btnPrevImagen.Enabled = false;        
+                if (_currentImageIndex == 0) btnPrevImagen.Enabled = false;
                 loadImage();
             }
         }
@@ -103,33 +106,33 @@ namespace TpGestorArticulos
         private void btnNextImagen_Click(object sender, EventArgs e)
         {
             // Si la imagen actual es la ultima y estamos en edit mode, agregamos una imagen 
-            if (CurrentImageIndex == Images.Count - 1 && isEditMode)
+            if (_currentImageIndex == _images.Count - 1 && _isEditMode)
             {
-                if (Images[CurrentImageIndex] == "")
+                if (_images[_currentImageIndex] == "")
                 {
                     MessageBox.Show("Debe cargar la imagen actual para crear una nueva", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                Images.Add("");
+                _images.Add("");
                 btnEliminarImagen.Enabled = true;
             }
-            CurrentImageIndex++;
+            _currentImageIndex++;
 
             // Si la imagen actual es la ultima y NO estamos en edit mode, deshabilitamos el boton next
-            if (CurrentImageIndex == Images.Count - 1 && !isEditMode) btnNextImagen.Enabled = false;
+            if (_currentImageIndex == _images.Count - 1 && !_isEditMode) btnNextImagen.Enabled = false;
             btnPrevImagen.Enabled = true;
             loadImage();
         }
 
         private void btnEliminarImagen_Click(object sender, EventArgs e)
         {
-            int index = CurrentImageIndex;
+            int index = _currentImageIndex;
             // Eliminamos la imagen actual
             try
             {
                 // console log list
                 // Si no quedan imagenes, deshabilitamos el boton eliminar
-                if (Images.Count == 1)
+                if (_images.Count == 1)
                 {
                     btnEliminarImagen.Enabled = false;
                     // Si estamos en edit mode, limpiamos la imagen actual y el textbox
@@ -137,20 +140,17 @@ namespace TpGestorArticulos
                     txtUrlImagen.Text = "";
                     btnPrevImagen.Enabled = false;
                 }
-                // Si la imagen actual es la primera, avanzamos una imagen
-                else if (CurrentImageIndex == 0 && Images.Count > 1)
+                // Si la imagen actual es la primera, eliminamos para que la siguiente imagen pase a ser la primera
+                else if (_currentImageIndex == 0 && _images.Count > 1)
                 {
-                    Images.RemoveAt(index);
-                    loadImage();
+                    _images.RemoveAt(index);
                 }
-                // Si la imagen actual es la ultima, retrocedemos una imagen
-                else 
+                // Si la imagen no es la primera, cargamos la imagen anterior y eliminamos la actual
+                else
                 {
-                    CurrentImageIndex-- ;
-                    Images.RemoveAt(index);
+                    _currentImageIndex--;
+                    _images.RemoveAt(index);
                 }
-
-
                 loadImage();
             }
             catch (Exception ex)
@@ -162,9 +162,9 @@ namespace TpGestorArticulos
         private void txtUrlImagen_TextChanged(object sender, EventArgs e)
         {
             // Si estamos en edit mode, actualizamos la lista de imagenes
-            if (isEditMode)
+            if (_isEditMode)
             {
-                Images[CurrentImageIndex] = txtUrlImagen.Text;
+                _images[_currentImageIndex] = txtUrlImagen.Text;
                 loadImage();
             }
         }
