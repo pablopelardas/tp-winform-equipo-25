@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TpGestorArticulos.Properties
+namespace App.Properties
 {
 
 
