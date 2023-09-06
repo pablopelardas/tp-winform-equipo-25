@@ -38,13 +38,7 @@
             this.lblMarca = new System.Windows.Forms.Label();
             this.cbxCategoria = new System.Windows.Forms.ComboBox();
             this.cbxMarca = new System.Windows.Forms.ComboBox();
-            this.pbxImagen = new System.Windows.Forms.PictureBox();
-            this.btnPrevImagen = new System.Windows.Forms.Button();
-            this.btnNextImagen = new System.Windows.Forms.Button();
-            this.txtUrlImagen = new System.Windows.Forms.TextBox();
-            this.lblImagen = new System.Windows.Forms.Label();
-            this.btnEliminarImagen = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
+            this.sliderImagenes = new TpGestorArticulos.Slider();
             this.SuspendLayout();
             // 
             // lblNombre
@@ -135,74 +129,19 @@
             this.cbxMarca.Size = new System.Drawing.Size(237, 21);
             this.cbxMarca.TabIndex = 13;
             // 
-            // pbxImagen
+            // sliderImagenes
             // 
-            this.pbxImagen.Location = new System.Drawing.Point(142, 233);
-            this.pbxImagen.Name = "pbxImagen";
-            this.pbxImagen.Size = new System.Drawing.Size(315, 187);
-            this.pbxImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxImagen.TabIndex = 14;
-            this.pbxImagen.TabStop = false;
-            // 
-            // btnPrevImagen
-            // 
-            this.btnPrevImagen.Location = new System.Drawing.Point(32, 309);
-            this.btnPrevImagen.Name = "btnPrevImagen";
-            this.btnPrevImagen.Size = new System.Drawing.Size(30, 27);
-            this.btnPrevImagen.TabIndex = 15;
-            this.btnPrevImagen.Text = "←";
-            this.btnPrevImagen.UseVisualStyleBackColor = true;
-            this.btnPrevImagen.Click += new System.EventHandler(this.btnPrevImagen_Click);
-            // 
-            // btnNextImagen
-            // 
-            this.btnNextImagen.Location = new System.Drawing.Point(537, 309);
-            this.btnNextImagen.Name = "btnNextImagen";
-            this.btnNextImagen.Size = new System.Drawing.Size(30, 27);
-            this.btnNextImagen.TabIndex = 16;
-            this.btnNextImagen.Text = "→";
-            this.btnNextImagen.UseVisualStyleBackColor = true;
-            this.btnNextImagen.Click += new System.EventHandler(this.btnNextImagen_Click);
-            // 
-            // txtUrlImagen
-            // 
-            this.txtUrlImagen.Location = new System.Drawing.Point(142, 457);
-            this.txtUrlImagen.Name = "txtUrlImagen";
-            this.txtUrlImagen.Size = new System.Drawing.Size(315, 20);
-            this.txtUrlImagen.TabIndex = 18;
-            this.txtUrlImagen.TextChanged += new System.EventHandler(this.txtUrlImagen_TextChanged);
-            // 
-            // lblImagen
-            // 
-            this.lblImagen.AutoSize = true;
-            this.lblImagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImagen.Location = new System.Drawing.Point(139, 438);
-            this.lblImagen.Name = "lblImagen";
-            this.lblImagen.Size = new System.Drawing.Size(34, 16);
-            this.lblImagen.TabIndex = 17;
-            this.lblImagen.Text = "URL";
-            // 
-            // btnEliminarImagen
-            // 
-            this.btnEliminarImagen.Location = new System.Drawing.Point(434, 233);
-            this.btnEliminarImagen.Name = "btnEliminarImagen";
-            this.btnEliminarImagen.Size = new System.Drawing.Size(22, 23);
-            this.btnEliminarImagen.TabIndex = 19;
-            this.btnEliminarImagen.Text = "✕";
-            this.btnEliminarImagen.UseVisualStyleBackColor = true;
-            this.btnEliminarImagen.Click += new System.EventHandler(this.btnEliminarImagen_Click);
+            this.sliderImagenes.Location = new System.Drawing.Point(3, 217);
+            this.sliderImagenes.Name = "sliderImagenes";
+            this.sliderImagenes.Size = new System.Drawing.Size(595, 275);
+            this.sliderImagenes.TabIndex = 20;
             // 
             // frmEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(598, 504);
-            this.Controls.Add(this.btnEliminarImagen);
-            this.Controls.Add(this.txtUrlImagen);
-            this.Controls.Add(this.lblImagen);
-            this.Controls.Add(this.btnNextImagen);
-            this.Controls.Add(this.btnPrevImagen);
-            this.Controls.Add(this.pbxImagen);
+            this.Controls.Add(this.sliderImagenes);
             this.Controls.Add(this.cbxMarca);
             this.Controls.Add(this.cbxCategoria);
             this.Controls.Add(this.lblMarca);
@@ -216,7 +155,6 @@
             this.Name = "frmEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editor";
-            ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,11 +172,6 @@
         private System.Windows.Forms.Label lblMarca;
         private System.Windows.Forms.ComboBox cbxCategoria;
         private System.Windows.Forms.ComboBox cbxMarca;
-        private System.Windows.Forms.PictureBox pbxImagen;
-        private System.Windows.Forms.Button btnPrevImagen;
-        private System.Windows.Forms.Button btnNextImagen;
-        private System.Windows.Forms.TextBox txtUrlImagen;
-        private System.Windows.Forms.Label lblImagen;
-        private System.Windows.Forms.Button btnEliminarImagen;
+        private Slider sliderImagenes;
     }
 }
