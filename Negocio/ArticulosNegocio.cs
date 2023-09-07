@@ -21,7 +21,7 @@ namespace Negocio
             // inicializar DAO
         }
 
-        public List<Articulo> Listar()
+        public List<Articulo> ListarArticulos()
         {
             List<Articulo> articulos = new List<Articulo>();
             Database datos = new Database();
@@ -88,5 +88,43 @@ namespace Negocio
         {
             // eliminar articulo de BDD
         }
-    }
+
+        public List<Marca> ListarMarcas()
+        {
+            List<Marca> marcas = new List<Marca>();
+            Database datos = new Database();
+
+            //Descomentar cuando tengamos la db
+            /*
+            try
+            {
+                datos.setQuery("select ..."); //FALTA QUERY
+                datos.readData();
+
+                while (datos.Reader.Read())
+                {
+                    Marca marca = new Marca();
+                    marca.Id = (int)datos.Reader["IdMarca"];
+                    marca.Nombre = (string)datos.Reader["Marca"];
+
+                    marcas.Add(marca);
+                }
+
+                return marcas;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            */
+
+            marcas.Add(new Marca(1, "Marca 1"));
+            marcas.Add(new Marca(2, "Marca 2"));
+            marcas.Add(new Marca(3, "Marca 3"));
+
+            return marcas;
+        }
+
+
+}
 }
