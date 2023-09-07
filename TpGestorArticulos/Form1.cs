@@ -37,7 +37,7 @@ namespace App
                 "https://images-cdn.9gag.com/photo/aOxr922_700b.jpg",
                 "https://preview.redd.it/baby-darth-vader-v0-wr94hicpczka1.jpg?auto=webp&s=6c822a8e9ee3501f389ab4a144c9a360ada60c07"
             };
-            editor.LoadArticulo(articulo); // llamamos al metodo frm
+            //editor.LoadArticulo(articulo); // llamamos al metodo frm
             editor.ShowDialog();
         }
     }

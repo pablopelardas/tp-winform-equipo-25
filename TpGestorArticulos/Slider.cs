@@ -14,6 +14,9 @@ namespace TpGestorArticulos
         private Dictionary<string, Image> _imageCache = new Dictionary<string, Image>();
         private int _currentImageIndex = 0;
         private bool _isEditMode = false;
+
+        public bool isInitialized { get; set; }
+
         public Slider()
         {
             InitializeComponent();

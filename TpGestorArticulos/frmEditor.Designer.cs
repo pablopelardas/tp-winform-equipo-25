@@ -38,6 +38,8 @@
             this.lblMarca = new System.Windows.Forms.Label();
             this.cbxCategoria = new System.Windows.Forms.ComboBox();
             this.cbxMarca = new System.Windows.Forms.ComboBox();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.sliderImagenes = new TpGestorArticulos.Slider();
             this.SuspendLayout();
             // 
@@ -129,6 +131,25 @@
             this.cbxMarca.Size = new System.Drawing.Size(237, 21);
             this.cbxMarca.TabIndex = 13;
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Location = new System.Drawing.Point(32, 519);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(123, 42);
+            this.btnGuardar.TabIndex = 21;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(444, 519);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(123, 42);
+            this.btnCancelar.TabIndex = 22;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            // 
             // sliderImagenes
             // 
             this.sliderImagenes.Location = new System.Drawing.Point(3, 217);
@@ -140,7 +161,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 504);
+            this.ClientSize = new System.Drawing.Size(598, 588);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.sliderImagenes);
             this.Controls.Add(this.cbxMarca);
             this.Controls.Add(this.cbxCategoria);
@@ -154,7 +177,8 @@
             this.Controls.Add(this.lblNombre);
             this.Name = "frmEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Editor";
+            this.Text = "Registrar Artículo";
+            this.Load += new System.EventHandler(this.frmEditor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,5 +197,7 @@
         private System.Windows.Forms.ComboBox cbxCategoria;
         private System.Windows.Forms.ComboBox cbxMarca;
         private Slider sliderImagenes;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }
