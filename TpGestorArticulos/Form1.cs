@@ -39,6 +39,9 @@ namespace App
             };
             //editor.LoadArticulo(articulo); // llamamos al metodo frm
             editor.ShowDialog();
+
+            frmMrcCtg mrcctg = new frmMrcCtg();
+            mrcctg.ShowDialog();
         }
     }
 }
