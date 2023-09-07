@@ -19,7 +19,7 @@ namespace AccesoDatos
 
         public Database()
         {
-            connection = new SqlConnection("server=.\\SQLEXPRESS;database=CATALOGO_P3_DB;integrated security=true");
+            connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
             command = new SqlCommand();
 
         }
