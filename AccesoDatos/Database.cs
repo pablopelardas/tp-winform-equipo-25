@@ -19,9 +19,8 @@ namespace AccesoDatos
 
         public Database()
         {
-            connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+            connection = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true");
             command = new SqlCommand();
-
         }
 
         public void setQuery(string query)
@@ -44,7 +43,6 @@ namespace AccesoDatos
                 Console.WriteLine(ex.Message);
                 throw ex;
             }
-
         }
 
         public void CloseConnection()
@@ -52,6 +50,5 @@ namespace AccesoDatos
             if (reader != null) reader.Close();
             connection.Close();
         }
-
     }
 }

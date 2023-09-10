@@ -31,17 +31,17 @@ namespace TpGestorArticulos
 
         private void frmMrcCtg_Load(object sender, EventArgs e)
         {
-            string aux = "Marca";
+            //string aux = "Marca";
             
-            lblTitulo.Text = "Administrador de "+aux;
-            lblNombre.Text = aux;
+            //lblTitulo.Text = "Administrador de "+aux;
+            //lblNombre.Text = aux;
 
-            List<Marca> marcas = new List<Marca>();
-            marcas = ListarMarcas();
-            foreach (Marca marca in marcas)
-            {
-                opcActuales.Items.Add(marca.Nombre);
-            }
+            //List<Marca> marcas = new List<Marca>();
+            //marcas = ListarMarcas();
+            //foreach (Marca marca in marcas)
+            //{
+            //    opcActuales.Items.Add(marca.Nombre);
+            //}
             
             
         }
