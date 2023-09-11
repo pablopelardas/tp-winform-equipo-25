@@ -13,24 +13,17 @@ namespace TpGestorArticulos
     public partial class frmEditor : Form
     {
         private List<string> _images;
-        private int _idArticulo = -1;
+        private Articulo _articulo;
         public frmEditor()
         {
             InitializeComponent();
         }
 
-        public void LoadArticulo(Articulo articulo)
-        {  
-            // Llenamos los datos del formulario con los datos del articulo
-            txtNombre.Text = articulo.Nombre.Length > 0 ? articulo.Nombre : "";
-            rtxtDescripcion.Text = articulo.Descripcion.Length > 0 ? articulo.Descripcion : "";
-            txtPrecio.Text = articulo.Precio > 0 ? articulo.Precio.ToString() : "";
-            cbxCategoria.SelectedIndex = articulo.Categoria != null ? cbxCategoria.FindStringExact(articulo.Categoria.Nombre) : -1;
-            cbxMarca.SelectedIndex = articulo.Marca != null ? cbxMarca.FindStringExact(articulo.Marca.Nombre) : -1;
-            // Clonar la lista de imagenes para evitar que se modifique el articulo original
-            _images = new List<string>(articulo.Imagenes);
+        public frmEditor(Articulo articulo)
+        {
+            InitializeComponent();
             this.Text = "Modificar Artículo";
-            _idArticulo = articulo.Id;
+            _articulo = articulo;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -39,23 +32,23 @@ namespace TpGestorArticulos
             if (ValidarDatos())
             {
                 // Creamos un articulo con los datos del formulario
-                Articulo articulo = new Articulo();
                 try
                 {
-                    articulo.Nombre = txtNombre.Text;
-                    articulo.Descripcion = rtxtDescripcion.Text;
-                    articulo.Precio = decimal.Parse(txtPrecio.Text);
-                    articulo.Categoria = (Categoria)cbxCategoria.SelectedItem;
-                    articulo.Marca = (Marca)cbxMarca.SelectedItem;
-                    articulo.Imagenes = _images;
+                    if (_articulo == null) _articulo = new Articulo();
+                    _articulo.Nombre = txtNombre.Text;
+                    _articulo.Codigo = txtCodigo.Text;
+                    _articulo.Descripcion = rtxtDescripcion.Text;
+                    _articulo.Precio = decimal.Parse(txtPrecio.Text);
+                    _articulo.Categoria = (Categoria)cbxCategoria.SelectedItem;
+                    _articulo.Marca = (Marca)cbxMarca.SelectedItem;
+                    _articulo.Imagenes = _images;
                     // Guardamos el articulo en la base de datos
                     ArticulosNegocio articulosNegocio = new ArticulosNegocio();
-                    if (_idArticulo != -1)
+                    if (_articulo.Id != -1)
                     {
-                        articulo.Id = _idArticulo;
-                        articulosNegocio.Modificar(articulo);
+                        articulosNegocio.Modificar(_articulo);
                     }
-                    else articulosNegocio.Agregar(articulo);
+                    else articulosNegocio.Agregar(_articulo);
                     // Cerramos el formulario
                     this.Close();
                 }
@@ -69,43 +62,27 @@ namespace TpGestorArticulos
 
         private bool ValidarDatos()
         {
-            // Validamos que el nombre no este vacio
             try
             {
                 if (txtNombre.Text.Length == 0)
                 {
-                    MessageBox.Show("El nombre no puede estar vacio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
+                    throw new Exception("El nombre no puede estar vacio");
                 }
-                // Validamos que la descripcion no este vacia
+                if (txtCodigo.Text.Length == 0)
+                {
+                    throw new Exception("El codigo no puede estar vacio");
+                }
                 if (rtxtDescripcion.Text.Length == 0)
                 {
-                    MessageBox.Show("La descripcion no puede estar vacia", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
+                    throw new Exception("La descripcion no puede estar vacia");
                 }
-                // Validamos que el precio sea un numero
                 if (!float.TryParse(txtPrecio.Text, out float precio))
                 {
-                    MessageBox.Show("El precio debe ser un numero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
+                    throw new Exception("El precio debe ser un numero");
                 }
-                // Validamos que el precio sea mayor a 0
                 if (float.Parse(txtPrecio.Text) <= 0)
                 {
-                    MessageBox.Show("El precio debe ser mayor a 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-                // Validamos que la categoria no este vacia
-                if (cbxCategoria.SelectedIndex == -1)
-                {
-                    MessageBox.Show("Debe seleccionar una categoria", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-                // Validamos que la marca no este vacia
-                if (cbxMarca.SelectedIndex == -1)
-                {
-                    MessageBox.Show("Debe seleccionar una marca", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
+                    throw new Exception("El precio debe ser mayor a 0");
                 }
                 return true;
             }
@@ -118,15 +95,48 @@ namespace TpGestorArticulos
         }
 
         private void frmEditor_Load(object sender, EventArgs e)
+
         {
-            // verificamos si ya hay imagenes cargadas
-            if (_images == null)
+            // Cargamos las categorias y marcas en los combobox
+            List<Categoria> categorias = new List<Categoria>();
+            List<Marca> marcas = new List<Marca>();
+            categorias.Add(new Categoria() { Id = -1, Nombre = "Seleccione una categoria" });
+            marcas.Add(new Marca() { Id = -1, Nombre = "Seleccione una marca" });
+
+            // MOCK DATA
+            categorias.Add(new Categoria() { Id = 1, Nombre = "Accesorios" });
+            categorias.Add(new Categoria() { Id = 2, Nombre = "Almacenamiento" });
+            categorias.Add(new Categoria() { Id = 3, Nombre = "Audio" });
+
+            // MOCK DATA
+            marcas.Add(new Marca() { Id = 1, Nombre = "Marca 1" });
+            marcas.Add(new Marca() { Id = 2, Nombre = "Marca 2" });
+            marcas.Add(new Marca() { Id = 3, Nombre = "Marca 3" });
+
+            cbxCategoria.DataSource = categorias;
+            cbxCategoria.ValueMember = "Id";
+            cbxCategoria.DisplayMember = "Nombre";
+            cbxMarca.DataSource = marcas;
+            cbxMarca.ValueMember = "Id";
+            cbxMarca.DisplayMember = "Nombre";
+            if (_articulo != null)
             {
+                txtNombre.Text = _articulo.Nombre.Length > 0 ? _articulo.Nombre : "";
+                rtxtDescripcion.Text = _articulo.Descripcion.Length > 0 ? _articulo.Descripcion : "";
+                txtPrecio.Text = _articulo.Precio > 0 ? _articulo.Precio.ToString() : "";
+                cbxCategoria.SelectedValue = _articulo.Categoria.Id;
+                cbxMarca.SelectedValue = _articulo.Marca.Id;
+                txtCodigo.Text = _articulo.Codigo.Length > 0 ? _articulo.Codigo : "";
+                _images = new List<string>(_articulo.Imagenes);
+            }
+            else
+            {
+                // Inicializamos la lista de imagenes
                 _images = new List<string>();
                 _images.Add("");
-            };
+            }
             sliderImagenes.InitSlider(ref _images);
-            // Cargamos las categorias y marcas en los combobox
+
         }
     }
 

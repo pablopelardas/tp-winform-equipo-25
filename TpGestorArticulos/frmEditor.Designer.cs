@@ -41,6 +41,8 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.sliderImagenes = new TpGestorArticulos.Slider();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.lblCodigo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblNombre
@@ -62,7 +64,7 @@
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(32, 114);
+            this.txtPrecio.Location = new System.Drawing.Point(32, 146);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(206, 20);
             this.txtPrecio.TabIndex = 3;
@@ -71,7 +73,7 @@
             // 
             this.lblPrecio.AutoSize = true;
             this.lblPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecio.Location = new System.Drawing.Point(29, 95);
+            this.lblPrecio.Location = new System.Drawing.Point(29, 127);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(46, 16);
             this.lblPrecio.TabIndex = 2;
@@ -91,7 +93,7 @@
             // 
             this.rtxtDescripcion.Location = new System.Drawing.Point(264, 45);
             this.rtxtDescripcion.Name = "rtxtDescripcion";
-            this.rtxtDescripcion.Size = new System.Drawing.Size(303, 89);
+            this.rtxtDescripcion.Size = new System.Drawing.Size(303, 121);
             this.rtxtDescripcion.TabIndex = 6;
             this.rtxtDescripcion.Text = "";
             // 
@@ -99,7 +101,7 @@
             // 
             this.lblCategoria.AutoSize = true;
             this.lblCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoria.Location = new System.Drawing.Point(29, 162);
+            this.lblCategoria.Location = new System.Drawing.Point(29, 184);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(66, 16);
             this.lblCategoria.TabIndex = 7;
@@ -109,7 +111,7 @@
             // 
             this.lblMarca.AutoSize = true;
             this.lblMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMarca.Location = new System.Drawing.Point(327, 162);
+            this.lblMarca.Location = new System.Drawing.Point(327, 184);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(45, 16);
             this.lblMarca.TabIndex = 8;
@@ -118,7 +120,7 @@
             // cbxCategoria
             // 
             this.cbxCategoria.FormattingEnabled = true;
-            this.cbxCategoria.Location = new System.Drawing.Point(32, 181);
+            this.cbxCategoria.Location = new System.Drawing.Point(32, 203);
             this.cbxCategoria.Name = "cbxCategoria";
             this.cbxCategoria.Size = new System.Drawing.Size(237, 21);
             this.cbxCategoria.TabIndex = 12;
@@ -126,7 +128,7 @@
             // cbxMarca
             // 
             this.cbxMarca.FormattingEnabled = true;
-            this.cbxMarca.Location = new System.Drawing.Point(330, 181);
+            this.cbxMarca.Location = new System.Drawing.Point(330, 203);
             this.cbxMarca.Name = "cbxMarca";
             this.cbxMarca.Size = new System.Drawing.Size(237, 21);
             this.cbxMarca.TabIndex = 13;
@@ -152,16 +154,36 @@
             // 
             // sliderImagenes
             // 
-            this.sliderImagenes.Location = new System.Drawing.Point(3, 217);
+            this.sliderImagenes.isInitialized = false;
+            this.sliderImagenes.Location = new System.Drawing.Point(3, 230);
             this.sliderImagenes.Name = "sliderImagenes";
             this.sliderImagenes.Size = new System.Drawing.Size(595, 275);
             this.sliderImagenes.TabIndex = 20;
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Location = new System.Drawing.Point(32, 99);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(206, 20);
+            this.txtCodigo.TabIndex = 24;
+            // 
+            // lblCodigo
+            // 
+            this.lblCodigo.AutoSize = true;
+            this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigo.Location = new System.Drawing.Point(29, 80);
+            this.lblCodigo.Name = "lblCodigo";
+            this.lblCodigo.Size = new System.Drawing.Size(51, 16);
+            this.lblCodigo.TabIndex = 23;
+            this.lblCodigo.Text = "Código";
             // 
             // frmEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(598, 588);
+            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.sliderImagenes);
@@ -199,5 +221,7 @@
         private Slider sliderImagenes;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.Label lblCodigo;
     }
 }
