@@ -26,7 +26,7 @@ namespace Negocio
             
             try
             {
-                datos.setQuery("Select Id, Codigo, Nombre, Descripcion From ARTICULOS"); 
+                datos.setQuery("select a.Id, Codigo, Nombre, a.Descripcion as Descripcion,m.Id as IdMarca, m.Descripcion as Marca, c.Id as IdCategoria , c.Descripcion as Categoria, Precio from ARTICULOS a\r\nleft join MARCAS m on a.IdMarca = m.Id\r\nleft join CATEGORIAS c on a.IdCategoria = c.Id\r\n"); 
                 datos.readData();
 
                 while (datos.Reader.Read())
@@ -37,26 +37,40 @@ namespace Negocio
                     art.Nombre = (string)datos.Reader["Nombre"];
                     art.Codigo = (string)datos.Reader["Codigo"];
                     art.Descripcion = (string)datos.Reader["Descripcion"];
-                    
-                    //art.Precio = (float)datos.Reader["Precio"];
-
-                    //art.Marca = new Marca();
-                    //art.Marca.Id = (int)datos.Reader["IdMarca"];
-                    //art.Marca.Nombre = (string)datos.Reader["Marca"];
-
-                    //art.Categoria = new Categoria();
-                    //art.Categoria.Id = (int)datos.Reader["IdCategoria"];
-                    //art.Categoria.Nombre = (string)datos.Reader["Categoria"];
-
-                    //art.Imagenes = (string)datos.Reader["URL"]; //REVISAR SI VIENE EN OTRA TABLA O VIENE COMO STRING SEPARADO POR COMAS
-
+                    art.Precio = (decimal)datos.Reader["Precio"];
+                    art.Marca = new Marca();
+                    art.Marca.Nombre = !(datos.Reader["Marca"] is DBNull) ? (string)datos.Reader["Marca"] : "";
+                    art.Marca.Id = !(datos.Reader["IdMarca"] is DBNull) ? (int)datos.Reader["IdMarca"] : -1;
+                    art.Categoria = new Categoria();
+                    art.Categoria.Nombre = !(datos.Reader["Categoria"] is DBNull) ? (string)datos.Reader["Categoria"] : "";
+                    art.Categoria.Id = !(datos.Reader["IdCategoria"] is DBNull) ? (int)datos.Reader["IdCategoria"] : -1;
+                    art.Imagenes = new List<string>();
+                    Database datosImagenes = new Database();
+                    try
+                    {
+                        datosImagenes.setQuery("select ImagenUrl from IMAGENES where IdArticulo = " + art.Id);
+                        datosImagenes.readData();
+                        while (datosImagenes.Reader.Read())
+                        {
+                            art.Imagenes.Add((string)datosImagenes.Reader["ImagenUrl"]);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        
+                         throw new Exception("Error al leer las imagenes");
+                    }
+                    finally
+                    {
+                        datosImagenes.CloseConnection();
+                    }
                     lista.Add(art);
                 }
 
                 return lista;
             }
             catch (Exception ex)
-            {
+            {   
                 throw ex;
             }
             finally

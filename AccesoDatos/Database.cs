@@ -45,6 +45,7 @@ namespace AccesoDatos
             }
         }
 
+
         public void CloseConnection()
         {
             if (reader != null) reader.Close();

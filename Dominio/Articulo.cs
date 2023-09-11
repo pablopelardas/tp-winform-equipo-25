@@ -17,11 +17,11 @@ namespace Dominio
         // Categoria
         public Categoria Categoria { get; set; }
         public List<string> Imagenes { get; set; }
-        public float Precio { get; set; }
+        public decimal Precio { get; set; }
         
 
         public Articulo() { }
-        public Articulo(int id, string nombre, string descripcion, float precio, Marca marca, Categoria categoria)
+        public Articulo(int id, string nombre, string descripcion, decimal precio, Marca marca, Categoria categoria)
         {
             Id = id;
             Nombre = nombre;

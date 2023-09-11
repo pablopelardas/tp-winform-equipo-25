@@ -44,7 +44,7 @@ namespace TpGestorArticulos
                 {
                     articulo.Nombre = txtNombre.Text;
                     articulo.Descripcion = rtxtDescripcion.Text;
-                    articulo.Precio = float.Parse(txtPrecio.Text);
+                    articulo.Precio = decimal.Parse(txtPrecio.Text);
                     articulo.Categoria = (Categoria)cbxCategoria.SelectedItem;
                     articulo.Marca = (Marca)cbxMarca.SelectedItem;
                     articulo.Imagenes = _images;

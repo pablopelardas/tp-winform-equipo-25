@@ -19,35 +19,43 @@ namespace TpGestorArticulos
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            frmEditor editor = new frmEditor();
-            // articulo de prueba
-            Articulo articulo = new Articulo();
-            articulo.Nombre = "Articulo de prueba";
-            articulo.Descripcion = "Descripcion de prueba";
-            articulo.Precio = 100;
-            articulo.Categoria = new Categoria();
-            articulo.Categoria.Nombre = "Categoria de prueba";
-            articulo.Marca = new Marca();
-            articulo.Marca.Nombre = "Marca de prueba";
-            articulo.Imagenes = new List<string>
-            {
-                "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2022/11/mandalorian-grogu-2863719.jpg?tf=3840x",
-                "https://images-cdn.9gag.com/photo/aOxr922_700b.jpg",
-                "https://preview.redd.it/baby-darth-vader-v0-wr94hicpczka1.jpg?auto=webp&s=6c822a8e9ee3501f389ab4a144c9a360ada60c07"
-            };
-            //editor.LoadArticulo(articulo); // llamamos al metodo frm
-            editor.ShowDialog();
-
-            frmMrcCtg mrcctg = new frmMrcCtg();
-            mrcctg.ShowDialog();
-        }
-
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            ArticulosNegocio negocio = new ArticulosNegocio();
-            dgvArticulos.DataSource = negocio.ListarArticulos();
+            try
+            {
+                ArticulosNegocio negocio = new ArticulosNegocio();
+                dgvArticulos.DataSource = negocio.ListarArticulos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            // abre la ventana
+            frmEditor editor = new frmEditor();
+            editor.ShowDialog();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            frmEditor editor = new frmEditor();
+            Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            editor.LoadArticulo(articulo);
+            editor.ShowDialog();
+        }
+
+        private void dgvArticulos_DoubleClick(object sender, EventArgs e)
+        {
+            // get selected item
+            Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            // open editor
+            frmDetalle detalle = new frmDetalle();
+            //editor.LoadArticulo(articulo);
+            detalle.ShowDialog();
         }
     }
 }

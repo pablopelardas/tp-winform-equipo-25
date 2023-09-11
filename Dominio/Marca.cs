@@ -17,5 +17,10 @@ namespace Dominio
             Id = id;
             Nombre = nombre;
         }
+
+        override public string ToString()
+        {
+            return Nombre;
+        }
     }
 }
