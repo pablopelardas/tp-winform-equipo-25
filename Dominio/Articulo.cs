@@ -20,7 +20,9 @@ namespace Dominio
         public decimal Precio { get; set; }
         
 
-        public Articulo() { }
+        public Articulo() { 
+            Id = -1;
+        }
         public Articulo(int id, string nombre, string descripcion, decimal precio, Marca marca, Categoria categoria)
         {
             Id = id;
