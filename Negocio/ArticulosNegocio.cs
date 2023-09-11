@@ -26,8 +26,8 @@ namespace Negocio
             
             try
             {
-                datos.setQuery("select a.Id, Codigo, Nombre, a.Descripcion as Descripcion,m.Id as IdMarca, m.Descripcion as Marca, c.Id as IdCategoria , c.Descripcion as Categoria, Precio from ARTICULOS a\r\nleft join MARCAS m on a.IdMarca = m.Id\r\nleft join CATEGORIAS c on a.IdCategoria = c.Id\r\n"); 
-                datos.readData();
+                datos.SetQuery("select a.Id, Codigo, Nombre, a.Descripcion as Descripcion,m.Id as IdMarca, m.Descripcion as Marca, c.Id as IdCategoria , c.Descripcion as Categoria, Precio from ARTICULOS a\r\nleft join MARCAS m on a.IdMarca = m.Id\r\nleft join CATEGORIAS c on a.IdCategoria = c.Id\r\n"); 
+                datos.ReadData();
 
                 while (datos.Reader.Read())
                 {
@@ -48,8 +48,8 @@ namespace Negocio
                     Database datosImagenes = new Database();
                     try
                     {
-                        datosImagenes.setQuery("select ImagenUrl from IMAGENES where IdArticulo = " + art.Id);
-                        datosImagenes.readData();
+                        datosImagenes.SetQuery("select ImagenUrl from IMAGENES where IdArticulo = " + art.Id);
+                        datosImagenes.ReadData();
                         while (datosImagenes.Reader.Read())
                         {
                             art.Imagenes.Add((string)datosImagenes.Reader["ImagenUrl"]);
@@ -77,17 +77,7 @@ namespace Negocio
             {
                 datos.CloseConnection();
             }
-            
-
-            //// Mock
-            //articulos.Add(new Articulo(1, "Articulo 1", "Descripcion 1", 100, new Marca(1, "Marca1"), new Categoria(1, "Cat1")));
-            //articulos.Add(new Articulo(2, "Articulo 2", "Descripcion 2", 200, new Marca(2, "Marca2"), new Categoria(2, "Cat2")));
-            //articulos.Add(new Articulo(3, "Articulo 3", "Descripcion 3", 300, new Marca(3, "Marca3"), new Categoria(3, "Cat3")));
-            //articulos.Add(new Articulo(4, "Articulo 4", "Descripcion 4", 400, new Marca(4, "Marca4"), new Categoria(4, "Cat4")));
-            //articulos.Add(new Articulo(5, "Articulo 5", "Descripcion 5", 500, new Marca(5, "Marca5"), new Categoria(5, "Cat5")));
-
-            //// retornar articulos
-            //return articulos;
+  
         }
 
         public void Agregar(Articulo articulo)

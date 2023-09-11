@@ -23,13 +23,18 @@ namespace AccesoDatos
             command = new SqlCommand();
         }
 
-        public void setQuery(string query)
+        public void SetQuery(string query)
         {
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = query;
         }
 
-        public void readData()
+        public void SetParameter(string name, object value)
+        {
+            command.Parameters.AddWithValue(name, value);
+        }
+
+        public void ReadData()
         {
             command.Connection = connection;
 
@@ -40,7 +45,23 @@ namespace AccesoDatos
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                connection.Close();
+                throw ex;
+            }
+        }
+
+        public void ExecuteQuery()
+        {
+            command.Connection = connection;
+
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                connection.Close();
                 throw ex;
             }
         }
