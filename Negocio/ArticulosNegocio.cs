@@ -23,10 +23,10 @@ namespace Negocio
         {
             List<Articulo> lista = new List<Articulo>();
             Database datos = new Database();
-            
+
             try
             {
-                datos.SetQuery("select a.Id, Codigo, Nombre, a.Descripcion as Descripcion,m.Id as IdMarca, m.Descripcion as Marca, c.Id as IdCategoria , c.Descripcion as Categoria, Precio from ARTICULOS a\r\nleft join MARCAS m on a.IdMarca = m.Id\r\nleft join CATEGORIAS c on a.IdCategoria = c.Id\r\n"); 
+                datos.SetQuery("select a.Id, Codigo, Nombre, a.Descripcion as Descripcion,m.Id as IdMarca, m.Descripcion as Marca, c.Id as IdCategoria , c.Descripcion as Categoria, Precio from ARTICULOS a\r\nleft join MARCAS m on a.IdMarca = m.Id\r\nleft join CATEGORIAS c on a.IdCategoria = c.Id\r\n");
                 datos.ReadData();
 
                 while (datos.Reader.Read())
@@ -57,8 +57,8 @@ namespace Negocio
                     }
                     catch (Exception)
                     {
-                        
-                         throw new Exception("Error al leer las imagenes");
+
+                        throw new Exception("Error al leer las imagenes");
                     }
                     finally
                     {
@@ -70,19 +70,64 @@ namespace Negocio
                 return lista;
             }
             catch (Exception ex)
-            {   
+            {
                 throw ex;
             }
             finally
             {
                 datos.CloseConnection();
             }
-  
+
         }
 
         public void Agregar(Articulo articulo)
         {
-            // agregar articulo a BDD
+            Database dataAccess = new Database();
+            try
+            {
+                dataAccess.SetQuery("insert into ARTICULOS (Codigo, Nombre, Descripcion, Precio) values (@Codigo, @Nombre, @Descripcion, @Precio) SELECT CAST(scope_identity() AS int);");
+                dataAccess.SetParameter("@Codigo", articulo.Codigo);
+                dataAccess.SetParameter("@Nombre", articulo.Nombre);
+                dataAccess.SetParameter("@Descripcion", articulo.Descripcion);
+                dataAccess.SetParameter("@Precio", articulo.Precio);
+                articulo.Id = dataAccess.ExecuteScalar();
+                dataAccess.SetParameter("@IdArticulo", articulo.Id);
+
+
+                // agregar categoria y marca si son distintas a -1
+                dataAccess.SetQuery("update ARTICULOS set IdCategoria = CASE WHEN @IdCategoria = -1 THEN NULL ELSE @IdCategoria END, IdMarca = CASE WHEN @IdMarca = -1 THEN NULL ELSE @IdMarca END where Id = @IdArticulo");
+                dataAccess.SetParameter("@IdCategoria", articulo.Categoria.Id);
+                dataAccess.SetParameter("@IdMarca", articulo.Marca.Id);
+                dataAccess.ExecuteNonQuery();
+
+                articulo.Imagenes.RemoveAll(x => x == "");
+                if (articulo.Imagenes.Count > 0)
+                {
+                    StringBuilder queryBuilder = new StringBuilder();
+                    queryBuilder.Append("insert into IMAGENES (IdArticulo, ImagenUrl) values ");
+                    for (int i = 0; i < articulo.Imagenes.Count; i++)
+                    {
+                        queryBuilder.Append($"(@IdArticulo, @ImagenUrl{i})");
+                        if (i != articulo.Imagenes.Count - 1)
+                        {
+                            queryBuilder.Append(", ");
+                        }
+                        dataAccess.SetParameter($"@ImagenUrl{i}", articulo.Imagenes[i]);
+                    }
+                    dataAccess.SetQuery(queryBuilder.ToString());
+                    dataAccess.ExecuteNonQuery();
+                }
+
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dataAccess.CloseConnection();
+            }
         }
 
         public void Modificar(Articulo articulo)
@@ -130,5 +175,5 @@ namespace Negocio
 
             return marcas;
         }
-}
+    }
 }
