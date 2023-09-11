@@ -42,9 +42,8 @@ namespace TpGestorArticulos
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            frmEditor editor = new frmEditor();
             Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            editor.LoadArticulo(articulo);
+            frmEditor editor = new frmEditor(articulo);
             editor.ShowDialog();
         }
 
