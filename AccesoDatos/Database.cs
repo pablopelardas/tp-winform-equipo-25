@@ -40,7 +40,7 @@ namespace AccesoDatos
 
             try
             {
-                connection.Open();
+                if (connection.State != System.Data.ConnectionState.Open) connection.Open();
                 reader = command.ExecuteReader();
             }
             catch (Exception ex)
@@ -50,14 +50,32 @@ namespace AccesoDatos
             }
         }
 
-        public void ExecuteQuery()
+        public void ExecuteNonQuery()
         {
             command.Connection = connection;
 
             try
             {
-                connection.Open();
+                if (connection.State != System.Data.ConnectionState.Open)
+                    connection.Open();
                 command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                connection.Close();
+                throw ex;
+            }
+        }
+
+        public int ExecuteScalar()
+        {
+            command.Connection = connection;
+
+            try
+            {
+                if (connection.State != System.Data.ConnectionState.Open)
+                    connection.Open();
+                return (int)command.ExecuteScalar();
             }
             catch (Exception ex)
             {
