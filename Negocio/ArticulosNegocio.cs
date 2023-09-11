@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Dominio;
 using AccesoDatos;
 
@@ -93,32 +91,8 @@ namespace Negocio
                 articulo.Id = dataAccess.ExecuteScalar();
                 dataAccess.SetParameter("@IdArticulo", articulo.Id);
 
-
-                // agregar categoria y marca si son distintas a -1
-                dataAccess.SetQuery("update ARTICULOS set IdCategoria = CASE WHEN @IdCategoria = -1 THEN NULL ELSE @IdCategoria END, IdMarca = CASE WHEN @IdMarca = -1 THEN NULL ELSE @IdMarca END where Id = @IdArticulo");
-                dataAccess.SetParameter("@IdCategoria", articulo.Categoria.Id);
-                dataAccess.SetParameter("@IdMarca", articulo.Marca.Id);
-                dataAccess.ExecuteNonQuery();
-
-                articulo.Imagenes.RemoveAll(x => x == "");
-                if (articulo.Imagenes.Count > 0)
-                {
-                    StringBuilder queryBuilder = new StringBuilder();
-                    queryBuilder.Append("insert into IMAGENES (IdArticulo, ImagenUrl) values ");
-                    for (int i = 0; i < articulo.Imagenes.Count; i++)
-                    {
-                        queryBuilder.Append($"(@IdArticulo, @ImagenUrl{i})");
-                        if (i != articulo.Imagenes.Count - 1)
-                        {
-                            queryBuilder.Append(", ");
-                        }
-                        dataAccess.SetParameter($"@ImagenUrl{i}", articulo.Imagenes[i]);
-                    }
-                    dataAccess.SetQuery(queryBuilder.ToString());
-                    dataAccess.ExecuteNonQuery();
-                }
-
-
+                ActualizarMarcaCategoria(articulo, dataAccess);
+                InsertarImagenes(articulo.Imagenes, dataAccess);
             }
             catch (Exception)
             {
@@ -133,6 +107,33 @@ namespace Negocio
         public void Modificar(Articulo articulo)
         {
             // modificar articulo en BDD
+            Database dataAccess = new Database();
+            try
+            {
+                dataAccess.SetQuery("update ARTICULOS set Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion, Precio = @Precio where Id = @IdArticulo");
+                dataAccess.SetParameter("@Codigo", articulo.Codigo);
+                dataAccess.SetParameter("@Nombre", articulo.Nombre);
+                dataAccess.SetParameter("@Descripcion", articulo.Descripcion);
+                dataAccess.SetParameter("@Precio", articulo.Precio);
+                dataAccess.SetParameter("@IdArticulo", articulo.Id);
+                dataAccess.ExecuteNonQuery();
+
+                ActualizarMarcaCategoria(articulo, dataAccess);
+
+                dataAccess.SetQuery("delete from IMAGENES where IdArticulo = @IdArticulo");
+                dataAccess.ExecuteNonQuery();
+                InsertarImagenes(articulo.Imagenes, dataAccess);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                dataAccess.CloseConnection();
+            }
+
         }
 
         public void Eliminar(int id)
@@ -174,6 +175,36 @@ namespace Negocio
             marcas.Add(new Marca(3, "Marca 3"));
 
             return marcas;
+        }
+
+        private void InsertarImagenes(List<string> imagenes, Database dataAccess)
+        {
+            imagenes.RemoveAll(x => x == "");
+
+            if (imagenes.Count > 0)
+            {
+                StringBuilder queryBuilder = new StringBuilder();
+                queryBuilder.Append("insert into IMAGENES (IdArticulo, ImagenUrl) values ");
+                for (int i = 0; i < imagenes.Count; i++)
+                {
+                    queryBuilder.Append($"(@IdArticulo, @ImagenUrl{i})");
+                    if (i != imagenes.Count - 1)
+                    {
+                        queryBuilder.Append(", ");
+                    }
+                    dataAccess.SetParameter($"@ImagenUrl{i}", imagenes[i]);
+                }
+                Console.WriteLine(queryBuilder.ToString());
+                dataAccess.SetQuery(queryBuilder.ToString());
+                dataAccess.ExecuteNonQuery();
+            }
+        }
+        private void ActualizarMarcaCategoria (Articulo articulo, Database dataAccess)
+        {
+            dataAccess.SetQuery("update ARTICULOS set IdCategoria = CASE WHEN @IdCategoria = -1 THEN NULL ELSE @IdCategoria END, IdMarca = CASE WHEN @IdMarca = -1 THEN NULL ELSE @IdMarca END where Id = @IdArticulo");
+            dataAccess.SetParameter("@IdCategoria", articulo.Categoria.Id);
+            dataAccess.SetParameter("@IdMarca", articulo.Marca.Id);
+            dataAccess.ExecuteNonQuery();
         }
     }
 }

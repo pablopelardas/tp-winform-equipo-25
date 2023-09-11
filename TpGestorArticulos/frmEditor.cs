@@ -125,9 +125,14 @@ namespace TpGestorArticulos
                 rtxtDescripcion.Text = _articulo.Descripcion.Length > 0 ? _articulo.Descripcion : "";
                 txtPrecio.Text = _articulo.Precio > 0 ? _articulo.Precio.ToString() : "";
                 cbxCategoria.SelectedValue = _articulo.Categoria.Id;
+                if (cbxCategoria.SelectedValue == null) cbxCategoria.SelectedValue = -1;
                 cbxMarca.SelectedValue = _articulo.Marca.Id;
+                if (cbxMarca.SelectedValue == null) cbxMarca.SelectedValue = -1;
                 txtCodigo.Text = _articulo.Codigo.Length > 0 ? _articulo.Codigo : "";
                 _images = new List<string>(_articulo.Imagenes);
+                if (_images.Count == 0) 
+                    _images.Add("");
+
             }
             else
             {
