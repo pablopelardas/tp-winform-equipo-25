@@ -40,9 +40,9 @@
             this.cbxMarca = new System.Windows.Forms.ComboBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.sliderImagenes = new TpGestorArticulos.Slider();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.lblCodigo = new System.Windows.Forms.Label();
+            this.sliderImagenes = new TpGestorArticulos.Slider();
             this.SuspendLayout();
             // 
             // lblNombre
@@ -119,6 +119,7 @@
             // 
             // cbxCategoria
             // 
+            this.cbxCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCategoria.FormattingEnabled = true;
             this.cbxCategoria.Location = new System.Drawing.Point(32, 203);
             this.cbxCategoria.Name = "cbxCategoria";
@@ -127,6 +128,7 @@
             // 
             // cbxMarca
             // 
+            this.cbxMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxMarca.FormattingEnabled = true;
             this.cbxMarca.Location = new System.Drawing.Point(330, 203);
             this.cbxMarca.Name = "cbxMarca";
@@ -152,14 +154,6 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // sliderImagenes
-            // 
-            this.sliderImagenes.isInitialized = false;
-            this.sliderImagenes.Location = new System.Drawing.Point(3, 230);
-            this.sliderImagenes.Name = "sliderImagenes";
-            this.sliderImagenes.Size = new System.Drawing.Size(595, 275);
-            this.sliderImagenes.TabIndex = 20;
-            // 
             // txtCodigo
             // 
             this.txtCodigo.Location = new System.Drawing.Point(32, 99);
@@ -176,6 +170,14 @@
             this.lblCodigo.Size = new System.Drawing.Size(51, 16);
             this.lblCodigo.TabIndex = 23;
             this.lblCodigo.Text = "Código";
+            // 
+            // sliderImagenes
+            // 
+            this.sliderImagenes.isInitialized = false;
+            this.sliderImagenes.Location = new System.Drawing.Point(3, 230);
+            this.sliderImagenes.Name = "sliderImagenes";
+            this.sliderImagenes.Size = new System.Drawing.Size(595, 275);
+            this.sliderImagenes.TabIndex = 20;
             // 
             // frmEditor
             // 

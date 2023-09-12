@@ -92,7 +92,7 @@
             // 
             this.txtUrlImagen.Location = new System.Drawing.Point(142, 252);
             this.txtUrlImagen.Name = "txtUrlImagen";
-            this.txtUrlImagen.Size = new System.Drawing.Size(284, 20);
+            this.txtUrlImagen.Size = new System.Drawing.Size(278, 20);
             this.txtUrlImagen.TabIndex = 25;
             this.txtUrlImagen.TextChanged += new System.EventHandler(this.txtUrlImagen_TextChanged);
             // 
@@ -108,11 +108,11 @@
             // 
             // btnImagenLocal
             // 
-            this.btnImagenLocal.Location = new System.Drawing.Point(435, 252);
+            this.btnImagenLocal.Location = new System.Drawing.Point(434, 250);
             this.btnImagenLocal.Name = "btnImagenLocal";
-            this.btnImagenLocal.Size = new System.Drawing.Size(22, 22);
+            this.btnImagenLocal.Size = new System.Drawing.Size(23, 24);
             this.btnImagenLocal.TabIndex = 27;
-            this.btnImagenLocal.Text = "…";
+            this.btnImagenLocal.Text = "+\r\n";
             this.btnImagenLocal.UseVisualStyleBackColor = true;
             this.btnImagenLocal.Click += new System.EventHandler(this.btnImagenLocal_Click);
             // 
