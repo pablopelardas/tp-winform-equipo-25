@@ -40,11 +40,14 @@
             // 
             // lblTitulo
             // 
+            this.lblTitulo.AutoEllipsis = true;
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.Location = new System.Drawing.Point(12, 49);
+            this.lblTitulo.MaximumSize = new System.Drawing.Size(300, 31);
+            this.lblTitulo.MinimumSize = new System.Drawing.Size(300, 31);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(222, 31);
+            this.lblTitulo.Size = new System.Drawing.Size(300, 31);
             this.lblTitulo.TabIndex = 1;
             this.lblTitulo.Text = "Título del Artículo";
             // 
@@ -62,12 +65,11 @@
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecio.Location = new System.Drawing.Point(256, 23);
-            this.lblPrecio.MaximumSize = new System.Drawing.Size(326, 63);
-            this.lblPrecio.MinimumSize = new System.Drawing.Size(326, 63);
+            this.lblPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecio.Location = new System.Drawing.Point(327, 26);
+            this.lblPrecio.MinimumSize = new System.Drawing.Size(256, 54);
             this.lblPrecio.Name = "lblPrecio";
-            this.lblPrecio.Size = new System.Drawing.Size(326, 63);
+            this.lblPrecio.Size = new System.Drawing.Size(256, 54);
             this.lblPrecio.TabIndex = 3;
             this.lblPrecio.Text = "$ 100";
             this.lblPrecio.TextAlign = System.Drawing.ContentAlignment.TopRight;

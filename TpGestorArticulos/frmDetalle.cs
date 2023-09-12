@@ -26,7 +26,8 @@ namespace TpGestorArticulos
             lblCodigo.Text = "Cod: " + _articulo.Codigo;
             lblTitulo.Text = _articulo.Nombre;
             txtDescripcion.Text = _articulo.Descripcion;
-            lblPrecio.Text = "$ " + _articulo.Precio.ToString();
+            // short price to 2 decimal places
+            lblPrecio.Text = "$ " + _articulo.Precio.ToString("0.00");
             lblCategoria.Text = _articulo.Categoria.Nombre;
             lblMarca.Text = _articulo.Marca.Nombre;
             List<string> images = _articulo.Imagenes;
