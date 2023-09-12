@@ -31,7 +31,6 @@ namespace TpGestorArticulos
             lblUrlImagen.Visible = false;
             btnEliminarImagen.Visible = false;
             txtIndexImagen.Visible = false;
-            updateButtonStatus();
             LoadImage();
         }
         public void InitSlider(ref List<string> images)
@@ -39,7 +38,6 @@ namespace TpGestorArticulos
             _images = images;
             _isEditMode = true;
             txtUrlImagen.Text = _images[_currentImageIndex];
-            updateButtonStatus();
             LoadImage();
         }
 
@@ -98,8 +96,6 @@ namespace TpGestorArticulos
                 txtIndexImagen.Text = (_currentImageIndex + 1).ToString();
                 if (pbxImagen.Image == null) throw new Exception();
                 updateButtonStatus();
-
-
             }
             catch (Exception)
             {
@@ -114,7 +110,6 @@ namespace TpGestorArticulos
             {
                 _currentImageIndex--;
                 txtUrlImagen.Text = _images[_currentImageIndex];
-                updateButtonStatus();
                 LoadImage();
             }
         }
@@ -149,7 +144,6 @@ namespace TpGestorArticulos
                 _currentImageIndex++;
                 // Si la imagen actual es la ultima, deshabilitamos el boton next
             }
-            updateButtonStatus();
             LoadImage();
         }
 
@@ -178,7 +172,6 @@ namespace TpGestorArticulos
                     _images.RemoveAt(index);
                 }
                 txtUrlImagen.Text = _images[_currentImageIndex];
-                updateButtonStatus();
                 LoadImage();
             }
             catch (Exception ex)
