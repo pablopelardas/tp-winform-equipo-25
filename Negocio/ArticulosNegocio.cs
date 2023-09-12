@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Dominio;
 using AccesoDatos;
-
-
+using System.IO;
+using System.Configuration;
 
 namespace Negocio
 {
@@ -64,7 +64,6 @@ namespace Negocio
                     }
                     lista.Add(art);
                 }
-
                 return lista;
             }
             catch (Exception ex)
@@ -76,6 +75,24 @@ namespace Negocio
                 datos.CloseConnection();
             }
 
+        }
+
+        public void SincronizarImagenes()
+        {
+            List<Articulo> lista = ListarArticulos();
+            List<string> enUso = new List<string>();
+            foreach (Articulo articulo in lista)
+            {
+                enUso.AddRange(articulo.Imagenes);
+            }
+            string[] enLocal = Directory.GetFiles(ConfigurationManager.AppSettings["localImagesPath"]);
+            foreach (string imagen in enLocal)
+            {
+                if (!enUso.Contains(imagen))
+                {
+                    File.Delete(imagen);
+                }
+            }
         }
 
         public void Agregar(Articulo articulo)

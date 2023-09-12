@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,6 +18,9 @@ namespace App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            
+            ArticulosNegocio artNegocio = new ArticulosNegocio();
+            artNegocio.SincronizarImagenes();
             Application.Run(new FrmPrincipal());
         }
     }
