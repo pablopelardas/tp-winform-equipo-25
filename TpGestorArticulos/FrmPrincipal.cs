@@ -49,11 +49,8 @@ namespace TpGestorArticulos
 
         private void dgvArticulos_DoubleClick(object sender, EventArgs e)
         {
-            // get selected item
             Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            // open editor
-            frmDetalle detalle = new frmDetalle();
-            //editor.LoadArticulo(articulo);
+            frmDetalle detalle = new frmDetalle(articulo);
             detalle.ShowDialog();
         }
     }
