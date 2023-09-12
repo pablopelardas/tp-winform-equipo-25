@@ -67,15 +67,15 @@ namespace TpGestorArticulos
             {
                 if (txtNombre.Text.Length == 0)
                 {
-                    throw new Exception("El nombre no puede estar vacio");
+                    throw new Exception("El nombre no puede estar vacío");
                 }
                 if (txtCodigo.Text.Length == 0)
                 {
-                    throw new Exception("El codigo no puede estar vacio");
+                    throw new Exception("El código no puede estar vacío");
                 }
                 if (rtxtDescripcion.Text.Length == 0)
                 {
-                    throw new Exception("La descripcion no puede estar vacia");
+                    throw new Exception("La descripción no puede estar vacía");
                 }
                 if (!float.TryParse(txtPrecio.Text, out float precio))
                 {
