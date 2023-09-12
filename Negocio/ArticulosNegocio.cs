@@ -77,24 +77,6 @@ namespace Negocio
 
         }
 
-        public void SincronizarImagenes()
-        {
-            List<Articulo> lista = ListarArticulos();
-            List<string> enUso = new List<string>();
-            foreach (Articulo articulo in lista)
-            {
-                enUso.AddRange(articulo.Imagenes);
-            }
-            string[] enLocal = Directory.GetFiles(ConfigurationManager.AppSettings["localImagesPath"]);
-            foreach (string imagen in enLocal)
-            {
-                if (!enUso.Contains(imagen))
-                {
-                    File.Delete(imagen);
-                }
-            }
-        }
-
         public void Agregar(Articulo articulo)
         {
             Database dataAccess = new Database();
@@ -223,5 +205,33 @@ namespace Negocio
             dataAccess.SetParameter("@IdMarca", articulo.Marca.Id);
             dataAccess.ExecuteNonQuery();
         }
+
+        public void SincronizarImagenes()
+        {
+            Console.WriteLine("Sincronizando imágenes");
+            List<Articulo> lista = ListarArticulos();
+            List<string> enUso = new List<string>();
+            foreach (Articulo articulo in lista)
+            {
+                enUso.AddRange(articulo.Imagenes);
+            }
+            string[] enLocal = Directory.GetFiles(ConfigurationManager.AppSettings["localImagesPath"]);
+            foreach (string imagen in enLocal)
+            {
+                if (!enUso.Contains(imagen))
+                {
+                    try
+                    {
+                        File.Delete(imagen);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+                }
+            }
+        }
+
     }
 }

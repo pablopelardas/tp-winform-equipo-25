@@ -4,9 +4,6 @@ using System.Configuration;
 using System.Drawing;
 using System.IO;
 using System.Net.Http;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,7 +12,6 @@ namespace TpGestorArticulos
     public partial class Slider : UserControl
     {
         private List<string> _images;
-        private List<string> _oldImages;
         private Dictionary<string, Image> _imageCache = new Dictionary<string, Image>();
         private List<OpenFileDialog> _openFileDialogList = null;
         private string _localImagesPath = ConfigurationManager.AppSettings["localImagesPath"];
@@ -45,7 +41,6 @@ namespace TpGestorArticulos
         public void InitSlider(ref List<string> images)
         {
             _images = images;
-            _oldImages = new List<string>(images);
             _isEditMode = true;
             txtUrlImagen.Text = _images[_currentImageIndex];
             LoadImage();
@@ -234,6 +229,7 @@ namespace TpGestorArticulos
 
         public void GuardarImagenesLocales()
         {
+            _imageCache.Clear();
             if(_openFileDialogList != null)
             {
                 if (!Directory.Exists(_localImagesPath))
@@ -257,6 +253,7 @@ namespace TpGestorArticulos
                         filePath = Path.Combine(_localImagesPath, hash + "_" + fileName);
                     }
                     File.Copy(ofd.FileName, filePath, true);
+                    ofd.Dispose();
 
 
                     _images[index] = filePath;
