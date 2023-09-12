@@ -35,6 +35,7 @@
             this.lblUrlImagen = new System.Windows.Forms.Label();
             this.txtUrlImagen = new System.Windows.Forms.TextBox();
             this.txtIndexImagen = new System.Windows.Forms.TextBox();
+            this.btnImagenLocal = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,7 +92,7 @@
             // 
             this.txtUrlImagen.Location = new System.Drawing.Point(142, 252);
             this.txtUrlImagen.Name = "txtUrlImagen";
-            this.txtUrlImagen.Size = new System.Drawing.Size(315, 20);
+            this.txtUrlImagen.Size = new System.Drawing.Size(284, 20);
             this.txtUrlImagen.TabIndex = 25;
             this.txtUrlImagen.TextChanged += new System.EventHandler(this.txtUrlImagen_TextChanged);
             // 
@@ -105,10 +106,21 @@
             this.txtIndexImagen.TabIndex = 26;
             this.txtIndexImagen.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // btnImagenLocal
+            // 
+            this.btnImagenLocal.Location = new System.Drawing.Point(435, 252);
+            this.btnImagenLocal.Name = "btnImagenLocal";
+            this.btnImagenLocal.Size = new System.Drawing.Size(22, 22);
+            this.btnImagenLocal.TabIndex = 27;
+            this.btnImagenLocal.Text = "…";
+            this.btnImagenLocal.UseVisualStyleBackColor = true;
+            this.btnImagenLocal.Click += new System.EventHandler(this.btnImagenLocal_Click);
+            // 
             // Slider
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnImagenLocal);
             this.Controls.Add(this.txtIndexImagen);
             this.Controls.Add(this.txtUrlImagen);
             this.Controls.Add(this.lblUrlImagen);
@@ -133,5 +145,6 @@
         private System.Windows.Forms.Label lblUrlImagen;
         private System.Windows.Forms.TextBox txtUrlImagen;
         private System.Windows.Forms.TextBox txtIndexImagen;
+        private System.Windows.Forms.Button btnImagenLocal;
     }
 }

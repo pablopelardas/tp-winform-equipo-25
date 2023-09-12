@@ -41,6 +41,7 @@ namespace TpGestorArticulos
                     _articulo.Precio = decimal.Parse(txtPrecio.Text);
                     _articulo.Categoria = (Categoria)cbxCategoria.SelectedItem;
                     _articulo.Marca = (Marca)cbxMarca.SelectedItem;
+                    sliderImagenes.GuardarImagenesLocales();
                     _articulo.Imagenes = _images;
                     // Guardamos el articulo en la base de datos
                     ArticulosNegocio articulosNegocio = new ArticulosNegocio();

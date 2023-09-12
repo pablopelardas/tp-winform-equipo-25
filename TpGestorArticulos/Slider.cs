@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Drawing;
 using System.IO;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -11,7 +15,11 @@ namespace TpGestorArticulos
     public partial class Slider : UserControl
     {
         private List<string> _images;
+        private List<string> _oldImages;
         private Dictionary<string, Image> _imageCache = new Dictionary<string, Image>();
+        private List<OpenFileDialog> _openFileDialogList = null;
+        private string _localImagesPath = ConfigurationManager.AppSettings["localImagesPath"];
+        
         private int _currentImageIndex = 0;
         private bool _isEditMode = false;
 
@@ -31,11 +39,13 @@ namespace TpGestorArticulos
             lblUrlImagen.Visible = false;
             btnEliminarImagen.Visible = false;
             txtIndexImagen.Visible = false;
+            btnImagenLocal.Visible = false;
             LoadImage();
         }
         public void InitSlider(ref List<string> images)
         {
             _images = images;
+            _oldImages = new List<string>(images);
             _isEditMode = true;
             txtUrlImagen.Text = _images[_currentImageIndex];
             LoadImage();
@@ -49,6 +59,14 @@ namespace TpGestorArticulos
                 if (_imageCache.TryGetValue(url, out Image imgFromCache))
                 {
                     return imgFromCache;
+                }
+
+                // Verificar si la imagen es local
+                if (File.Exists(url))
+                {
+                    Image img = Image.FromFile(url);
+                    _imageCache[url] = img;
+                    return img;
                 }
 
                 // Si no esta en el cache, la descargamos
@@ -190,5 +208,59 @@ namespace TpGestorArticulos
             }
         }
 
+        private void btnImagenLocal_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "jpg|*.jpg|png|*.png";
+            ofd.Multiselect = false;
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+
+                    _images[_currentImageIndex] = ofd.FileName;
+                    txtUrlImagen.Text = ofd.FileName;
+                    if (_openFileDialogList == null) _openFileDialogList = new List<OpenFileDialog>();
+                    _openFileDialogList.Add(ofd);
+                    LoadImage();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public void GuardarImagenesLocales()
+        {
+            if(_openFileDialogList != null)
+            {
+                if (!Directory.Exists(_localImagesPath))
+                {
+                    Directory.CreateDirectory(_localImagesPath);
+                }
+                foreach (OpenFileDialog ofd in _openFileDialogList)
+                {
+                    int index = _images.FindIndex(x => x == ofd.FileName);
+                    string fileName = Path.GetFileName(ofd.FileName);
+                    string filePath = Path.Combine(_localImagesPath, fileName);
+                    if (File.Exists(filePath))
+                    {
+                        string hash = String.Empty;
+                        for (int i = 0; i < 5; i++)
+                        {
+                            hash += ((int)(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() % 1000000)).ToString("X2");
+                        }
+
+                        filePath = Path.Combine(_localImagesPath, hash + "_" + fileName);
+                    }
+                    File.Copy(ofd.FileName, filePath, true);
+
+
+                    _images[index] = filePath;
+                }
+            }
+        }
     }
 }
