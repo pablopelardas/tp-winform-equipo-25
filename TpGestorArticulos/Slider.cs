@@ -243,6 +243,7 @@ namespace TpGestorArticulos
                 foreach (OpenFileDialog ofd in _openFileDialogList)
                 {
                     int index = _images.FindIndex(x => x == ofd.FileName);
+                    if (index == -1) continue;
                     string fileName = Path.GetFileName(ofd.FileName);
                     string filePath = Path.Combine(_localImagesPath, fileName);
                     if (File.Exists(filePath))
