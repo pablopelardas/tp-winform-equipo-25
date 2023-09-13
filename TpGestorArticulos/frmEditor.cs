@@ -144,6 +144,11 @@ namespace TpGestorArticulos
             sliderImagenes.InitSlider(ref _images);
 
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 
 }

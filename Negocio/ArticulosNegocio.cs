@@ -208,6 +208,10 @@ namespace Negocio
 
         public void SincronizarImagenes()
         {
+            if (!Directory.Exists(ConfigurationManager.AppSettings["localImagesPath"]))
+            {
+                Directory.CreateDirectory(ConfigurationManager.AppSettings["localImagesPath"]);
+            }
             Console.WriteLine("Sincronizando imágenes");
             List<Articulo> lista = ListarArticulos();
             List<string> enUso = new List<string>();
