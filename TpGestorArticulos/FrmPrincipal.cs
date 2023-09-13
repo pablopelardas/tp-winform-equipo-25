@@ -25,6 +25,7 @@ namespace TpGestorArticulos
             {
                 ArticulosNegocio negocio = new ArticulosNegocio();
                 dgvArticulos.DataSource = negocio.ListarArticulos();
+                dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "C";
             }
             catch (Exception ex)
             {

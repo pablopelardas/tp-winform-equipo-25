@@ -38,7 +38,7 @@ namespace TpGestorArticulos
                     _articulo.Nombre = txtNombre.Text;
                     _articulo.Codigo = txtCodigo.Text;
                     _articulo.Descripcion = rtxtDescripcion.Text;
-                    _articulo.Precio = decimal.Parse(txtPrecio.Text);
+                    _articulo.Precio = float.Parse(txtPrecio.Text);
                     _articulo.Categoria = (Categoria)cbxCategoria.SelectedItem;
                     _articulo.Marca = (Marca)cbxMarca.SelectedItem;
                     sliderImagenes.GuardarImagenesLocales();

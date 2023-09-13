@@ -35,7 +35,7 @@ namespace Negocio
                     art.Nombre = (string)datos.Reader["Nombre"];
                     art.Codigo = (string)datos.Reader["Codigo"];
                     art.Descripcion = (string)datos.Reader["Descripcion"];
-                    art.Precio = (decimal)datos.Reader["Precio"];
+                    art.Precio = (float)(decimal)datos.Reader["Precio"];
                     art.Marca = new Marca();
                     art.Marca.Nombre = !(datos.Reader["Marca"] is DBNull) ? (string)datos.Reader["Marca"] : "";
                     art.Marca.Id = !(datos.Reader["IdMarca"] is DBNull) ? (int)datos.Reader["IdMarca"] : -1;
