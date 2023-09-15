@@ -42,16 +42,16 @@
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Location = new System.Drawing.Point(58, 29);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(44, 16);
+            this.lblTitulo.Size = new System.Drawing.Size(227, 16);
             this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "label5";
+            this.lblTitulo.Text = "Administrador de Marcas/Categorias";
             // 
             // lblNuevoNombre
             // 
             this.lblNuevoNombre.AutoSize = true;
-            this.lblNuevoNombre.Location = new System.Drawing.Point(58, 154);
+            this.lblNuevoNombre.Location = new System.Drawing.Point(58, 157);
             this.lblNuevoNombre.Name = "lblNuevoNombre";
-            this.lblNuevoNombre.Size = new System.Drawing.Size(124, 20);
+            this.lblNuevoNombre.Size = new System.Drawing.Size(99, 16);
             this.lblNuevoNombre.TabIndex = 1;
             this.lblNuevoNombre.Text = "Nuevo Nombre";
             // 
@@ -60,9 +60,9 @@
             this.lblNombre.AutoSize = true;
             this.lblNombre.Location = new System.Drawing.Point(58, 91);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(44, 16);
+            this.lblNombre.Size = new System.Drawing.Size(122, 16);
             this.lblNombre.TabIndex = 2;
-            this.lblNombre.Text = "label7";
+            this.lblNombre.Text = "Marcas/Categorias";
             // 
             // opcActuales
             // 
@@ -97,6 +97,7 @@
             this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frmMrcCtg
             // 

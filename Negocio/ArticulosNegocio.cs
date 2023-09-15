@@ -144,19 +144,19 @@ namespace Negocio
         {
             List<Marca> marcas = new List<Marca>();
             Database datos = new Database();
-
-            //Descomentar cuando tengamos la db
-            /*
+            
             try
             {
-                datos.setQuery("select ..."); //FALTA QUERY
-                datos.readData();
+                datos.SetQuery("SELECT Id, Descripcion FROM [dbo].[MARCAS]"); 
+                datos.ReadData();
 
+                marcas.Add(new Marca() { Id = -1, Nombre = "Seleccione una marca" });
+                
                 while (datos.Reader.Read())
                 {
                     Marca marca = new Marca();
-                    marca.Id = (int)datos.Reader["IdMarca"];
-                    marca.Nombre = (string)datos.Reader["Marca"];
+                    marca.Id = (int)datos.Reader["Id"];
+                    marca.Nombre = (string)datos.Reader["Descripcion"];
 
                     marcas.Add(marca);
                 }
@@ -167,14 +167,37 @@ namespace Negocio
             {
                 throw ex;
             }
-            */
-
-            marcas.Add(new Marca(1, "Marca 1"));
-            marcas.Add(new Marca(2, "Marca 2"));
-            marcas.Add(new Marca(3, "Marca 3"));
-
-            return marcas;
         }
+
+        public List<Categoria> ListarCategorias()
+        {
+            List<Categoria> categorias = new List<Categoria>();
+            Database datos = new Database();
+
+            categorias.Add(new Categoria() { Id = -1, Nombre = "Seleccione una categoria" });
+
+            try
+            {
+                datos.SetQuery("SELECT Id, Descripcion FROM [dbo].[CATEGORIAS]");
+                datos.ReadData();
+
+                while (datos.Reader.Read())
+                {
+                    Categoria categ = new Categoria();
+                    categ.Id = (int)datos.Reader["Id"];
+                    categ.Nombre = (string)datos.Reader["Descripcion"];
+
+                    categorias.Add(categ);
+                }
+
+                return categorias;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         private void InsertarImagenes(List<string> imagenes, Database dataAccess)
         {

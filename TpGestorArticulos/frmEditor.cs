@@ -99,20 +99,21 @@ namespace TpGestorArticulos
 
         {
             // Cargamos las categorias y marcas en los combobox
+            ArticulosNegocio articulosNegocio = new ArticulosNegocio();
+
             List<Categoria> categorias = new List<Categoria>();
+            categorias = articulosNegocio.ListarCategorias();
+            foreach (Categoria categ in categorias)
+            {
+                cbxCategoria.Items.Add(categ.Nombre);
+            }
+
             List<Marca> marcas = new List<Marca>();
-            categorias.Add(new Categoria() { Id = -1, Nombre = "Seleccione una categoria" });
-            marcas.Add(new Marca() { Id = -1, Nombre = "Seleccione una marca" });
-
-            // MOCK DATA
-            categorias.Add(new Categoria() { Id = 1, Nombre = "Accesorios" });
-            categorias.Add(new Categoria() { Id = 2, Nombre = "Almacenamiento" });
-            categorias.Add(new Categoria() { Id = 3, Nombre = "Audio" });
-
-            // MOCK DATA
-            marcas.Add(new Marca() { Id = 1, Nombre = "Marca 1" });
-            marcas.Add(new Marca() { Id = 2, Nombre = "Marca 2" });
-            marcas.Add(new Marca() { Id = 3, Nombre = "Marca 3" });
+            marcas = articulosNegocio.ListarMarcas();
+            foreach (Marca marca in marcas)
+            {
+                cbxMarca.Items.Add(marca.Nombre);
+            }
 
             cbxCategoria.DataSource = categorias;
             cbxCategoria.ValueMember = "Id";
@@ -131,7 +132,7 @@ namespace TpGestorArticulos
                 if (cbxMarca.SelectedValue == null) cbxMarca.SelectedValue = -1;
                 txtCodigo.Text = _articulo.Codigo.Length > 0 ? _articulo.Codigo : "";
                 _images = new List<string>(_articulo.Imagenes);
-                if (_images.Count == 0) 
+                if (_images.Count == 0)
                     _images.Add("");
 
             }
@@ -149,6 +150,11 @@ namespace TpGestorArticulos
         {
             Close();
         }
-    }
 
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            frmMrcCtg mrcCtg = new frmMrcCtg();
+            mrcCtg.ShowDialog();
+        }
+    }
 }
