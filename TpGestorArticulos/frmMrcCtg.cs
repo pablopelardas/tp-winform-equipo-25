@@ -72,8 +72,22 @@ namespace TpGestorArticulos
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            frmMrcCtgAux aux = new frmMrcCtgAux();
-            seleccionarIdTitulo(aux);
+            //falta validacion de si existen articulos con esa categoria
+
+            if (tabControl.SelectedTab.Name == "tabCategorias")
+            {
+                Categoria categ = (Categoria)dgvCategorias.CurrentRow.DataBoundItem;
+                CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+                categoriaNegocio.Eliminar(categ.Id);
+            }
+            else
+            {
+                Marca marca = (Marca)dgvCategorias.CurrentRow.DataBoundItem;
+                MarcaNegocio marcaNegocio = new MarcaNegocio();
+                marcaNegocio.Eliminar(marca.Id);
+            }
+
+            cargarMrcCtg();
 
         }
 
