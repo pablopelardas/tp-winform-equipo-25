@@ -13,6 +13,7 @@ namespace Negocio
 
         public List<Categoria> ListarCategorias()
         {
+            // Listar categoria en BDD
             List<Categoria> categorias = new List<Categoria>();
             Database datos = new Database();
 
@@ -31,6 +32,69 @@ namespace Negocio
                 }
 
                 return categorias;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CloseConnection();
+            }
+        }
+
+        public void Agregar(Categoria categoria)
+        {
+            // Agregar categoria en BDD
+            Database datos = new Database();
+            try
+            {
+                datos.SetQuery("insert into CATEGORIAS (Descripcion) values (@Descripcion);");
+                datos.SetParameter("@Descripcion", categoria.Nombre);
+                categoria.Id = datos.ExecuteScalar();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CloseConnection();
+            }
+        }
+
+        public void Modificar(Categoria categoria)
+        {
+            // Modificar categoria en BDD
+            Database datos = new Database();
+            try
+            {
+                datos.SetQuery("update CATEGORIA set Descripcion = @Descripcion where Id = @Id");
+                datos.SetParameter("@Descripcion", categoria.Nombre);
+                datos.SetParameter("@Id", categoria.Id);
+                datos.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CloseConnection();
+            }
+
+        }
+
+        public void Eliminar(int id)
+        {
+            // Eliminar categoria de BDD
+            Database datos = new Database();
+            try
+            {
+                datos.SetQuery("delete CATEGORIA where Id = @Id");
+                datos.SetParameter("@Id", id);
+                datos.ExecuteNonQuery();
             }
             catch (Exception ex)
             {

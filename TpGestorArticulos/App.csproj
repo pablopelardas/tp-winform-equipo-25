@@ -83,6 +83,12 @@
     <Compile Include="frmMrcCtg.Designer.cs">
       <DependentUpon>frmMrcCtg.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMrcCtgAux.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMrcCtgAux.Designer.cs">
+      <DependentUpon>frmMrcCtgAux.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMrcCtg.resx">
       <DependentUpon>frmMrcCtg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMrcCtgAux.resx">
+      <DependentUpon>frmMrcCtgAux.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>

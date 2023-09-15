@@ -33,14 +33,14 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabCategorias = new System.Windows.Forms.TabPage();
+            this.tabMarcas = new System.Windows.Forms.TabPage();
             this.dgvCategorias = new System.Windows.Forms.DataGridView();
             this.dgvMarcas = new System.Windows.Forms.DataGridView();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tabControl.SuspendLayout();
+            this.tabCategorias.SuspendLayout();
+            this.tabMarcas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).BeginInit();
             this.SuspendLayout();
@@ -73,6 +73,7 @@
             this.btnAgregar.TabIndex = 8;
             this.btnAgregar.Text = "+";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnEliminar
             // 
@@ -83,6 +84,7 @@
             this.btnEliminar.TabIndex = 9;
             this.btnEliminar.Text = "-";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnEditar
             // 
@@ -93,38 +95,39 @@
             this.btnEditar.TabIndex = 10;
             this.btnEditar.Text = "✏";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(31, 67);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(248, 300);
-            this.tabControl1.TabIndex = 11;
+            this.tabControl.Controls.Add(this.tabCategorias);
+            this.tabControl.Controls.Add(this.tabMarcas);
+            this.tabControl.Location = new System.Drawing.Point(31, 67);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(248, 300);
+            this.tabControl.TabIndex = 11;
             // 
-            // tabPage1
+            // tabCategorias
             // 
-            this.tabPage1.Controls.Add(this.dgvCategorias);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(240, 271);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Categorias";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabCategorias.Controls.Add(this.dgvCategorias);
+            this.tabCategorias.Location = new System.Drawing.Point(4, 25);
+            this.tabCategorias.Name = "tabCategorias";
+            this.tabCategorias.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCategorias.Size = new System.Drawing.Size(240, 271);
+            this.tabCategorias.TabIndex = 0;
+            this.tabCategorias.Text = "Categorias";
+            this.tabCategorias.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // tabMarcas
             // 
-            this.tabPage2.Controls.Add(this.dgvMarcas);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(240, 271);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Marcas";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabMarcas.Controls.Add(this.dgvMarcas);
+            this.tabMarcas.Location = new System.Drawing.Point(4, 25);
+            this.tabMarcas.Name = "tabMarcas";
+            this.tabMarcas.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMarcas.Size = new System.Drawing.Size(240, 271);
+            this.tabMarcas.TabIndex = 1;
+            this.tabMarcas.Text = "Marcas";
+            this.tabMarcas.UseVisualStyleBackColor = true;
             // 
             // dgvCategorias
             // 
@@ -161,7 +164,7 @@
             // frmMrcCtg
             // 
             this.ClientSize = new System.Drawing.Size(330, 484);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
@@ -169,9 +172,9 @@
             this.Controls.Add(this.lblTitulo);
             this.Name = "frmMrcCtg";
             this.Load += new System.EventHandler(this.frmMrcCtg_Load);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
+            this.tabCategorias.ResumeLayout(false);
+            this.tabMarcas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).EndInit();
             this.ResumeLayout(false);
@@ -185,9 +188,9 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabPage tabCategorias;
+        private System.Windows.Forms.TabPage tabMarcas;
         private System.Windows.Forms.DataGridView dgvCategorias;
         private System.Windows.Forms.DataGridView dgvMarcas;
     }
