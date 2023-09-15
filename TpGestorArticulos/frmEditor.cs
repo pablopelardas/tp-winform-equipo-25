@@ -85,11 +85,11 @@ namespace TpGestorArticulos
                 {
                     throw new Exception("El precio debe ser mayor a 0");
                 }
-                if (cbxCategoria.SelectedItem == null)
+                if ((int)cbxCategoria.SelectedValue == -1)
                 {
                     throw new Exception("Por favor seleccione una categoria");
                 }
-                if (cbxMarca.SelectedItem == null)
+                if ((int)cbxMarca.SelectedValue == -1)
                 {
                     throw new Exception("Por favor seleccione una marca");
                 }
@@ -108,13 +108,17 @@ namespace TpGestorArticulos
         {
             // Cargamos las categorias en los combobox
             CategoriaNegocio categoriasNegocio = new CategoriaNegocio();
-            cbxCategoria.DataSource = categoriasNegocio.ListarCategorias();
+            List<Categoria> categorias = categoriasNegocio.ListarCategorias();  
+            categorias.Insert(0, new Categoria(-1, "Seleccione una categoria"));
+            cbxCategoria.DataSource = categorias;
             cbxCategoria.ValueMember = "Id";
             cbxCategoria.DisplayMember = "Nombre";
 
             // Cargamos las marcas en los combobox
             MarcaNegocio marcasNegocio = new MarcaNegocio();
-            cbxMarca.DataSource = marcasNegocio.ListarMarcas();
+            List<Marca> marcas = marcasNegocio.ListarMarcas();
+            marcas.Insert(0, new Marca(-1, "Seleccione una marca"));
+            cbxMarca.DataSource = marcas;
             cbxMarca.ValueMember = "Id";
             cbxMarca.DisplayMember = "Nombre";
 
