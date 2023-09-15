@@ -22,16 +22,14 @@ namespace TpGestorArticulos
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            string nuevoNombre = nuevoNomb.Text;
-
-            MessageBox.Show(nuevoNombre+" guardado");
+           
         }
 
         private void frmMrcCtg_Load(object sender, EventArgs e)
         {
-            string aux = "Marca";
+            /*string aux = "Marca";
             
-            lblTitulo.Text = "Administrador de "+aux;
+            label1.Text = "Administrador de "+aux;
             lblNombre.Text = aux;
 
             List<Marca> marcas = new List<Marca>();
@@ -41,7 +39,7 @@ namespace TpGestorArticulos
             {
                 cbxEditMarca.Items.Add(marca.Nombre);
             }
-            
+            */
             
         }
 

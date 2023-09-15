@@ -85,11 +85,11 @@ namespace TpGestorArticulos
                 {
                     throw new Exception("El precio debe ser mayor a 0");
                 }
-                if (cbxCategoria.SelectedItem.ToString() == "Seleccione una categoria")
+                if (cbxCategoria.SelectedItem == null)
                 {
                     throw new Exception("Por favor seleccione una categoria");
                 }
-                if (cbxMarca.SelectedItem.ToString() == "Seleccione una marca")
+                if (cbxMarca.SelectedItem == null)
                 {
                     throw new Exception("Por favor seleccione una marca");
                 }

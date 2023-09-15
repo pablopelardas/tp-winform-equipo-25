@@ -28,102 +28,97 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.lblNuevoNombre = new System.Windows.Forms.Label();
-            this.lblNombre = new System.Windows.Forms.Label();
-            this.cbxEditMarca = new System.Windows.Forms.ComboBox();
-            this.nuevoNomb = new System.Windows.Forms.TextBox();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(234, 346);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 6;
+            this.btnCancelar.Text = "Salir";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Location = new System.Drawing.Point(58, 29);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(227, 16);
+            this.lblTitulo.Size = new System.Drawing.Size(196, 20);
             this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Administrador de Marcas/Categorias";
+            this.lblTitulo.Text = "Administrador de Marcas";
             // 
-            // lblNuevoNombre
+            // dataGridView1
             // 
-            this.lblNuevoNombre.AutoSize = true;
-            this.lblNuevoNombre.Location = new System.Drawing.Point(58, 157);
-            this.lblNuevoNombre.Name = "lblNuevoNombre";
-            this.lblNuevoNombre.Size = new System.Drawing.Size(99, 16);
-            this.lblNuevoNombre.TabIndex = 1;
-            this.lblNuevoNombre.Text = "Nuevo Nombre";
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(61, 69);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(180, 177);
+            this.dataGridView1.TabIndex = 7;
             // 
-            // lblNombre
+            // btnAgregar
             // 
-            this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(58, 91);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(122, 16);
-            this.lblNombre.TabIndex = 2;
-            this.lblNombre.Text = "Marcas/Categorias";
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Location = new System.Drawing.Point(61, 273);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(43, 35);
+            this.btnAgregar.TabIndex = 8;
+            this.btnAgregar.Text = "+";
+            this.btnAgregar.UseVisualStyleBackColor = true;
             // 
-            // cbxEditMarca
+            // btnEliminar
             // 
-            this.cbxEditMarca.FormattingEnabled = true;
-            this.cbxEditMarca.Location = new System.Drawing.Point(185, 88);
-            this.cbxEditMarca.Name = "cbxEditMarca";
-            this.cbxEditMarca.Size = new System.Drawing.Size(184, 24);
-            this.cbxEditMarca.TabIndex = 3;
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Location = new System.Drawing.Point(126, 273);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(43, 35);
+            this.btnEliminar.TabIndex = 9;
+            this.btnEliminar.Text = "-";
+            this.btnEliminar.UseVisualStyleBackColor = true;
             // 
-            // nuevoNomb
+            // btnEditar
             // 
-            this.nuevoNomb.Location = new System.Drawing.Point(185, 154);
-            this.nuevoNomb.Name = "nuevoNomb";
-            this.nuevoNomb.Size = new System.Drawing.Size(184, 22);
-            this.nuevoNomb.TabIndex = 4;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Location = new System.Drawing.Point(433, 259);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 5;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(333, 259);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 6;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.Location = new System.Drawing.Point(198, 273);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(43, 35);
+            this.btnEditar.TabIndex = 10;
+            this.btnEditar.Text = "✏";
+            this.btnEditar.UseVisualStyleBackColor = true;
             // 
             // frmMrcCtg
             // 
-            this.ClientSize = new System.Drawing.Size(535, 301);
+            this.ClientSize = new System.Drawing.Size(330, 381);
+            this.Controls.Add(this.btnEditar);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.nuevoNomb);
-            this.Controls.Add(this.cbxEditMarca);
-            this.Controls.Add(this.lblNombre);
-            this.Controls.Add(this.lblNuevoNombre);
             this.Controls.Add(this.lblTitulo);
             this.Name = "frmMrcCtg";
             this.Load += new System.EventHandler(this.frmMrcCtg_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.Label lblNuevoNombre;
-        private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.ComboBox cbxEditMarca;
-        private System.Windows.Forms.TextBox nuevoNomb;
-        private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnEditar;
     }
 }
