@@ -19,7 +19,6 @@ namespace TpGestorArticulos
         private int _currentImageIndex = 0;
         private bool _isEditMode = false;
 
-        public bool isInitialized { get; set; }
 
         public Slider()
         {

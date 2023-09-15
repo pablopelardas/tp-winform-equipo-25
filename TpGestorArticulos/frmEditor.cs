@@ -108,20 +108,12 @@ namespace TpGestorArticulos
         {
             // Cargamos las categorias y marcas en los combobox
             ArticulosNegocio articulosNegocio = new ArticulosNegocio();
-
-            List<Categoria> categorias = new List<Categoria>();
-            categorias = articulosNegocio.ListarCategorias();
-            foreach (Categoria categ in categorias)
-            {
-                cbxCategoria.Items.Add(categ.Nombre);
-            }
-
-            List<Marca> marcas = new List<Marca>();
-            marcas = articulosNegocio.ListarMarcas();
-            foreach (Marca marca in marcas)
-            {
-                cbxMarca.Items.Add(marca.Nombre);
-            }
+            List<Categoria> categorias = articulosNegocio.ListarCategorias();
+            List<Marca> marcas = articulosNegocio.ListarMarcas();
+            categorias.Insert(0, new Categoria { Id = -1, Nombre = "Seleccione una categoria" });
+            marcas.Insert(0, new Marca { Id = -1, Nombre = "Seleccione una marca" });
+            cbxCategoria.DataSource = categorias;
+            cbxMarca.DataSource = marcas;
 
             cbxCategoria.ValueMember = "Id";
             cbxCategoria.DisplayMember = "Nombre";

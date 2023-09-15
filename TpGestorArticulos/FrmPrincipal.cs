@@ -24,7 +24,28 @@ namespace TpGestorArticulos
         {
             cargarGrilla();
             dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "C";
-            dgvArticulos.Height = dgvArticulos.Rows[0].Height * 11;
+            // cargar combo de campos grilla
+            cboCampo0.DataSource = dgvArticulos.Columns.Cast<DataGridViewColumn>().Select(x => x.HeaderText).ToList();
+            // cargar cboCriterio0
+            actualizarCriterios();
+
+        }
+
+        private void actualizarCriterios()
+        {
+            DataGridViewColumn campo = dgvArticulos.Columns[cboCampo0.SelectedIndex];
+            if (campo.ValueType == typeof(string))
+            {
+                cboCriterio0.DataSource = new List<string> { "Contiene", "Igual" };
+            }
+            else if (campo.ValueType == typeof(int) || campo.ValueType == typeof(float))
+            {
+                cboCriterio0.DataSource = new List<string> { "Mayor", "Menor", "Igual" };
+            }
+            else
+            {
+                cboCriterio0.DataSource = new List<string>();
+            }
         }
 
         private void cargarGrilla()
@@ -76,6 +97,27 @@ namespace TpGestorArticulos
                 col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
 
+        }
+
+        private void cboCampo0_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataGridViewColumn campo = dgvArticulos.Columns[cboCampo0.SelectedIndex];
+            if (campo.ValueType == typeof(string))
+            {
+                cboCriterio0.DataSource = new List<string> { "Contiene", "Igual" };
+            }
+            else if (campo.ValueType == typeof(int) || campo.ValueType == typeof(float))
+            {
+                cboCriterio0.DataSource = new List<string> { "Mayor", "Menor", "Igual" };
+            }
+            else if (campo.ValueType == typeof(Marca) || campo.ValueType == typeof(Categoria))
+            {
+                cboCriterio0.DataSource = new List<string> { "Contiene", "Igual" };
+            }
+            else
+            {
+                cboCriterio0.DataSource = new List<string>();
+            }
         }
     }
 }

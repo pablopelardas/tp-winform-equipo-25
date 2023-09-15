@@ -65,6 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FilterGroup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FilterGroup.Designer.cs">
+      <DependentUpon>FilterGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDetalle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
       <DependentUpon>Slider.cs</DependentUpon>
     </Compile>
     <None Include="Resources\edit-pencil.png" />
+    <EmbeddedResource Include="FilterGroup.resx">
+      <DependentUpon>FilterGroup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDetalle.resx">
       <DependentUpon>frmDetalle.cs</DependentUpon>
     </EmbeddedResource>

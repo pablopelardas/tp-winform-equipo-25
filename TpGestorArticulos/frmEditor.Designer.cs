@@ -208,7 +208,6 @@
             // 
             // sliderImagenes
             // 
-            this.sliderImagenes.isInitialized = false;
             this.sliderImagenes.Location = new System.Drawing.Point(4, 283);
             this.sliderImagenes.Margin = new System.Windows.Forms.Padding(5);
             this.sliderImagenes.Name = "sliderImagenes";
