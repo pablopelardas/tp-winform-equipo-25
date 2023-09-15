@@ -51,6 +51,7 @@
             this.txtBuscador = new System.Windows.Forms.TextBox();
             this.lblBuscador = new System.Windows.Forms.Label();
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
+            this.filterGroup1 = new TpGestorArticulos.FilterGroup();
             this.panelMenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelContenedor.SuspendLayout();
@@ -166,6 +167,7 @@
             // panelContenedor
             // 
             this.panelContenedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
+            this.panelContenedor.Controls.Add(this.filterGroup1);
             this.panelContenedor.Controls.Add(this.gbFiltros);
             this.panelContenedor.Controls.Add(this.txtBuscador);
             this.panelContenedor.Controls.Add(this.lblBuscador);
@@ -190,11 +192,11 @@
             this.gbFiltros.Controls.Add(this.cboCampo0);
             this.gbFiltros.Controls.Add(this.lblCampo0);
             this.gbFiltros.ForeColor = System.Drawing.SystemColors.Control;
-            this.gbFiltros.Location = new System.Drawing.Point(37, 273);
+            this.gbFiltros.Location = new System.Drawing.Point(632, 33);
             this.gbFiltros.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gbFiltros.Name = "gbFiltros";
             this.gbFiltros.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gbFiltros.Size = new System.Drawing.Size(557, 266);
+            this.gbFiltros.Size = new System.Drawing.Size(557, 103);
             this.gbFiltros.TabIndex = 17;
             this.gbFiltros.TabStop = false;
             this.gbFiltros.Text = "Filtros";
@@ -213,7 +215,7 @@
             // btnFiltrar
             // 
             this.btnFiltrar.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnFiltrar.Location = new System.Drawing.Point(484, 234);
+            this.btnFiltrar.Location = new System.Drawing.Point(484, 60);
             this.btnFiltrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(61, 19);
@@ -335,7 +337,7 @@
             this.dgvArticulos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvArticulos.Location = new System.Drawing.Point(37, 61);
+            this.dgvArticulos.Location = new System.Drawing.Point(54, 59);
             this.dgvArticulos.Margin = new System.Windows.Forms.Padding(2);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
@@ -343,10 +345,18 @@
             this.dgvArticulos.RowHeadersWidth = 62;
             this.dgvArticulos.RowTemplate.Height = 28;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(557, 195);
+            this.dgvArticulos.Size = new System.Drawing.Size(536, 195);
             this.dgvArticulos.StandardTab = true;
             this.dgvArticulos.TabIndex = 6;
             this.dgvArticulos.DoubleClick += new System.EventHandler(this.dgvArticulos_DoubleClick);
+            // 
+            // filterGroup1
+            // 
+            this.filterGroup1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
+            this.filterGroup1.Location = new System.Drawing.Point(54, 266);
+            this.filterGroup1.Name = "filterGroup1";
+            this.filterGroup1.Size = new System.Drawing.Size(536, 280);
+            this.filterGroup1.TabIndex = 18;
             // 
             // FrmPrincipal
             // 
@@ -397,5 +407,6 @@
         private System.Windows.Forms.Button btnAgregarFiltro;
         private System.Windows.Forms.GroupBox gbFiltros;
         private System.Windows.Forms.Button btnEliminarFiltro0;
+        private FilterGroup filterGroup1;
     }
 }
