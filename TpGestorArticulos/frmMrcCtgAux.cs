@@ -59,6 +59,7 @@ namespace TpGestorArticulos
                     marcaNegocio.Modificar(marca);
                 }
             }
+            Close();
         }
 
         public void modificarTitulo(string titulo)
