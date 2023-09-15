@@ -85,6 +85,14 @@ namespace TpGestorArticulos
                 {
                     throw new Exception("El precio debe ser mayor a 0");
                 }
+                if (cbxCategoria.SelectedItem.ToString() == "Seleccione una categoria")
+                {
+                    throw new Exception("Por favor seleccione una categoria");
+                }
+                if (cbxMarca.SelectedItem.ToString() == "Seleccione una marca")
+                {
+                    throw new Exception("Por favor seleccione una marca");
+                }
                 return true;
             }
             catch (Exception ex)
@@ -115,10 +123,8 @@ namespace TpGestorArticulos
                 cbxMarca.Items.Add(marca.Nombre);
             }
 
-            cbxCategoria.DataSource = categorias;
             cbxCategoria.ValueMember = "Id";
             cbxCategoria.DisplayMember = "Nombre";
-            cbxMarca.DataSource = marcas;
             cbxMarca.ValueMember = "Id";
             cbxMarca.DisplayMember = "Nombre";
             if (_articulo != null)

@@ -31,7 +31,7 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.lblNuevoNombre = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.opcActuales = new System.Windows.Forms.ComboBox();
+            this.cbxEditMarca = new System.Windows.Forms.ComboBox();
             this.nuevoNomb = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -64,13 +64,13 @@
             this.lblNombre.TabIndex = 2;
             this.lblNombre.Text = "Marcas/Categorias";
             // 
-            // opcActuales
+            // cbxEditMarca
             // 
-            this.opcActuales.FormattingEnabled = true;
-            this.opcActuales.Location = new System.Drawing.Point(185, 88);
-            this.opcActuales.Name = "opcActuales";
-            this.opcActuales.Size = new System.Drawing.Size(184, 24);
-            this.opcActuales.TabIndex = 3;
+            this.cbxEditMarca.FormattingEnabled = true;
+            this.cbxEditMarca.Location = new System.Drawing.Point(185, 88);
+            this.cbxEditMarca.Name = "cbxEditMarca";
+            this.cbxEditMarca.Size = new System.Drawing.Size(184, 24);
+            this.cbxEditMarca.TabIndex = 3;
             // 
             // nuevoNomb
             // 
@@ -105,7 +105,7 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.nuevoNomb);
-            this.Controls.Add(this.opcActuales);
+            this.Controls.Add(this.cbxEditMarca);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblNuevoNombre);
             this.Controls.Add(this.lblTitulo);
@@ -121,7 +121,7 @@
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Label lblNuevoNombre;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.ComboBox opcActuales;
+        private System.Windows.Forms.ComboBox cbxEditMarca;
         private System.Windows.Forms.TextBox nuevoNomb;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;

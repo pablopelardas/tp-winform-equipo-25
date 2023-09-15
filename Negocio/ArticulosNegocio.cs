@@ -149,8 +149,6 @@ namespace Negocio
             {
                 datos.SetQuery("SELECT Id, Descripcion FROM [dbo].[MARCAS]"); 
                 datos.ReadData();
-
-                marcas.Add(new Marca() { Id = -1, Nombre = "Seleccione una marca" });
                 
                 while (datos.Reader.Read())
                 {
@@ -173,8 +171,6 @@ namespace Negocio
         {
             List<Categoria> categorias = new List<Categoria>();
             Database datos = new Database();
-
-            categorias.Add(new Categoria() { Id = -1, Nombre = "Seleccione una categoria" });
 
             try
             {

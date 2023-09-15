@@ -41,10 +41,10 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.lblCodigo = new System.Windows.Forms.Label();
-            this.sliderImagenes = new TpGestorArticulos.Slider();
             this.btnEditCateg = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnEditMarca = new System.Windows.Forms.Button();
+            this.sliderImagenes = new TpGestorArticulos.Slider();
             this.SuspendLayout();
             // 
             // lblNombre
@@ -118,7 +118,6 @@
             // 
             // cbxCategoria
             // 
-            this.cbxCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCategoria.FormattingEnabled = true;
             this.cbxCategoria.Location = new System.Drawing.Point(43, 250);
             this.cbxCategoria.Margin = new System.Windows.Forms.Padding(4);
@@ -128,7 +127,6 @@
             // 
             // cbxMarca
             // 
-            this.cbxMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxMarca.FormattingEnabled = true;
             this.cbxMarca.Location = new System.Drawing.Point(422, 250);
             this.cbxMarca.Margin = new System.Windows.Forms.Padding(4);
@@ -177,15 +175,6 @@
             this.lblCodigo.TabIndex = 23;
             this.lblCodigo.Text = "Código";
             // 
-            // sliderImagenes
-            // 
-            this.sliderImagenes.isInitialized = false;
-            this.sliderImagenes.Location = new System.Drawing.Point(4, 283);
-            this.sliderImagenes.Margin = new System.Windows.Forms.Padding(5);
-            this.sliderImagenes.Name = "sliderImagenes";
-            this.sliderImagenes.Size = new System.Drawing.Size(793, 338);
-            this.sliderImagenes.TabIndex = 20;
-            // 
             // btnEditCateg
             // 
             this.btnEditCateg.Location = new System.Drawing.Point(323, 250);
@@ -216,6 +205,15 @@
             this.btnEditMarca.Text = "✏";
             this.btnEditMarca.UseVisualStyleBackColor = true;
             this.btnEditMarca.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // sliderImagenes
+            // 
+            this.sliderImagenes.isInitialized = false;
+            this.sliderImagenes.Location = new System.Drawing.Point(4, 283);
+            this.sliderImagenes.Margin = new System.Windows.Forms.Padding(5);
+            this.sliderImagenes.Name = "sliderImagenes";
+            this.sliderImagenes.Size = new System.Drawing.Size(793, 338);
+            this.sliderImagenes.TabIndex = 20;
             // 
             // frmEditor
             // 

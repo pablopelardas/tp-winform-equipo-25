@@ -39,7 +39,7 @@ namespace TpGestorArticulos
             marcas = articulosNegocio.ListarMarcas();
             foreach (Marca marca in marcas)
             {
-                opcActuales.Items.Add(marca.Nombre);
+                cbxEditMarca.Items.Add(marca.Nombre);
             }
             
             
