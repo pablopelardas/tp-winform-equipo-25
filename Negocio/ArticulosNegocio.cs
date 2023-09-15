@@ -139,61 +139,7 @@ namespace Negocio
         {
             // eliminar articulo de BDD
         }
-
-        public List<Marca> ListarMarcas()
-        {
-            List<Marca> marcas = new List<Marca>();
-            Database datos = new Database();
-            
-            try
-            {
-                datos.SetQuery("SELECT Id, Descripcion FROM [dbo].[MARCAS]"); 
-                datos.ReadData();
-                
-                while (datos.Reader.Read())
-                {
-                    Marca marca = new Marca();
-                    marca.Id = (int)datos.Reader["Id"];
-                    marca.Nombre = (string)datos.Reader["Descripcion"];
-
-                    marcas.Add(marca);
-                }
-
-                return marcas;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public List<Categoria> ListarCategorias()
-        {
-            List<Categoria> categorias = new List<Categoria>();
-            Database datos = new Database();
-
-            try
-            {
-                datos.SetQuery("SELECT Id, Descripcion FROM [dbo].[CATEGORIAS]");
-                datos.ReadData();
-
-                while (datos.Reader.Read())
-                {
-                    Categoria categ = new Categoria();
-                    categ.Id = (int)datos.Reader["Id"];
-                    categ.Nombre = (string)datos.Reader["Descripcion"];
-
-                    categorias.Add(categ);
-                }
-
-                return categorias;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
+     
 
         private void InsertarImagenes(List<string> imagenes, Database dataAccess)
         {
