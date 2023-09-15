@@ -14,6 +14,7 @@ namespace TpGestorArticulos
 {
     public partial class FrmPrincipal : Form
     {
+        List<Articulo> articulosSinFiltrar = new List<Articulo>();
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -22,6 +23,8 @@ namespace TpGestorArticulos
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             cargarGrilla();
+            dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "C";
+            dgvArticulos.Height = dgvArticulos.Rows[0].Height * 11;
         }
 
         private void cargarGrilla()
@@ -31,7 +34,7 @@ namespace TpGestorArticulos
                 ArticulosNegocio negocio = new ArticulosNegocio();
                 dgvArticulos.DataSource = negocio.ListarArticulos();
                 dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "C";
-                dgvArticulos.Columns["Id"].Visible = false;
+                acomodarColumnas();
             }
             catch (Exception ex)
             {
@@ -59,6 +62,20 @@ namespace TpGestorArticulos
             Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             frmDetalle detalle = new frmDetalle(articulo);
             detalle.ShowDialog();
+        }
+
+        private void panelContenedor_SizeChanged(object sender, EventArgs e)
+        {
+            acomodarColumnas();
+        }
+
+        private void acomodarColumnas()
+        {
+            foreach (DataGridViewColumn col in dgvArticulos.Columns)
+            {
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+
         }
     }
 }
