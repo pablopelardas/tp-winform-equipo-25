@@ -91,7 +91,7 @@ namespace Negocio
             Database datos = new Database();
             try
             {
-                datos.SetQuery("delete MARCAS where Id = @Id");
+                datos.SetQuery("delete from MARCAS where Id = @Id");
                 datos.SetParameter("@Id", id);
                 datos.ExecuteNonQuery();
             }

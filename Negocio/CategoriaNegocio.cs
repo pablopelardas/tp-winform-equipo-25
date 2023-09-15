@@ -92,7 +92,7 @@ namespace Negocio
             Database datos = new Database();
             try
             {
-                datos.SetQuery("delete CATEGORIAS where Id = @Id");
+                datos.SetQuery("delete from CATEGORIAS where Id = @Id");
                 datos.SetParameter("@Id", id);
                 datos.ExecuteNonQuery();
             }
