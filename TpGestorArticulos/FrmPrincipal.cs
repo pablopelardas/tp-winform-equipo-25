@@ -21,24 +21,29 @@ namespace TpGestorArticulos
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
+            cargarGrilla();
+        }
+
+        private void cargarGrilla()
+        {
             try
             {
                 ArticulosNegocio negocio = new ArticulosNegocio();
                 dgvArticulos.DataSource = negocio.ListarArticulos();
                 dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "C";
+                dgvArticulos.Columns["Id"].Visible = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            // abre la ventana
             frmEditor editor = new frmEditor();
             editor.ShowDialog();
+            cargarGrilla();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -46,6 +51,7 @@ namespace TpGestorArticulos
             Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             frmEditor editor = new frmEditor(articulo);
             editor.ShowDialog();
+            cargarGrilla();
         }
 
         private void dgvArticulos_DoubleClick(object sender, EventArgs e)

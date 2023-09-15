@@ -63,6 +63,11 @@ namespace TpGestorArticulos
                     _imageCache[url] = img;
                     return img;
                 }
+                // verificar si la url es una url valida
+                if (!Uri.IsWellFormedUriString(url, UriKind.Absolute))
+                {
+                    return null;
+                }
 
                 // Si no esta en el cache, la descargamos
                 using (HttpClient httpclient = new HttpClient())
@@ -79,15 +84,9 @@ namespace TpGestorArticulos
                 }
 
             }
-            catch (HttpRequestException ex)
-            {
-                // Handle the specific exception
-                Console.WriteLine($"Error downloading image: {ex.Message}");
-            }
             catch (Exception ex)
             {
-                // Handle any other exceptions
-                Console.WriteLine($"Error loading image: {ex.Message}");
+                Console.WriteLine(ex.Message);
             }
             return null;
         }
@@ -107,7 +106,10 @@ namespace TpGestorArticulos
                 btnNextImagen.Enabled = false;
                 pbxImagen.Image = await LoadImageAsync(_images[_currentImageIndex]);
                 txtIndexImagen.Text = (_currentImageIndex + 1).ToString();
-                if (pbxImagen.Image == null) throw new Exception();
+                if (pbxImagen.Image == null)
+                {
+                    pbxImagen.Load("https://i0.wp.com/casagres.com.ar/wp-content/uploads/2022/09/placeholder.png?ssl=1");
+                }
                 updateButtonStatus();
             }
             catch (Exception)

@@ -32,10 +32,10 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.lblPrecio = new System.Windows.Forms.Label();
-            this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.lblMarca = new System.Windows.Forms.Label();
             this.lblCategoria = new System.Windows.Forms.Label();
             this.Slider = new TpGestorArticulos.Slider();
+            this.rtxtDescripcion = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -43,7 +43,7 @@
             this.lblTitulo.AutoEllipsis = true;
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(12, 49);
+            this.lblTitulo.Location = new System.Drawing.Point(25, 49);
             this.lblTitulo.MaximumSize = new System.Drawing.Size(300, 31);
             this.lblTitulo.MinimumSize = new System.Drawing.Size(300, 31);
             this.lblTitulo.Name = "lblTitulo";
@@ -55,7 +55,7 @@
             // 
             this.lblCodigo.AutoSize = true;
             this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigo.Location = new System.Drawing.Point(15, 23);
+            this.lblCodigo.Location = new System.Drawing.Point(28, 23);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
             this.lblCodigo.Size = new System.Drawing.Size(81, 17);
@@ -74,23 +74,11 @@
             this.lblPrecio.Text = "$ 100";
             this.lblPrecio.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // txtDescripcion
-            // 
-            this.txtDescripcion.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.txtDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescripcion.Location = new System.Drawing.Point(17, 448);
-            this.txtDescripcion.Multiline = true;
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(565, 142);
-            this.txtDescripcion.TabIndex = 4;
-            this.txtDescripcion.Text = resources.GetString("txtDescripcion.Text");
-            // 
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
             this.lblMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMarca.Location = new System.Drawing.Point(12, 94);
+            this.lblMarca.Location = new System.Drawing.Point(25, 94);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
             this.lblMarca.Size = new System.Drawing.Size(71, 25);
@@ -101,7 +89,7 @@
             // 
             this.lblCategoria.AutoSize = true;
             this.lblCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoria.Location = new System.Drawing.Point(14, 128);
+            this.lblCategoria.Location = new System.Drawing.Point(27, 128);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
             this.lblCategoria.Size = new System.Drawing.Size(73, 17);
@@ -116,14 +104,29 @@
             this.Slider.Size = new System.Drawing.Size(595, 306);
             this.Slider.TabIndex = 0;
             // 
+            // rtxtDescripcion
+            // 
+            this.rtxtDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtxtDescripcion.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.rtxtDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtxtDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtDescripcion.Location = new System.Drawing.Point(31, 426);
+            this.rtxtDescripcion.Name = "rtxtDescripcion";
+            this.rtxtDescripcion.ReadOnly = true;
+            this.rtxtDescripcion.Size = new System.Drawing.Size(535, 151);
+            this.rtxtDescripcion.TabIndex = 7;
+            this.rtxtDescripcion.Text = resources.GetString("rtxtDescripcion.Text");
+            // 
             // frmDetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 600);
+            this.Controls.Add(this.rtxtDescripcion);
             this.Controls.Add(this.lblCategoria);
             this.Controls.Add(this.lblMarca);
-            this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.lblTitulo);
@@ -143,8 +146,8 @@
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.Label lblPrecio;
-        private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Label lblMarca;
         private System.Windows.Forms.Label lblCategoria;
+        private System.Windows.Forms.RichTextBox rtxtDescripcion;
     }
 }
