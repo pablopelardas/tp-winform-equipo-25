@@ -119,5 +119,13 @@ namespace TpGestorArticulos
                 cboCriterio0.DataSource = new List<string>();
             }
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ArticulosNegocio negocio = new ArticulosNegocio();
+            Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            negocio.Eliminar(articulo.Id);
+            cargarGrilla();
+        }
     }
 }
