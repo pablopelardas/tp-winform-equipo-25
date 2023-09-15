@@ -70,7 +70,7 @@ namespace Negocio
             Database datos = new Database();
             try
             {
-                datos.SetQuery("update CATEGORIA set Descripcion = @Descripcion where Id = @Id");
+                datos.SetQuery("update CATEGORIAS set Descripcion = @Descripcion where Id = @Id");
                 datos.SetParameter("@Descripcion", categoria.Nombre);
                 datos.SetParameter("@Id", categoria.Id);
                 datos.ExecuteNonQuery();
@@ -92,7 +92,7 @@ namespace Negocio
             Database datos = new Database();
             try
             {
-                datos.SetQuery("delete CATEGORIA where Id = @Id");
+                datos.SetQuery("delete CATEGORIAS where Id = @Id");
                 datos.SetParameter("@Id", id);
                 datos.ExecuteNonQuery();
             }
