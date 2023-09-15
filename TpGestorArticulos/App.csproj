@@ -97,12 +97,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Slider.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Slider.Designer.cs">
-      <DependentUpon>Slider.cs</DependentUpon>
-    </Compile>
     <None Include="Resources\edit-pencil.png" />
     <EmbeddedResource Include="frmDetalle.resx">
       <DependentUpon>frmDetalle.cs</DependentUpon>
@@ -129,9 +123,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Slider.resx">
-      <DependentUpon>Slider.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="app.manifest" />
     <Content Include="App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -157,6 +148,10 @@
     <ProjectReference Include="..\Negocio\Negocio.csproj">
       <Project>{1c6d3368-d1b4-445f-b016-4477b75461b9}</Project>
       <Name>Negocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserControls\UserControls.csproj">
+      <Project>{336f8104-cb2b-4dca-9871-77176c9b89cf}</Project>
+      <Name>UserControls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

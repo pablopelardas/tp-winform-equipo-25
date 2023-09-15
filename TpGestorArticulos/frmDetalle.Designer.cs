@@ -98,7 +98,6 @@
             // 
             // Slider
             // 
-            this.Slider.isInitialized = false;
             this.Slider.Location = new System.Drawing.Point(0, 136);
             this.Slider.Name = "Slider";
             this.Slider.Size = new System.Drawing.Size(595, 306);
