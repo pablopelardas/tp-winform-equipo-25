@@ -106,27 +106,18 @@ namespace TpGestorArticulos
         private void frmEditor_Load(object sender, EventArgs e)
 
         {
-            // Cargamos las categorias y marcas en los combobox
-            ArticulosNegocio articulosNegocio = new ArticulosNegocio();
-
-            List<Categoria> categorias = new List<Categoria>();
-            categorias = articulosNegocio.ListarCategorias();
-            foreach (Categoria categ in categorias)
-            {
-                cbxCategoria.Items.Add(categ.Nombre);
-            }
-
-            List<Marca> marcas = new List<Marca>();
-            marcas = articulosNegocio.ListarMarcas();
-            foreach (Marca marca in marcas)
-            {
-                cbxMarca.Items.Add(marca.Nombre);
-            }
-
+            // Cargamos las categorias en los combobox
+            CategoriaNegocio categoriasNegocio = new CategoriaNegocio();
+            cbxCategoria.DataSource = categoriasNegocio.ListarCategorias();
             cbxCategoria.ValueMember = "Id";
             cbxCategoria.DisplayMember = "Nombre";
+
+            // Cargamos las marcas en los combobox
+            MarcaNegocio marcasNegocio = new MarcaNegocio();
+            cbxMarca.DataSource = marcasNegocio.ListarMarcas();
             cbxMarca.ValueMember = "Id";
             cbxMarca.DisplayMember = "Nombre";
+
             if (_articulo != null)
             {
                 txtNombre.Text = _articulo.Nombre.Length > 0 ? _articulo.Nombre : "";
