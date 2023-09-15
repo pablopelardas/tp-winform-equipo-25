@@ -20,27 +20,40 @@ namespace TpGestorArticulos
 
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private void cargarMrcCtg()
         {
-           
+            try
+            {
+                // Categorias
+                CategoriaNegocio categoriasNegocio = new CategoriaNegocio();
+                dgvCategorias.DataSource = categoriasNegocio.ListarCategorias();
+                dgvCategorias.Columns["Id"].Visible = false;
+                foreach (DataGridViewColumn col in dgvCategorias.Columns)
+                {
+                    col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
+
+                // Marcas
+                MarcaNegocio marcasNegocio = new MarcaNegocio();
+                dgvMarcas.DataSource = marcasNegocio.ListarMarcas();
+                dgvMarcas.Columns["Id"].Visible = false;
+                foreach (DataGridViewColumn col in dgvMarcas.Columns)
+                {
+                    col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private void frmMrcCtg_Load(object sender, EventArgs e)
         {
-            /*string aux = "Marca";
-            
-            label1.Text = "Administrador de "+aux;
-            lblNombre.Text = aux;
+            cargarMrcCtg();
 
-            List<Marca> marcas = new List<Marca>();
-            ArticulosNegocio articulosNegocio = new ArticulosNegocio();
-            marcas = articulosNegocio.ListarMarcas();
-            foreach (Marca marca in marcas)
-            {
-                cbxEditMarca.Items.Add(marca.Nombre);
-            }
-            */
-            
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
