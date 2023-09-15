@@ -8,6 +8,7 @@ namespace Dominio
 {
     public class Filtro
     {
+        public string Id { get; set; }
         public string Campo { get; set; }
         public string Criterio { get; set; }
         public string Valor { get; set; }

@@ -24,10 +24,12 @@ namespace TpGestorArticulos
         {
             cargarGrilla();
             dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "C";
+            filterGroup.Init(articulosSinFiltrar, dgvArticulos);
             // cargar combo de campos grilla
             cboCampo0.DataSource = dgvArticulos.Columns.Cast<DataGridViewColumn>().Select(x => x.HeaderText).ToList();
             // cargar cboCriterio0
             actualizarCriterios();
+            
 
         }
 
