@@ -138,6 +138,21 @@ namespace Negocio
         public void Eliminar(int id)
         {
             // eliminar articulo de BDD
+            Database datos = new Database();
+            try
+            {
+                datos.SetQuery("delete from ARTICULOS where Id = @Id");
+                datos.SetParameter("@Id", id);
+                datos.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CloseConnection();
+            }
         }
      
 

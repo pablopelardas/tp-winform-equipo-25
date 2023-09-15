@@ -60,5 +60,46 @@ namespace TpGestorArticulos
         {
             Close();
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmMrcCtgAux aux = new frmMrcCtgAux();
+            seleccionarIdTitulo(aux);
+            aux.idAux = -1;
+            aux.ShowDialog();
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            frmMrcCtgAux aux = new frmMrcCtgAux();
+            seleccionarIdTitulo(aux);
+
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            frmMrcCtgAux aux = new frmMrcCtgAux();
+            seleccionarIdTitulo(aux);
+            aux.ShowDialog();
+        }
+
+        private void seleccionarIdTitulo(frmMrcCtgAux aux)
+        {
+            if (tabControl.SelectedTab.Name == "tabCategorias")
+            {
+                aux.elemCtg = true;
+                Categoria categ = (Categoria)dgvCategorias.CurrentRow.DataBoundItem;
+                aux.idAux = categ.Id;
+                aux.modificarTitulo("Agregar Categoria");
+            }
+            else 
+            {
+                aux.elemCtg = false;
+                Marca marca = (Marca)dgvCategorias.CurrentRow.DataBoundItem;
+                aux.idAux = marca.Id;
+                aux.modificarTitulo("Agregar Marca");
+            }
+        }
     }
 }
