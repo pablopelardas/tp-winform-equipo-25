@@ -28,20 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblTituloAux = new System.Windows.Forms.Label();
             this.lblNombreAux = new System.Windows.Forms.Label();
             this.txtNombreAux = new System.Windows.Forms.TextBox();
             this.btnGuardarAux = new System.Windows.Forms.Button();
+            this.lblTituloAux = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // lblTituloAux
-            // 
-            this.lblTituloAux.AutoSize = true;
-            this.lblTituloAux.Location = new System.Drawing.Point(29, 18);
-            this.lblTituloAux.Name = "lblTituloAux";
-            this.lblTituloAux.Size = new System.Drawing.Size(40, 16);
-            this.lblTituloAux.TabIndex = 0;
-            this.lblTituloAux.Text = "Titulo";
             // 
             // lblNombreAux
             // 
@@ -69,27 +60,37 @@
             this.btnGuardarAux.UseVisualStyleBackColor = true;
             this.btnGuardarAux.Click += new System.EventHandler(this.btnGuardarAux_Click);
             // 
+            // lblTituloAux
+            // 
+            this.lblTituloAux.AutoSize = true;
+            this.lblTituloAux.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloAux.Location = new System.Drawing.Point(29, 18);
+            this.lblTituloAux.Name = "lblTituloAux";
+            this.lblTituloAux.Size = new System.Drawing.Size(56, 20);
+            this.lblTituloAux.TabIndex = 0;
+            this.lblTituloAux.Text = "Titulo";
+            // 
             // frmMrcCtgAux
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(337, 164);
+            this.ClientSize = new System.Drawing.Size(332, 173);
             this.Controls.Add(this.btnGuardarAux);
             this.Controls.Add(this.txtNombreAux);
             this.Controls.Add(this.lblNombreAux);
             this.Controls.Add(this.lblTituloAux);
+            this.MaximumSize = new System.Drawing.Size(350, 220);
+            this.MinimumSize = new System.Drawing.Size(350, 220);
             this.Name = "frmMrcCtgAux";
-            this.Text = "frmMrcCtgAux";
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblTituloAux;
         private System.Windows.Forms.Label lblNombreAux;
         private System.Windows.Forms.TextBox txtNombreAux;
         private System.Windows.Forms.Button btnGuardarAux;
+        private System.Windows.Forms.Label lblTituloAux;
     }
 }
