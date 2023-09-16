@@ -181,9 +181,9 @@ namespace TpGestorArticulos
 
         private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (_articulo == null) return;
             ComboBox cbx = (ComboBox)sender;
             string tabName = cbx.Name.Replace("cbx", "");
-            if (_articulo == null) return;
             if (tabName == "Categoria")
             {
                 _articulo.Categoria = cbx.SelectedItem as Categoria;
