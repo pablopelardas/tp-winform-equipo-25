@@ -30,7 +30,6 @@ namespace TpGestorArticulos
         private void fixPrincipal(bool reload=false)
         {
             frmPrincipal.WindowState = FormWindowState.Maximized;
-            frmPrincipal.cargarListaDB();
         }
 
         private void frmPadre_FormClosing(object sender, FormClosingEventArgs e)
@@ -52,11 +51,16 @@ namespace TpGestorArticulos
         private void frmPrincipal_OnEditorOpen(object sender, EventArgs e)
         {
             CustomEventArgs args = (CustomEventArgs)e;
-            frmEditor editor = new frmEditor();
             frmEditor frmEditor = args.Articulo != null ? new frmEditor(args.Articulo) : new frmEditor();
             frmEditor.MdiParent = this;
             frmEditor.Show();
             frmEditor.WindowState = FormWindowState.Maximized;
+            frmEditor.FormClosing += new FormClosingEventHandler(frmPrincipal_OnEditorClose);
+
+        }
+        private void frmPrincipal_OnEditorClose(object sender, FormClosingEventArgs e)
+        {
+            frmPrincipal.cargarListaDB();
         }
         private void frmPrincipal_Enter(object sender, EventArgs e)
         {
