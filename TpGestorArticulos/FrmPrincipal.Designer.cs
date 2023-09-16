@@ -267,7 +267,6 @@
             this.ClientSize = new System.Drawing.Size(784, 558);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.panelMenuVertical);
-            this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 597);
