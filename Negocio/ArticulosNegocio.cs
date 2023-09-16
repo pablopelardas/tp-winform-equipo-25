@@ -213,35 +213,19 @@ namespace Negocio
             }
         }
 
-        public bool ValidarArticulosPorMrcCtg(int id, string tabla)
+        public bool ValidarArticulosPorMrcCtg(int id, string columna)
         {
             Database datos = new Database();
             try
             {
-                datos.SetQuery("select Id from @Tabla where IdCategoria=@Categoria");
-                datos.SetParameter("@Tabla", tabla);
-                datos.SetParameter("@Categoria", id);
+                datos.SetQuery("select Id from ARTICULOS where " + columna + "=@id");
+                datos.SetParameter("@id", id);
                 datos.ReadData();
-
-                List<int> ids=null;
-                while (datos.Reader.Read())
-                {
-                    ids.Add((int)datos.Reader["Id"]);
-                }
-                if (ids == null)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-
-
+                return !datos.Reader.Read();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                return false;
             }
             finally
             {

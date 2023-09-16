@@ -61,8 +61,6 @@ namespace TpGestorArticulos
                     }
                 }
 
-                frmMrcCtg frmMrcCtg = new frmMrcCtg();
-                frmMrcCtg.cargarMrcCtg();
                 Close();
             }
         }

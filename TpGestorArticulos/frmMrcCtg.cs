@@ -40,9 +40,6 @@ namespace TpGestorArticulos
                 {
                     col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
-
-                MessageBox.Show("refresh");
-
             }
             catch (Exception ex)
             {
@@ -68,7 +65,7 @@ namespace TpGestorArticulos
             seleccionarIdTitulo(aux);
             aux.idAux = -1;
             aux.ShowDialog();
-
+            cargarMrcCtg();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -79,21 +76,21 @@ namespace TpGestorArticulos
             {
                 Categoria categ = (Categoria)dgvCategorias.CurrentRow.DataBoundItem;
 
-                if (negocio.ValidarArticulosPorMrcCtg(categ.Id, "CATEGORIAS"))
+                if (negocio.ValidarArticulosPorMrcCtg(categ.Id, "IdCategoria"))
                 {
                     CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
                     categoriaNegocio.Eliminar(categ.Id);
                 }
                 else
                 {
-                    MessageBox.Show("No se pueden eliminar categorias relacionadas a un artículo.");
+                    MessageBox.Show("No se pueden eliminar categorias relacionadas a un artículo.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
                 
             }
             else
             {
                 Marca marca = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
-                if (negocio.ValidarArticulosPorMrcCtg(marca.Id, "MARCAS"))
+                if (negocio.ValidarArticulosPorMrcCtg(marca.Id, "IdMarca"))
                 {
                     MarcaNegocio marcaNegocio = new MarcaNegocio();
                     marcaNegocio.Eliminar(marca.Id);
@@ -113,6 +110,7 @@ namespace TpGestorArticulos
             seleccionarIdTitulo(aux);
             if (aux.idAux == -1) MessageBox.Show("Por favor seleccione un item a modificar");
             else aux.ShowDialog();
+            cargarMrcCtg();
         }
 
         private void seleccionarIdTitulo(frmMrcCtgAux aux)
