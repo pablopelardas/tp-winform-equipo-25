@@ -184,7 +184,7 @@
             this.btnEditCateg.TabIndex = 25;
             this.btnEditCateg.Text = "✏";
             this.btnEditCateg.UseVisualStyleBackColor = true;
-            this.btnEditCateg.Click += new System.EventHandler(this.btnEditCtg_Click);
+            this.btnEditCateg.Click += new System.EventHandler(this.abrirEditorMrcCtg);
             // 
             // label1
             // 
@@ -206,7 +206,7 @@
             this.btnEditMarca.TabIndex = 26;
             this.btnEditMarca.Text = "✏";
             this.btnEditMarca.UseVisualStyleBackColor = true;
-            this.btnEditMarca.Click += new System.EventHandler(this.btnEditMrc_Click);
+            this.btnEditMarca.Click += new System.EventHandler(this.abrirEditorMrcCtg);
             // 
             // sliderImagenes
             // 
