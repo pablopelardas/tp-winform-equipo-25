@@ -261,5 +261,20 @@ namespace TpGestorArticulos
                 }
             }
         }
+
+        private void btnNextImagen_EnabledChanged(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (btn.Enabled == true)
+            {
+                btn.BackColor = Color.FromArgb(255, 255, 255);
+                btn.FlatAppearance.BorderColor = Color.FromArgb(0, 0, 0);
+                btn.ForeColor = Color.FromArgb(0, 0, 0);
+            } else
+            {
+                btn.BackColor = Color.FromArgb(200, 200, 200);
+                btn.FlatAppearance.BorderColor = Color.FromArgb(200, 200, 200);
+            }
+        }
     }
 }

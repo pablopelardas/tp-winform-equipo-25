@@ -41,27 +41,37 @@
             // 
             // btnNextImagen
             // 
-            this.btnNextImagen.Location = new System.Drawing.Point(537, 107);
+            this.btnNextImagen.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnNextImagen.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lime;
+            this.btnNextImagen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNextImagen.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnNextImagen.Location = new System.Drawing.Point(505, 76);
             this.btnNextImagen.Name = "btnNextImagen";
             this.btnNextImagen.Size = new System.Drawing.Size(30, 27);
             this.btnNextImagen.TabIndex = 22;
             this.btnNextImagen.Text = "→";
             this.btnNextImagen.UseVisualStyleBackColor = true;
+            this.btnNextImagen.EnabledChanged += new System.EventHandler(this.btnNextImagen_EnabledChanged);
             this.btnNextImagen.Click += new System.EventHandler(this.btnNextImagen_Click);
             // 
             // btnPrevImagen
             // 
-            this.btnPrevImagen.Location = new System.Drawing.Point(32, 107);
+            this.btnPrevImagen.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnPrevImagen.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lime;
+            this.btnPrevImagen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrevImagen.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnPrevImagen.Location = new System.Drawing.Point(0, 76);
             this.btnPrevImagen.Name = "btnPrevImagen";
             this.btnPrevImagen.Size = new System.Drawing.Size(30, 27);
             this.btnPrevImagen.TabIndex = 21;
             this.btnPrevImagen.Text = "←";
             this.btnPrevImagen.UseVisualStyleBackColor = true;
+            this.btnPrevImagen.EnabledChanged += new System.EventHandler(this.btnNextImagen_EnabledChanged);
             this.btnPrevImagen.Click += new System.EventHandler(this.btnPrevImagen_Click);
             // 
             // pbxImagen
             // 
-            this.pbxImagen.Location = new System.Drawing.Point(142, 31);
+            this.pbxImagen.Location = new System.Drawing.Point(110, 0);
             this.pbxImagen.Name = "pbxImagen";
             this.pbxImagen.Size = new System.Drawing.Size(315, 187);
             this.pbxImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -70,7 +80,7 @@
             // 
             // btnEliminarImagen
             // 
-            this.btnEliminarImagen.Location = new System.Drawing.Point(434, 31);
+            this.btnEliminarImagen.Location = new System.Drawing.Point(402, 0);
             this.btnEliminarImagen.Name = "btnEliminarImagen";
             this.btnEliminarImagen.Size = new System.Drawing.Size(22, 22);
             this.btnEliminarImagen.TabIndex = 23;
@@ -82,7 +92,8 @@
             // 
             this.lblUrlImagen.AutoSize = true;
             this.lblUrlImagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUrlImagen.Location = new System.Drawing.Point(139, 233);
+            this.lblUrlImagen.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblUrlImagen.Location = new System.Drawing.Point(107, 202);
             this.lblUrlImagen.Name = "lblUrlImagen";
             this.lblUrlImagen.Size = new System.Drawing.Size(34, 16);
             this.lblUrlImagen.TabIndex = 24;
@@ -90,7 +101,7 @@
             // 
             // txtUrlImagen
             // 
-            this.txtUrlImagen.Location = new System.Drawing.Point(142, 252);
+            this.txtUrlImagen.Location = new System.Drawing.Point(110, 221);
             this.txtUrlImagen.Name = "txtUrlImagen";
             this.txtUrlImagen.Size = new System.Drawing.Size(278, 20);
             this.txtUrlImagen.TabIndex = 25;
@@ -99,7 +110,7 @@
             // txtIndexImagen
             // 
             this.txtIndexImagen.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.txtIndexImagen.Location = new System.Drawing.Point(142, 31);
+            this.txtIndexImagen.Location = new System.Drawing.Point(110, 0);
             this.txtIndexImagen.Name = "txtIndexImagen";
             this.txtIndexImagen.ReadOnly = true;
             this.txtIndexImagen.Size = new System.Drawing.Size(22, 20);
@@ -108,7 +119,7 @@
             // 
             // btnImagenLocal
             // 
-            this.btnImagenLocal.Location = new System.Drawing.Point(434, 250);
+            this.btnImagenLocal.Location = new System.Drawing.Point(402, 219);
             this.btnImagenLocal.Name = "btnImagenLocal";
             this.btnImagenLocal.Size = new System.Drawing.Size(23, 24);
             this.btnImagenLocal.TabIndex = 27;
@@ -120,6 +131,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.Controls.Add(this.btnImagenLocal);
             this.Controls.Add(this.txtIndexImagen);
             this.Controls.Add(this.txtUrlImagen);
@@ -129,7 +141,7 @@
             this.Controls.Add(this.btnPrevImagen);
             this.Controls.Add(this.pbxImagen);
             this.Name = "Slider";
-            this.Size = new System.Drawing.Size(595, 306);
+            this.Size = new System.Drawing.Size(534, 243);
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

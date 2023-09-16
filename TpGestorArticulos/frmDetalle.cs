@@ -37,5 +37,10 @@ namespace TpGestorArticulos
             }
             Slider.InitSlider(images);
         }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

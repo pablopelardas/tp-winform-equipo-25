@@ -20,6 +20,20 @@ namespace TpGestorArticulos
             InitializeComponent();
         }
 
+        public EventHandler OnDetailOpen;
+        protected void On_DetailOpen(CustomEventArgs e)
+        {
+            if (OnDetailOpen != null)
+                OnDetailOpen(this, e);
+        }
+        public EventHandler onEditorOpen;
+
+        protected void On_EditorOpen(CustomEventArgs e)
+        {
+            if (onEditorOpen != null)
+                onEditorOpen(this, e);
+        }
+
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             cargarListaDB();
@@ -39,7 +53,7 @@ namespace TpGestorArticulos
             cargarListaDB();
         }
 
-        private void cargarListaDB()
+        public void cargarListaDB()
         {
             ArticulosNegocio negocio = new ArticulosNegocio();
             articulosDB.Clear();
@@ -69,9 +83,7 @@ namespace TpGestorArticulos
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            frmEditor editor = new frmEditor();
-            editor.ShowDialog();
-            cargarListaDB();
+            On_EditorOpen(new CustomEventArgs { Articulo = null });
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -82,9 +94,7 @@ namespace TpGestorArticulos
                 return;
             }
             Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            frmEditor editor = new frmEditor(articulo);
-            editor.ShowDialog();
-            cargarListaDB();
+            On_EditorOpen(new CustomEventArgs { Articulo = articulo });
         }
 
         private void dgvArticulos_AbrirDetalle(object sender, EventArgs e)
@@ -95,8 +105,7 @@ namespace TpGestorArticulos
                 return;
             }
             Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            frmDetalle detalle = new frmDetalle(articulo);
-            detalle.ShowDialog();
+            On_DetailOpen(new CustomEventArgs { Articulo = articulo });
         }
         private void txtBuscador_TextChanged(object sender, EventArgs e)
         {
