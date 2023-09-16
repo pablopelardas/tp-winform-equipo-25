@@ -17,8 +17,9 @@ namespace TpGestorArticulos
         public frmMrcCtg()
         {
             InitializeComponent();
-
         }
+        public bool tabMrc { get; set; }
+
         public void cargarMrcCtg()
         {
             try
@@ -40,6 +41,8 @@ namespace TpGestorArticulos
                 {
                     col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
+
+                if (tabMrc) tabControl.SelectedIndex = 1;
             }
             catch (Exception ex)
             {
@@ -63,6 +66,8 @@ namespace TpGestorArticulos
         {
             frmMrcCtgAux aux = new frmMrcCtgAux();
             seleccionarIdTitulo(aux);
+            string titulo = seleccionarIdTitulo(aux) ? "1" : "2";
+            aux.modificarTitulo(titulo);
             aux.idAux = -1;
             aux.ShowDialog();
             cargarMrcCtg();
@@ -70,36 +75,43 @@ namespace TpGestorArticulos
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            ArticulosNegocio negocio = new ArticulosNegocio();
-
-            if (tabControl.SelectedTab.Name == "tabCategorias")
+            try
             {
-                Categoria categ = (Categoria)dgvCategorias.CurrentRow.DataBoundItem;
+                ArticulosNegocio negocio = new ArticulosNegocio();
 
-                if (negocio.ValidarArticulosPorMrcCtg(categ.Id, "IdCategoria"))
+                if (tabControl.SelectedTab.Name == "tabCategorias")
                 {
-                    CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
-                    categoriaNegocio.Eliminar(categ.Id);
+                    Categoria categ = (Categoria)dgvCategorias.CurrentRow.DataBoundItem;
+
+                    if (negocio.ValidarArticulosPorMrcCtg(categ.Id, "IdCategoria"))
+                    {
+                        CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+                        categoriaNegocio.Eliminar(categ.Id);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pueden eliminar categorias relacionadas a un artículo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
                 else
                 {
-                    MessageBox.Show("No se pueden eliminar categorias relacionadas a un artículo.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    Marca marca = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
+                    if (negocio.ValidarArticulosPorMrcCtg(marca.Id, "IdMarca"))
+                    {
+                        MarcaNegocio marcaNegocio = new MarcaNegocio();
+                        marcaNegocio.Eliminar(marca.Id);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pueden eliminar marcas relacionadas a un artículo.");
+                    }
                 }
-                
+
             }
-            else
+            catch (NullReferenceException)
             {
-                Marca marca = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
-                if (negocio.ValidarArticulosPorMrcCtg(marca.Id, "IdMarca"))
-                {
-                    MarcaNegocio marcaNegocio = new MarcaNegocio();
-                    marcaNegocio.Eliminar(marca.Id);
-                }
-                else
-                {
-                    MessageBox.Show("No se pueden eliminar marcas relacionadas a un artículo.");
-                }
-                
+                MessageBox.Show("Por favor seleccione un item a modificar","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
             cargarMrcCtg();
         }
@@ -107,13 +119,14 @@ namespace TpGestorArticulos
         private void btnEditar_Click(object sender, EventArgs e)
         {
             frmMrcCtgAux aux = new frmMrcCtgAux();
-            seleccionarIdTitulo(aux);
-            if (aux.idAux == -1) MessageBox.Show("Por favor seleccione un item a modificar");
-            else aux.ShowDialog();
+            string titulo = seleccionarIdTitulo(aux)? "3":"4";
+            aux.modificarTitulo(titulo);
+            if (aux.idAux == -1) MessageBox.Show("Por favor seleccione un item a modificar", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else aux.ShowDialog();
             cargarMrcCtg();
         }
 
-        private void seleccionarIdTitulo(frmMrcCtgAux aux)
+        private bool seleccionarIdTitulo(frmMrcCtgAux aux)
         {   
             try
             {
@@ -131,10 +144,13 @@ namespace TpGestorArticulos
                     Marca marca = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
                     aux.idAux = marca.Id;
                 }
+
+                return aux.elemCtg;
             }
             catch(NullReferenceException)
             {
                 aux.idAux = -1;
+                return false;
             }
         }
     }

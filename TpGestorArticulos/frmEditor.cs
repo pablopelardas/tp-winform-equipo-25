@@ -152,9 +152,17 @@ namespace TpGestorArticulos
             Close();
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void btnEditCtg_Click(object sender, EventArgs e)
         {
             frmMrcCtg mrcCtg = new frmMrcCtg();
+            mrcCtg.tabMrc = false;
+            mrcCtg.ShowDialog();
+        }
+
+        private void btnEditMrc_Click(object sender, EventArgs e)
+        {
+            frmMrcCtg mrcCtg = new frmMrcCtg();
+            mrcCtg.tabMrc = true;
             mrcCtg.ShowDialog();
         }
     }

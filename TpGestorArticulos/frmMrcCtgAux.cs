@@ -67,7 +67,10 @@ namespace TpGestorArticulos
 
         public void modificarTitulo(string titulo)
         {
-            lblTituloAux.Text = titulo;
+            if (titulo == "1") lblTituloAux.Text = "Agregar Categoria";
+            if (titulo == "2") lblTituloAux.Text = "Agregar Marca";
+            if (titulo == "3") lblTituloAux.Text = "Modificar Categoria";
+            if (titulo == "4") lblTituloAux.Text = "Modificar Marca";
         }
 
         private bool validarInput(string txt)
