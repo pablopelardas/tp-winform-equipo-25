@@ -78,6 +78,11 @@ namespace TpGestorArticulos
 
                 if (tabControl.SelectedTab.Name == "tabCategorias")
                 {
+                    if (dgvCategorias.CurrentRow == null)
+                    {
+                        MessageBox.Show("Por favor seleccione un item a eliminar", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                     Categoria categ = (Categoria)dgvCategorias.CurrentRow.DataBoundItem;
 
                     if (negocio.ValidarArticulosPorMrcCtg(categ.Id, "IdCategoria"))
@@ -93,6 +98,11 @@ namespace TpGestorArticulos
                 }
                 else
                 {
+                    if (dgvMarcas.CurrentRow == null)
+                    {
+                        MessageBox.Show("Por favor seleccione un item a eliminar", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                     Marca marca = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
                     if (negocio.ValidarArticulosPorMrcCtg(marca.Id, "IdMarca"))
                     {
