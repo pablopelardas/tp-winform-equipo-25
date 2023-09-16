@@ -103,7 +103,7 @@
             // 
             this.lblCategoria.AutoSize = true;
             this.lblCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoria.Location = new System.Drawing.Point(29, 184);
+            this.lblCategoria.Location = new System.Drawing.Point(328, 174);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(66, 16);
             this.lblCategoria.TabIndex = 7;
@@ -111,19 +111,23 @@
             // 
             // cbxCategoria
             // 
+            this.cbxCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCategoria.FormattingEnabled = true;
-            this.cbxCategoria.Location = new System.Drawing.Point(32, 203);
+            this.cbxCategoria.Location = new System.Drawing.Point(331, 193);
             this.cbxCategoria.Name = "cbxCategoria";
             this.cbxCategoria.Size = new System.Drawing.Size(206, 21);
             this.cbxCategoria.TabIndex = 12;
+            this.cbxCategoria.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
             // 
             // cbxMarca
             // 
+            this.cbxMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxMarca.FormattingEnabled = true;
-            this.cbxMarca.Location = new System.Drawing.Point(316, 203);
+            this.cbxMarca.Location = new System.Drawing.Point(31, 193);
             this.cbxMarca.Name = "cbxMarca";
             this.cbxMarca.Size = new System.Drawing.Size(217, 21);
             this.cbxMarca.TabIndex = 13;
+            this.cbxMarca.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
             // 
             // btnGuardar
             // 
@@ -164,8 +168,8 @@
             // 
             // btnCategorias
             // 
-            this.btnCategorias.Location = new System.Drawing.Point(242, 203);
-            this.btnCategorias.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCategorias.Location = new System.Drawing.Point(541, 193);
+            this.btnCategorias.Margin = new System.Windows.Forms.Padding(2);
             this.btnCategorias.Name = "btnCategorias";
             this.btnCategorias.Size = new System.Drawing.Size(25, 20);
             this.btnCategorias.TabIndex = 25;
@@ -177,7 +181,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(314, 184);
+            this.label1.Location = new System.Drawing.Point(29, 174);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 16);
             this.label1.TabIndex = 8;
@@ -185,8 +189,8 @@
             // 
             // btnMarcas
             // 
-            this.btnMarcas.Location = new System.Drawing.Point(538, 203);
-            this.btnMarcas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMarcas.Location = new System.Drawing.Point(253, 193);
+            this.btnMarcas.Margin = new System.Windows.Forms.Padding(2);
             this.btnMarcas.Name = "btnMarcas";
             this.btnMarcas.Size = new System.Drawing.Size(25, 20);
             this.btnMarcas.TabIndex = 26;
@@ -197,7 +201,7 @@
             // sliderImagenes
             // 
             this.sliderImagenes.Location = new System.Drawing.Point(7, 230);
-            this.sliderImagenes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.sliderImagenes.Margin = new System.Windows.Forms.Padding(4);
             this.sliderImagenes.Name = "sliderImagenes";
             this.sliderImagenes.Size = new System.Drawing.Size(595, 283);
             this.sliderImagenes.TabIndex = 27;

@@ -104,24 +104,9 @@ namespace TpGestorArticulos
         }
 
         private void frmEditor_Load(object sender, EventArgs e)
-
         {
-            // Cargamos las categorias en los combobox
-            CategoriaNegocio categoriasNegocio = new CategoriaNegocio();
-            List<Categoria> categorias = categoriasNegocio.ListarCategorias();  
-            categorias.Insert(0, new Categoria(-1, "Seleccione una categoria"));
-            cbxCategoria.DataSource = categorias;
-            cbxCategoria.ValueMember = "Id";
-            cbxCategoria.DisplayMember = "Nombre";
-
-            // Cargamos las marcas en los combobox
-            MarcaNegocio marcasNegocio = new MarcaNegocio();
-            List<Marca> marcas = marcasNegocio.ListarMarcas();
-            marcas.Insert(0, new Marca(-1, "Seleccione una marca"));
-            cbxMarca.DataSource = marcas;
-            cbxMarca.ValueMember = "Id";
-            cbxMarca.DisplayMember = "Nombre";
-
+            cargarCategorias();
+            cargarMarcas();
             if (_articulo != null)
             {
                 txtNombre.Text = _articulo.Nombre.Length > 0 ? _articulo.Nombre : "";
@@ -140,11 +125,44 @@ namespace TpGestorArticulos
             else
             {
                 // Inicializamos la lista de imagenes
+                _articulo = new Articulo();
+                _articulo.Categoria = cbxCategoria.SelectedItem as Categoria;
+                _articulo.Marca = cbxMarca.SelectedItem as Marca;
                 _images = new List<string>();
                 _images.Add("");
             }
             sliderImagenes.InitSlider(ref _images);
 
+        }
+        private void cargarMarcas()
+        {
+            int idMarca = -1;
+            if (_articulo != null)
+            {
+                idMarca = _articulo.Marca.Id;
+            }
+            MarcaNegocio marcasNegocio = new MarcaNegocio();
+            List<Marca> marcas = marcasNegocio.ListarMarcas();
+            marcas.Insert(0, new Marca(-1, "Seleccione una marca"));
+            cbxMarca.DataSource = marcas;
+            cbxMarca.ValueMember = "Id";
+            cbxMarca.DisplayMember = "Nombre";
+            cbxMarca.SelectedValue = idMarca;
+        }
+        private void cargarCategorias()
+        {
+            int idCategoria = -1;
+            if (_articulo != null)
+            {
+                idCategoria = _articulo.Categoria.Id;
+            }
+            CategoriaNegocio categoriasNegocio = new CategoriaNegocio();
+            List<Categoria> categorias = categoriasNegocio.ListarCategorias();
+            categorias.Insert(0, new Categoria(-1, "Seleccione una categoria"));
+            cbxCategoria.DataSource = categorias;
+            cbxCategoria.ValueMember = "Id";
+            cbxCategoria.DisplayMember = "Nombre";
+            cbxCategoria.SelectedValue = idCategoria;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -157,6 +175,20 @@ namespace TpGestorArticulos
             string tabName = ((Button)sender).Name.Replace("btn", "");
             frmMrcCtg mrcCtg = new frmMrcCtg(tabName);
             mrcCtg.ShowDialog();
+            if (tabName == "Categorias") cargarCategorias();
+            else cargarMarcas();
+        }
+
+        private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cbx = (ComboBox)sender;
+            string tabName = cbx.Name.Replace("cbx", "");
+            if (_articulo == null) return;
+            if (tabName == "Categoria")
+            {
+                _articulo.Categoria = cbx.SelectedItem as Categoria;
+            }
+            else _articulo.Marca = cbx.SelectedItem as Marca;
         }
     }
 }
