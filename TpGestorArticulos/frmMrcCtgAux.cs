@@ -24,47 +24,70 @@ namespace TpGestorArticulos
         private void btnGuardarAux_Click(object sender, EventArgs e)
         {
 
-            //falta validar
-            if(elemCtg == true)
+            if(validarInput(txtNombreAux.Text))
             {
-                CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
-                if(idAux == -1)
+                if (elemCtg == true)
                 {
-                    Categoria categ = new Categoria();
-                    categ.Nombre = txtNombreAux.Text;
-                    categoriaNegocio.Agregar(categ);
+                    CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+                    if (idAux == -1)
+                    {
+                        Categoria categ = new Categoria();
+                        categ.Nombre = txtNombreAux.Text;
+                        categoriaNegocio.Agregar(categ);
+                    }
+                    else
+                    {
+                        Categoria categ = new Categoria();
+                        categ.Id = idAux;
+                        categ.Nombre = txtNombreAux.Text;
+                        categoriaNegocio.Modificar(categ);
+                    }
                 }
                 else
                 {
-                    Categoria categ = new Categoria();
-                    categ.Id = idAux;
-                    categ.Nombre = txtNombreAux.Text;
-                    categoriaNegocio.Modificar(categ);
+                    MarcaNegocio marcaNegocio = new MarcaNegocio();
+                    if (idAux == -1)
+                    {
+                        Marca marca = new Marca();
+                        marca.Nombre = txtNombreAux.Text;
+                        marcaNegocio.Agregar(marca);
+                    }
+                    else
+                    {
+                        Marca marca = new Marca();
+                        marca.Id = idAux;
+                        marca.Nombre = txtNombreAux.Text;
+                        marcaNegocio.Modificar(marca);
+                    }
                 }
+
+                frmMrcCtg frmMrcCtg = new frmMrcCtg();
+                frmMrcCtg.cargarMrcCtg();
+                Close();
             }
-            else
-            {
-                MarcaNegocio marcaNegocio = new MarcaNegocio();
-                if (idAux == -1)
-                {
-                    Marca marca = new Marca();
-                    marca.Nombre = txtNombreAux.Text;
-                    marcaNegocio.Agregar(marca);
-                }
-                else
-                {
-                    Marca marca = new Marca();
-                    marca.Id = idAux;
-                    marca.Nombre = txtNombreAux.Text;
-                    marcaNegocio.Modificar(marca);
-                }
-            }
-            Close();
         }
 
         public void modificarTitulo(string titulo)
         {
             lblTituloAux.Text = titulo;
+        }
+
+        private bool validarInput(string txt)
+        {
+            try
+            {
+                if (txt.Length == 0)
+                {
+                    throw new Exception("El nombre no puede estar vacío");
+                }
+                return true;
+            }
+            
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
     }
 }

@@ -39,7 +39,7 @@
             this.lblTituloAux.AutoSize = true;
             this.lblTituloAux.Location = new System.Drawing.Point(29, 18);
             this.lblTituloAux.Name = "lblTituloAux";
-            this.lblTituloAux.Size = new System.Drawing.Size(50, 20);
+            this.lblTituloAux.Size = new System.Drawing.Size(40, 16);
             this.lblTituloAux.TabIndex = 0;
             this.lblTituloAux.Text = "Titulo";
             // 

@@ -50,8 +50,7 @@ namespace Negocio
             {
                 datos.SetQuery("insert into MARCAS (Descripcion) values (@Descripcion);");
                 datos.SetParameter("@Descripcion", marca.Nombre);
-                marca.Id = datos.ExecuteScalar();
-
+                datos.ExecuteNonQuery();
             }
             catch (Exception ex)
             {

@@ -35,13 +35,13 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabCategorias = new System.Windows.Forms.TabPage();
-            this.tabMarcas = new System.Windows.Forms.TabPage();
             this.dgvCategorias = new System.Windows.Forms.DataGridView();
+            this.tabMarcas = new System.Windows.Forms.TabPage();
             this.dgvMarcas = new System.Windows.Forms.DataGridView();
             this.tabControl.SuspendLayout();
             this.tabCategorias.SuspendLayout();
-            this.tabMarcas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).BeginInit();
+            this.tabMarcas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,21 +118,13 @@
             this.tabCategorias.Text = "Categorias";
             this.tabCategorias.UseVisualStyleBackColor = true;
             // 
-            // tabMarcas
-            // 
-            this.tabMarcas.Controls.Add(this.dgvMarcas);
-            this.tabMarcas.Location = new System.Drawing.Point(4, 25);
-            this.tabMarcas.Name = "tabMarcas";
-            this.tabMarcas.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMarcas.Size = new System.Drawing.Size(240, 271);
-            this.tabMarcas.TabIndex = 1;
-            this.tabMarcas.Text = "Marcas";
-            this.tabMarcas.UseVisualStyleBackColor = true;
-            // 
             // dgvCategorias
             // 
+            this.dgvCategorias.AllowUserToAddRows = false;
+            this.dgvCategorias.AllowUserToDeleteRows = false;
             this.dgvCategorias.AllowUserToResizeColumns = false;
             this.dgvCategorias.AllowUserToResizeRows = false;
+            this.dgvCategorias.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategorias.ColumnHeadersVisible = false;
             this.dgvCategorias.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -143,6 +135,17 @@
             this.dgvCategorias.RowTemplate.Height = 24;
             this.dgvCategorias.Size = new System.Drawing.Size(209, 241);
             this.dgvCategorias.TabIndex = 0;
+            // 
+            // tabMarcas
+            // 
+            this.tabMarcas.Controls.Add(this.dgvMarcas);
+            this.tabMarcas.Location = new System.Drawing.Point(4, 25);
+            this.tabMarcas.Name = "tabMarcas";
+            this.tabMarcas.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMarcas.Size = new System.Drawing.Size(240, 271);
+            this.tabMarcas.TabIndex = 1;
+            this.tabMarcas.Text = "Marcas";
+            this.tabMarcas.UseVisualStyleBackColor = true;
             // 
             // dgvMarcas
             // 
@@ -174,8 +177,8 @@
             this.Load += new System.EventHandler(this.frmMrcCtg_Load);
             this.tabControl.ResumeLayout(false);
             this.tabCategorias.ResumeLayout(false);
-            this.tabMarcas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).EndInit();
+            this.tabMarcas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

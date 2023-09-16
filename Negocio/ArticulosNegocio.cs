@@ -55,7 +55,6 @@ namespace Negocio
                     }
                     catch (Exception)
                     {
-
                         throw new Exception("Error al leer las imagenes");
                     }
                     finally
@@ -74,7 +73,6 @@ namespace Negocio
             {
                 datos.CloseConnection();
             }
-
         }
 
         public void Agregar(Articulo articulo)
@@ -132,7 +130,6 @@ namespace Negocio
             {
                 dataAccess.CloseConnection();
             }
-
         }
 
         public void Eliminar(int id)
@@ -154,7 +151,6 @@ namespace Negocio
                 datos.CloseConnection();
             }
         }
-     
 
         private void InsertarImagenes(List<string> imagenes, Database dataAccess)
         {
@@ -216,6 +212,44 @@ namespace Negocio
                 }
             }
         }
+
+        public bool ValidarArticulosPorMrcCtg(int id, string tabla)
+        {
+            Database datos = new Database();
+            try
+            {
+                datos.SetQuery("select Id from @Tabla where IdCategoria=@Categoria");
+                datos.SetParameter("@Tabla", tabla);
+                datos.SetParameter("@Categoria", id);
+                datos.ReadData();
+
+                List<int> ids=null;
+                while (datos.Reader.Read())
+                {
+                    ids.Add((int)datos.Reader["Id"]);
+                }
+                if (ids == null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CloseConnection();
+            }
+        }
+
+
 
     }
 }

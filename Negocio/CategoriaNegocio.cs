@@ -51,8 +51,7 @@ namespace Negocio
             {
                 datos.SetQuery("insert into CATEGORIAS (Descripcion) values (@Descripcion);");
                 datos.SetParameter("@Descripcion", categoria.Nombre);
-                categoria.Id = datos.ExecuteScalar();
-
+                datos.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
