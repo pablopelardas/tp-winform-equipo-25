@@ -76,14 +76,24 @@ namespace TpGestorArticulos
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            if (dgvArticulos.CurrentRow == null)
+            {
+                MessageBox.Show("Debe seleccionar un articulo");
+                return;
+            }
             Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             frmEditor editor = new frmEditor(articulo);
             editor.ShowDialog();
             cargarListaDB();
         }
 
-        private void dgvArticulos_DoubleClick(object sender, EventArgs e)
+        private void dgvArticulos_AbrirDetalle(object sender, EventArgs e)
         {
+            if (dgvArticulos.CurrentRow == null)
+            {
+                MessageBox.Show("Debe seleccionar un articulo");
+                return;
+            }
             Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             frmDetalle detalle = new frmDetalle(articulo);
             detalle.ShowDialog();
@@ -116,10 +126,15 @@ namespace TpGestorArticulos
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            if (dgvArticulos.CurrentRow == null)
+            {
+                MessageBox.Show("Debe seleccionar un articulo");
+                return;
+            }
             ArticulosNegocio negocio = new ArticulosNegocio();
             Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             negocio.Eliminar(articulo.Id);
-            cargarGrilla();
+            cargarListaDB();
         }
     }
 }
