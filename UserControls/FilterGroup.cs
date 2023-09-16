@@ -44,8 +44,8 @@ namespace TpGestorArticulos
             initBtnEliminarFiltro.Location = new Point(496, 19);
             initBtnEliminarFiltro.Size = new Size(23, 23);
             initBtnEliminarFiltro.Text = "X";
-            initBtnEliminarFiltro.BackColor = Color.Red;
-            initBtnEliminarFiltro.ForeColor = Color.White;
+            initBtnEliminarFiltro.BackColor = Color.White;
+            initBtnEliminarFiltro.ForeColor = Color.Black;
             initBtnEliminarFiltro.FlatStyle = FlatStyle.Flat;
 
         }
