@@ -21,21 +21,16 @@ namespace TpGestorArticulos
             frmPrincipal.MdiParent = this;
             frmPrincipal.OnDetailOpen += new EventHandler(frmPrincipal_OnDetailOpen);
             frmPrincipal.onEditorOpen += new EventHandler(frmPrincipal_OnEditorOpen);
+            frmPrincipal.Enter += new EventHandler(frmPrincipal_Enter);
             frmPrincipal.Show();
-        }
-
-        private void frmPadre_Load(object sender, EventArgs e)
-        {
             fixPrincipal();
+
         }
 
         private void fixPrincipal(bool reload=false)
         {
             frmPrincipal.WindowState = FormWindowState.Maximized;
-            if (reload)
-            {
-                frmPrincipal.cargarListaDB();
-            }
+            frmPrincipal.cargarListaDB();
         }
 
         private void frmPadre_FormClosing(object sender, FormClosingEventArgs e)
@@ -53,7 +48,6 @@ namespace TpGestorArticulos
             frmDetalle.MdiParent = this;
             frmDetalle.Show();
             frmDetalle.WindowState = FormWindowState.Maximized;
-            frmDetalle.FormClosed += new FormClosedEventHandler(frmCloseWithoutChange);
         }
         private void frmPrincipal_OnEditorOpen(object sender, EventArgs e)
         {
@@ -63,17 +57,21 @@ namespace TpGestorArticulos
             frmEditor.MdiParent = this;
             frmEditor.Show();
             frmEditor.WindowState = FormWindowState.Maximized;
-            frmEditor.FormClosed += new FormClosedEventHandler(frmCloseWithChange);
         }
-        private void frmCloseWithoutChange(object sender, FormClosedEventArgs e)
+        private void frmPrincipal_Enter(object sender, EventArgs e)
         {
             fixPrincipal();
+            foreach (Form frm in this.MdiChildren)
+            {
+                // Close all other forms except the main form.
+
+                if (frm is frmDetalle || frm is frmEditor)
+                {
+                    frm.Close();
+                }
+
+            }
             
         }
-        private void frmCloseWithChange(object sender, FormClosedEventArgs e)
-        {
-            fixPrincipal(true);
-        }
-
     }
 }

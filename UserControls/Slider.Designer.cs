@@ -48,7 +48,7 @@
             this.btnNextImagen.Location = new System.Drawing.Point(505, 76);
             this.btnNextImagen.Name = "btnNextImagen";
             this.btnNextImagen.Size = new System.Drawing.Size(30, 27);
-            this.btnNextImagen.TabIndex = 22;
+            this.btnNextImagen.TabIndex = 2;
             this.btnNextImagen.Text = "→";
             this.btnNextImagen.UseVisualStyleBackColor = true;
             this.btnNextImagen.EnabledChanged += new System.EventHandler(this.btnNextImagen_EnabledChanged);
@@ -63,7 +63,7 @@
             this.btnPrevImagen.Location = new System.Drawing.Point(0, 76);
             this.btnPrevImagen.Name = "btnPrevImagen";
             this.btnPrevImagen.Size = new System.Drawing.Size(30, 27);
-            this.btnPrevImagen.TabIndex = 21;
+            this.btnPrevImagen.TabIndex = 0;
             this.btnPrevImagen.Text = "←";
             this.btnPrevImagen.UseVisualStyleBackColor = true;
             this.btnPrevImagen.EnabledChanged += new System.EventHandler(this.btnNextImagen_EnabledChanged);
@@ -83,7 +83,7 @@
             this.btnEliminarImagen.Location = new System.Drawing.Point(402, 0);
             this.btnEliminarImagen.Name = "btnEliminarImagen";
             this.btnEliminarImagen.Size = new System.Drawing.Size(22, 22);
-            this.btnEliminarImagen.TabIndex = 23;
+            this.btnEliminarImagen.TabIndex = 1;
             this.btnEliminarImagen.Text = "✕";
             this.btnEliminarImagen.UseVisualStyleBackColor = true;
             this.btnEliminarImagen.Click += new System.EventHandler(this.btnEliminarImagen_Click);
@@ -104,7 +104,7 @@
             this.txtUrlImagen.Location = new System.Drawing.Point(110, 221);
             this.txtUrlImagen.Name = "txtUrlImagen";
             this.txtUrlImagen.Size = new System.Drawing.Size(278, 20);
-            this.txtUrlImagen.TabIndex = 25;
+            this.txtUrlImagen.TabIndex = 3;
             this.txtUrlImagen.TextChanged += new System.EventHandler(this.txtUrlImagen_TextChanged);
             // 
             // txtIndexImagen
@@ -115,6 +115,7 @@
             this.txtIndexImagen.ReadOnly = true;
             this.txtIndexImagen.Size = new System.Drawing.Size(22, 20);
             this.txtIndexImagen.TabIndex = 26;
+            this.txtIndexImagen.TabStop = false;
             this.txtIndexImagen.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnImagenLocal
@@ -122,7 +123,7 @@
             this.btnImagenLocal.Location = new System.Drawing.Point(402, 219);
             this.btnImagenLocal.Name = "btnImagenLocal";
             this.btnImagenLocal.Size = new System.Drawing.Size(23, 24);
-            this.btnImagenLocal.TabIndex = 27;
+            this.btnImagenLocal.TabIndex = 4;
             this.btnImagenLocal.Text = "+\r\n";
             this.btnImagenLocal.UseVisualStyleBackColor = true;
             this.btnImagenLocal.Click += new System.EventHandler(this.btnImagenLocal_Click);

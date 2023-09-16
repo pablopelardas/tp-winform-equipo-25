@@ -167,6 +167,13 @@ namespace TpGestorArticulos
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+
+            DialogResult dialogResult = MessageBox.Show("¿Esta seguro que desea cancelar los cambios que realizó?", "Cancelar", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
             Close();
         }
 

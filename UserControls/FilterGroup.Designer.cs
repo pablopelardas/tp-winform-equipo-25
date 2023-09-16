@@ -41,7 +41,7 @@
             this.btnAgregarFiltro.Location = new System.Drawing.Point(17, 19);
             this.btnAgregarFiltro.Name = "btnAgregarFiltro";
             this.btnAgregarFiltro.Size = new System.Drawing.Size(127, 23);
-            this.btnAgregarFiltro.TabIndex = 15;
+            this.btnAgregarFiltro.TabIndex = 0;
             this.btnAgregarFiltro.Text = "Agregar nuevo filtro";
             this.btnAgregarFiltro.UseVisualStyleBackColor = true;
             this.btnAgregarFiltro.Click += new System.EventHandler(this.btnAgregarFiltro_Click);
@@ -52,7 +52,7 @@
             this.btnFiltrar.Location = new System.Drawing.Point(442, 169);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(73, 23);
-            this.btnFiltrar.TabIndex = 16;
+            this.btnFiltrar.TabIndex = 1;
             this.btnFiltrar.Text = "Filtrar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
             this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
@@ -66,7 +66,7 @@
             this.gbFiltros.Location = new System.Drawing.Point(3, 1);
             this.gbFiltros.Name = "gbFiltros";
             this.gbFiltros.Size = new System.Drawing.Size(532, 203);
-            this.gbFiltros.TabIndex = 18;
+            this.gbFiltros.TabIndex = 0;
             this.gbFiltros.TabStop = false;
             this.gbFiltros.Text = "Filtros";
             // 
@@ -76,7 +76,7 @@
             this.btnLimpiar.Location = new System.Drawing.Point(17, 169);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(104, 23);
-            this.btnLimpiar.TabIndex = 17;
+            this.btnLimpiar.TabIndex = 2;
             this.btnLimpiar.Text = "Limpiar Filtros";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);

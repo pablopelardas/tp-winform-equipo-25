@@ -81,7 +81,7 @@
             this.btnDetalle.Margin = new System.Windows.Forms.Padding(2);
             this.btnDetalle.Name = "btnDetalle";
             this.btnDetalle.Size = new System.Drawing.Size(141, 26);
-            this.btnDetalle.TabIndex = 18;
+            this.btnDetalle.TabIndex = 3;
             this.btnDetalle.Text = "Detalle";
             this.btnDetalle.UseVisualStyleBackColor = false;
             this.btnDetalle.Click += new System.EventHandler(this.dgvArticulos_AbrirDetalle);
@@ -98,7 +98,7 @@
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(141, 26);
-            this.button1.TabIndex = 20;
+            this.button1.TabIndex = 6;
             this.button1.Text = "Eliminar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -144,7 +144,7 @@
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(145, 28);
-            this.btnAgregar.TabIndex = 14;
+            this.btnAgregar.TabIndex = 4;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -161,7 +161,7 @@
             this.btnModificar.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(141, 28);
-            this.btnModificar.TabIndex = 16;
+            this.btnModificar.TabIndex = 5;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -196,7 +196,7 @@
             this.panelContenedor.Margin = new System.Windows.Forms.Padding(2);
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(641, 558);
-            this.panelContenedor.TabIndex = 1;
+            this.panelContenedor.TabIndex = 0;
             this.panelContenedor.SizeChanged += new System.EventHandler(this.panelContenedor_SizeChanged);
             // 
             // filterGroup
@@ -207,7 +207,7 @@
             this.filterGroup.Margin = new System.Windows.Forms.Padding(2);
             this.filterGroup.Name = "filterGroup";
             this.filterGroup.Size = new System.Drawing.Size(536, 210);
-            this.filterGroup.TabIndex = 18;
+            this.filterGroup.TabIndex = 2;
             // 
             // txtBuscador
             // 
@@ -218,7 +218,7 @@
             this.txtBuscador.Margin = new System.Windows.Forms.Padding(2);
             this.txtBuscador.Name = "txtBuscador";
             this.txtBuscador.Size = new System.Drawing.Size(249, 22);
-            this.txtBuscador.TabIndex = 8;
+            this.txtBuscador.TabIndex = 0;
             this.txtBuscador.TextChanged += new System.EventHandler(this.txtBuscador_TextChanged);
             // 
             // lblBuscador
@@ -257,7 +257,7 @@
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(536, 225);
             this.dgvArticulos.StandardTab = true;
-            this.dgvArticulos.TabIndex = 6;
+            this.dgvArticulos.TabIndex = 1;
             this.dgvArticulos.DoubleClick += new System.EventHandler(this.dgvArticulos_AbrirDetalle);
             // 
             // FrmPrincipal

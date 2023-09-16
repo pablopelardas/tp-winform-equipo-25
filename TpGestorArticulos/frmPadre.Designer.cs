@@ -55,7 +55,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestor Artículos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPadre_FormClosing);
-            this.Load += new System.EventHandler(this.frmPadre_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

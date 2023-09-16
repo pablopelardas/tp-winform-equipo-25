@@ -70,14 +70,14 @@
             this.txtNombre.Location = new System.Drawing.Point(201, 43);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(206, 20);
-            this.txtNombre.TabIndex = 1;
+            this.txtNombre.TabIndex = 0;
             // 
             // txtPrecio
             // 
             this.txtPrecio.Location = new System.Drawing.Point(201, 144);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(206, 20);
-            this.txtPrecio.TabIndex = 3;
+            this.txtPrecio.TabIndex = 2;
             // 
             // lblPrecio
             // 
@@ -106,7 +106,7 @@
             this.rtxtDescripcion.Location = new System.Drawing.Point(433, 43);
             this.rtxtDescripcion.Name = "rtxtDescripcion";
             this.rtxtDescripcion.Size = new System.Drawing.Size(303, 121);
-            this.rtxtDescripcion.TabIndex = 6;
+            this.rtxtDescripcion.TabIndex = 3;
             this.rtxtDescripcion.Text = "";
             // 
             // lblCategoria
@@ -127,7 +127,7 @@
             this.cbxCategoria.Location = new System.Drawing.Point(500, 191);
             this.cbxCategoria.Name = "cbxCategoria";
             this.cbxCategoria.Size = new System.Drawing.Size(206, 21);
-            this.cbxCategoria.TabIndex = 12;
+            this.cbxCategoria.TabIndex = 6;
             this.cbxCategoria.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
             // 
             // cbxMarca
@@ -137,7 +137,7 @@
             this.cbxMarca.Location = new System.Drawing.Point(200, 191);
             this.cbxMarca.Name = "cbxMarca";
             this.cbxMarca.Size = new System.Drawing.Size(217, 21);
-            this.cbxMarca.TabIndex = 13;
+            this.cbxMarca.TabIndex = 4;
             this.cbxMarca.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
             // 
             // txtCodigo
@@ -145,7 +145,7 @@
             this.txtCodigo.Location = new System.Drawing.Point(201, 97);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(206, 20);
-            this.txtCodigo.TabIndex = 24;
+            this.txtCodigo.TabIndex = 1;
             // 
             // lblCodigo
             // 
@@ -164,7 +164,7 @@
             this.btnCategorias.Margin = new System.Windows.Forms.Padding(2);
             this.btnCategorias.Name = "btnCategorias";
             this.btnCategorias.Size = new System.Drawing.Size(25, 20);
-            this.btnCategorias.TabIndex = 25;
+            this.btnCategorias.TabIndex = 7;
             this.btnCategorias.Text = "✏";
             this.btnCategorias.UseVisualStyleBackColor = true;
             this.btnCategorias.Click += new System.EventHandler(this.abrirEditorMrcCtg);
@@ -186,7 +186,7 @@
             this.btnMarcas.Margin = new System.Windows.Forms.Padding(2);
             this.btnMarcas.Name = "btnMarcas";
             this.btnMarcas.Size = new System.Drawing.Size(25, 20);
-            this.btnMarcas.TabIndex = 26;
+            this.btnMarcas.TabIndex = 5;
             this.btnMarcas.Text = "✏";
             this.btnMarcas.UseVisualStyleBackColor = true;
             this.btnMarcas.Click += new System.EventHandler(this.abrirEditorMrcCtg);
@@ -203,7 +203,7 @@
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(141, 26);
-            this.btnCancelar.TabIndex = 18;
+            this.btnCancelar.TabIndex = 1;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -241,7 +241,7 @@
             this.panelMenuVertical.Margin = new System.Windows.Forms.Padding(2);
             this.panelMenuVertical.Name = "panelMenuVertical";
             this.panelMenuVertical.Size = new System.Drawing.Size(143, 561);
-            this.panelMenuVertical.TabIndex = 28;
+            this.panelMenuVertical.TabIndex = 9;
             // 
             // btnGuardar
             // 
@@ -255,7 +255,7 @@
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(141, 26);
-            this.btnGuardar.TabIndex = 30;
+            this.btnGuardar.TabIndex = 0;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -276,7 +276,7 @@
             this.sliderImagenes.Margin = new System.Windows.Forms.Padding(4);
             this.sliderImagenes.Name = "sliderImagenes";
             this.sliderImagenes.Size = new System.Drawing.Size(536, 277);
-            this.sliderImagenes.TabIndex = 27;
+            this.sliderImagenes.TabIndex = 8;
             // 
             // frmEditor
             // 

@@ -34,12 +34,12 @@
             this.lblPrecio = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
             this.lblCategoria = new System.Windows.Forms.Label();
-            this.Slider = new TpGestorArticulos.Slider();
             this.rtxtDescripcion = new System.Windows.Forms.RichTextBox();
             this.panelMenuVertical = new System.Windows.Forms.Panel();
             this.btnVolver = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Slider = new TpGestorArticulos.Slider();
             this.panelMenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -104,16 +104,8 @@
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
             this.lblCategoria.Size = new System.Drawing.Size(73, 17);
-            this.lblCategoria.TabIndex = 6;
+            this.lblCategoria.TabIndex = 2;
             this.lblCategoria.Text = "Categoria";
-            // 
-            // Slider
-            // 
-            this.Slider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
-            this.Slider.Location = new System.Drawing.Point(207, 144);
-            this.Slider.Name = "Slider";
-            this.Slider.Size = new System.Drawing.Size(553, 257);
-            this.Slider.TabIndex = 0;
             // 
             // rtxtDescripcion
             // 
@@ -129,6 +121,7 @@
             this.rtxtDescripcion.ReadOnly = true;
             this.rtxtDescripcion.Size = new System.Drawing.Size(552, 112);
             this.rtxtDescripcion.TabIndex = 7;
+            this.rtxtDescripcion.TabStop = false;
             this.rtxtDescripcion.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque et augue tellus." +
     " \nProin \n. Donec vitae turpis vel ipsum porttitor dignissim. \n";
             // 
@@ -143,7 +136,7 @@
             this.panelMenuVertical.Margin = new System.Windows.Forms.Padding(2);
             this.panelMenuVertical.Name = "panelMenuVertical";
             this.panelMenuVertical.Size = new System.Drawing.Size(143, 561);
-            this.panelMenuVertical.TabIndex = 8;
+            this.panelMenuVertical.TabIndex = 2;
             // 
             // btnVolver
             // 
@@ -157,7 +150,7 @@
             this.btnVolver.Margin = new System.Windows.Forms.Padding(2);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(141, 26);
-            this.btnVolver.TabIndex = 18;
+            this.btnVolver.TabIndex = 0;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
@@ -181,6 +174,14 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // Slider
+            // 
+            this.Slider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
+            this.Slider.Location = new System.Drawing.Point(207, 144);
+            this.Slider.Name = "Slider";
+            this.Slider.Size = new System.Drawing.Size(553, 257);
+            this.Slider.TabIndex = 1;
             // 
             // frmDetalle
             // 
