@@ -140,6 +140,13 @@ namespace TpGestorArticulos
                 MessageBox.Show("Debe seleccionar un articulo");
                 return;
             }
+
+            DialogResult dialogResult = MessageBox.Show("¿Está seguro que desea eliminar el articulo?", "Eliminar", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
             ArticulosNegocio negocio = new ArticulosNegocio();
             Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             negocio.Eliminar(articulo.Id);
