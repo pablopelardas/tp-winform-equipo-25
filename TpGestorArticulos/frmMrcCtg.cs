@@ -14,11 +14,11 @@ namespace TpGestorArticulos
 {
     public partial class frmMrcCtg : Form
     {
-        public frmMrcCtg()
+        public frmMrcCtg(string tabName)
         {
             InitializeComponent();
+            tabControl.SelectedIndex = tabName == "Categorias" ? 0 : 1;
         }
-        public bool tabMrc { get; set; }
 
         public void cargarMrcCtg()
         {
@@ -42,7 +42,6 @@ namespace TpGestorArticulos
                     col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
 
-                if (tabMrc) tabControl.SelectedIndex = 1;
             }
             catch (Exception ex)
             {
@@ -53,8 +52,6 @@ namespace TpGestorArticulos
         private void frmMrcCtg_Load(object sender, EventArgs e)
         {
             cargarMrcCtg();
-
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -134,21 +131,22 @@ namespace TpGestorArticulos
                 {
                     aux.elemCtg = true;
                     aux.modificarTitulo("Agregar Categoria");
-                    Categoria categ = (Categoria)dgvCategorias.CurrentRow.DataBoundItem;
-                    aux.idAux = categ.Id;
+                    if (dgvCategorias.CurrentRow == null) aux.idAux = -1;
+                    else aux.idAux = ((Categoria)dgvCategorias.CurrentRow.DataBoundItem).Id;
                 }
                 else
                 {
                     aux.elemCtg = false;
                     aux.modificarTitulo("Agregar Marca");
-                    Marca marca = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
-                    aux.idAux = marca.Id;
+                    if (dgvMarcas.CurrentRow == null) aux.idAux = -1;
+                    else aux.idAux = ((Marca)dgvMarcas.CurrentRow.DataBoundItem).Id;
                 }
 
                 return aux.elemCtg;
             }
-            catch(NullReferenceException)
+            catch(Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 aux.idAux = -1;
                 return false;
             }

@@ -100,10 +100,10 @@
             // tabCategorias
             // 
             this.tabCategorias.Controls.Add(this.dgvCategorias);
-            this.tabCategorias.Location = new System.Drawing.Point(4, 25);
+            this.tabCategorias.Location = new System.Drawing.Point(4, 22);
             this.tabCategorias.Name = "tabCategorias";
             this.tabCategorias.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCategorias.Size = new System.Drawing.Size(240, 271);
+            this.tabCategorias.Size = new System.Drawing.Size(240, 274);
             this.tabCategorias.TabIndex = 0;
             this.tabCategorias.Text = "Categorias";
             this.tabCategorias.UseVisualStyleBackColor = true;
@@ -118,7 +118,7 @@
             this.dgvCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategorias.ColumnHeadersVisible = false;
             this.dgvCategorias.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvCategorias.Location = new System.Drawing.Point(16, 15);
+            this.dgvCategorias.Location = new System.Drawing.Point(16, 17);
             this.dgvCategorias.Name = "dgvCategorias";
             this.dgvCategorias.RowHeadersVisible = false;
             this.dgvCategorias.RowHeadersWidth = 51;
@@ -129,10 +129,10 @@
             // tabMarcas
             // 
             this.tabMarcas.Controls.Add(this.dgvMarcas);
-            this.tabMarcas.Location = new System.Drawing.Point(4, 25);
+            this.tabMarcas.Location = new System.Drawing.Point(4, 22);
             this.tabMarcas.Name = "tabMarcas";
             this.tabMarcas.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMarcas.Size = new System.Drawing.Size(240, 311);
+            this.tabMarcas.Size = new System.Drawing.Size(240, 274);
             this.tabMarcas.TabIndex = 1;
             this.tabMarcas.Text = "Marcas";
             this.tabMarcas.UseVisualStyleBackColor = true;
@@ -156,7 +156,7 @@
             // 
             // frmMrcCtg
             // 
-            this.ClientSize = new System.Drawing.Size(332, 453);
+            this.ClientSize = new System.Drawing.Size(334, 461);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnEliminar);

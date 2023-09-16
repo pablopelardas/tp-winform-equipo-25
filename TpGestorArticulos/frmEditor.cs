@@ -154,8 +154,8 @@ namespace TpGestorArticulos
 
         private void abrirEditorMrcCtg(object sender, EventArgs e)
         {
-            frmMrcCtg mrcCtg = new frmMrcCtg();
-            mrcCtg.tabMrc = false;
+            string tabName = ((Button)sender).Name.Replace("btn", "");
+            frmMrcCtg mrcCtg = new frmMrcCtg(tabName);
             mrcCtg.ShowDialog();
         }
     }
