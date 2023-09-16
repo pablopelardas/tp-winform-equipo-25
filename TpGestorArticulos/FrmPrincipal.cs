@@ -14,7 +14,7 @@ namespace TpGestorArticulos
 {
     public partial class FrmPrincipal : Form
     {
-        List<Articulo> articulosSinFiltrar = new List<Articulo>();
+        List<Articulo> articulosDB = new List<Articulo>();
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -22,19 +22,44 @@ namespace TpGestorArticulos
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            cargarGrilla();
-            dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "C";
-            filterGroup.Init(articulosSinFiltrar, dgvArticulos);
+            cargarListaDB();
+            filterGroup.Init(articulosDB, dgvArticulos);
+            filterGroup.OnFilterApplied += new EventHandler(filterGroup_FilterApplied);
+            filterGroup.OnClean += new EventHandler(filterGroup_Clean);
             
         }
 
-        private void cargarGrilla()
+        private void filterGroup_FilterApplied(object sender, EventArgs e)
+        {
+            articulosDB = filterGroup.ArticulosFiltrados;
+            cargarGrilla();
+        }
+        private void filterGroup_Clean(object sender, EventArgs e)
+        {
+            cargarListaDB();
+        }
+
+        private void cargarListaDB()
+        {
+            ArticulosNegocio negocio = new ArticulosNegocio();
+            articulosDB.Clear();
+            articulosDB = negocio.ListarArticulos();
+            cargarGrilla();
+        }
+
+        private void cargarGrilla(List<Articulo> data = null)
         {
             try
             {
-                ArticulosNegocio negocio = new ArticulosNegocio();
-                dgvArticulos.DataSource = negocio.ListarArticulos();
-                dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "C";
+                dgvArticulos.DataSource = null;
+                if (data == null)
+                {
+                    dgvArticulos.DataSource = articulosDB;
+                }
+                else
+                {
+                    dgvArticulos.DataSource = data;
+                }
                 acomodarColumnas();
             }
             catch (Exception ex)
@@ -42,12 +67,11 @@ namespace TpGestorArticulos
                 MessageBox.Show(ex.ToString());
             }
         }
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             frmEditor editor = new frmEditor();
             editor.ShowDialog();
-            cargarGrilla();
+            cargarListaDB();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -55,7 +79,7 @@ namespace TpGestorArticulos
             Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             frmEditor editor = new frmEditor(articulo);
             editor.ShowDialog();
-            cargarGrilla();
+            cargarListaDB();
         }
 
         private void dgvArticulos_DoubleClick(object sender, EventArgs e)
@@ -63,6 +87,16 @@ namespace TpGestorArticulos
             Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             frmDetalle detalle = new frmDetalle(articulo);
             detalle.ShowDialog();
+        }
+        private void txtBuscador_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulo> listaFiltrada = null;
+            if (txtBuscador.Text.Length >= 2)
+            {
+                listaFiltrada = articulosDB.FindAll(X => X.Nombre.ToLower().Contains(txtBuscador.Text.ToLower()) || X.Codigo.ToLower().Contains(txtBuscador.Text.ToLower()) || X.Descripcion.ToLower().Contains(txtBuscador.Text.ToLower()) || X.Categoria.Nombre.ToLower().Contains(txtBuscador.Text.ToLower()) || X.Marca.Nombre.ToLower().Contains(txtBuscador.Text.ToLower()));
+
+            }
+            cargarGrilla(listaFiltrada);
         }
 
         private void panelContenedor_SizeChanged(object sender, EventArgs e)
@@ -72,6 +106,7 @@ namespace TpGestorArticulos
 
         private void acomodarColumnas()
         {
+            dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "C";
             foreach (DataGridViewColumn col in dgvArticulos.Columns)
             {
                 col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;

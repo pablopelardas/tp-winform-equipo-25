@@ -74,7 +74,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.Location = new System.Drawing.Point(2, 205);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(109, 26);
             this.btnEliminar.TabIndex = 18;
@@ -97,7 +97,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
             this.panel2.Location = new System.Drawing.Point(-5, 205);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(8, 26);
             this.panel2.TabIndex = 17;
@@ -128,7 +128,7 @@
             this.btnModificar.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.ForeColor = System.Drawing.Color.White;
             this.btnModificar.Location = new System.Drawing.Point(2, 173);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(109, 28);
             this.btnModificar.TabIndex = 16;
@@ -149,7 +149,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
             this.panel1.Location = new System.Drawing.Point(0, 173);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(8, 28);
             this.panel1.TabIndex = 15;
@@ -171,11 +171,12 @@
             // 
             // filterGroup
             // 
+            this.filterGroup.ArticulosFiltrados = null;
             this.filterGroup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
-            this.filterGroup.Location = new System.Drawing.Point(54, 273);
-            this.filterGroup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.filterGroup.Location = new System.Drawing.Point(54, 337);
+            this.filterGroup.Margin = new System.Windows.Forms.Padding(2);
             this.filterGroup.Name = "filterGroup";
-            this.filterGroup.Size = new System.Drawing.Size(536, 300);
+            this.filterGroup.Size = new System.Drawing.Size(536, 210);
             this.filterGroup.TabIndex = 18;
             // 
             // txtBuscador
@@ -188,6 +189,7 @@
             this.txtBuscador.Name = "txtBuscador";
             this.txtBuscador.Size = new System.Drawing.Size(249, 22);
             this.txtBuscador.TabIndex = 8;
+            this.txtBuscador.TextChanged += new System.EventHandler(this.txtBuscador_TextChanged);
             // 
             // lblBuscador
             // 
@@ -216,14 +218,14 @@
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvArticulos.Location = new System.Drawing.Point(54, 59);
-            this.dgvArticulos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvArticulos.Margin = new System.Windows.Forms.Padding(2);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.RowHeadersVisible = false;
             this.dgvArticulos.RowHeadersWidth = 62;
             this.dgvArticulos.RowTemplate.Height = 28;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(536, 207);
+            this.dgvArticulos.Size = new System.Drawing.Size(536, 274);
             this.dgvArticulos.StandardTab = true;
             this.dgvArticulos.TabIndex = 6;
             this.dgvArticulos.DoubleClick += new System.EventHandler(this.dgvArticulos_DoubleClick);

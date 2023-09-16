@@ -5,6 +5,7 @@ using Dominio;
 using AccesoDatos;
 using System.IO;
 using System.Configuration;
+using System.Linq;
 
 namespace Negocio
 {
@@ -19,51 +20,12 @@ namespace Negocio
 
         public List<Articulo> ListarArticulos()
         {
-            List<Articulo> lista = new List<Articulo>();
             Database datos = new Database();
 
             try
             {
                 datos.SetQuery("select a.Id, Codigo, Nombre, a.Descripcion as Descripcion,m.Id as IdMarca, m.Descripcion as Marca, c.Id as IdCategoria , c.Descripcion as Categoria, Precio from ARTICULOS a\r\nleft join MARCAS m on a.IdMarca = m.Id\r\nleft join CATEGORIAS c on a.IdCategoria = c.Id\r\n");
-                datos.ReadData();
-
-                while (datos.Reader.Read())
-                {
-                    Articulo art = new Articulo();
-
-                    art.Id = (int)datos.Reader["Id"];
-                    art.Nombre = (string)datos.Reader["Nombre"];
-                    art.Codigo = (string)datos.Reader["Codigo"];
-                    art.Descripcion = (string)datos.Reader["Descripcion"];
-                    art.Precio = (float)(decimal)datos.Reader["Precio"];
-                    art.Marca = new Marca();
-                    art.Marca.Nombre = !(datos.Reader["Marca"] is DBNull) ? (string)datos.Reader["Marca"] : "";
-                    art.Marca.Id = !(datos.Reader["IdMarca"] is DBNull) ? (int)datos.Reader["IdMarca"] : -1;
-                    art.Categoria = new Categoria();
-                    art.Categoria.Nombre = !(datos.Reader["Categoria"] is DBNull) ? (string)datos.Reader["Categoria"] : "";
-                    art.Categoria.Id = !(datos.Reader["IdCategoria"] is DBNull) ? (int)datos.Reader["IdCategoria"] : -1;
-                    art.Imagenes = new List<string>();
-                    Database datosImagenes = new Database();
-                    try
-                    {
-                        datosImagenes.SetQuery("select ImagenUrl from IMAGENES where IdArticulo = " + art.Id);
-                        datosImagenes.ReadData();
-                        while (datosImagenes.Reader.Read())
-                        {
-                            art.Imagenes.Add((string)datosImagenes.Reader["ImagenUrl"]);
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        throw new Exception("Error al leer las imagenes");
-                    }
-                    finally
-                    {
-                        datosImagenes.CloseConnection();
-                    }
-                    lista.Add(art);
-                }
-                return lista;
+                return readData(datos);
             }
             catch (Exception ex)
             {
@@ -151,6 +113,131 @@ namespace Negocio
                 datos.CloseConnection();
             }
         }
+        private string parseFiltroToQuery(Filtro filtro, int index, out string valorQuery)
+        {
+            string criterioQuery = "";
+            valorQuery = filtro.Valor;
+            char tabla = 'a';
+            string campo = filtro.Campo;
+            if (filtro.Campo == "Categoria" || filtro.Campo == "Marca")
+            {
+                tabla = filtro.Campo.First();
+                campo = "Descripcion";
+            }
+            string parametro = $"@Valor{index}";
+            switch (filtro.Criterio)
+            {
+                case "Mayor que":
+                    criterioQuery = $"{tabla}.{campo} > {parametro}";
+                    break;
+                case "Menor que":
+                    criterioQuery = $"{tabla}.{campo} < {parametro}";
+                    break;
+                case "Igual a":
+                    criterioQuery = $"{tabla}.{campo} = {parametro}";
+                    break;
+                case "Distinto de":
+                    criterioQuery = $"{tabla}.{campo} <> {parametro}";
+                    break;
+                case "Contiene":
+                    criterioQuery = $"{tabla}.{campo} LIKE {parametro}";
+                    valorQuery = "%" + valorQuery + "%";
+                    break;
+                case "Empieza con":
+                    criterioQuery = $"{tabla}.{campo} LIKE {parametro}";
+                    valorQuery = valorQuery + "%";
+                    break;
+                case "Termina con":
+                    criterioQuery = $"{tabla}.{campo} LIKE {parametro}";
+                    valorQuery = "%" + valorQuery;
+                    break;
+                case "No contiene":
+                    criterioQuery = $"{tabla}.{campo} NOT LIKE {parametro}";
+                    valorQuery = "%" + valorQuery + "%";
+                    break;
+                default:
+                    break;
+            }
+
+            return criterioQuery;
+        }
+
+        public List<Articulo> Filtrar(List<Filtro> filtros)
+        {
+            Database datos = new Database();
+            try
+            {
+                StringBuilder queryBuilder = new StringBuilder();
+                queryBuilder.Append("select a.Id, Codigo, Nombre, a.Descripcion as Descripcion,m.Id as IdMarca, m.Descripcion as Marca, c.Id as IdCategoria , c.Descripcion as Categoria, Precio from ARTICULOS a\r\nleft join MARCAS m on a.IdMarca = m.Id\r\nleft join CATEGORIAS c on a.IdCategoria = c.Id\r\n");
+                if (filtros.Count > 0)
+                {
+                    queryBuilder.Append("where ");
+                    for (int i = 0; i < filtros.Count; i++)
+                    {
+                        string filtroQuery = parseFiltroToQuery(filtros[i], i, out string valor);
+                        queryBuilder.Append(filtroQuery);
+                        if (i != filtros.Count - 1)
+                        {
+                            queryBuilder.Append(" and ");
+                        }
+                        datos.SetParameter($"@Valor{i}", valor);
+                    }
+                }
+                datos.SetQuery(queryBuilder.ToString());
+                return readData(datos);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CloseConnection();
+            }
+        }
+        private static List<Articulo> readData(Database datos)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            datos.ReadData();
+
+            while (datos.Reader.Read())
+            {
+                Articulo art = new Articulo();
+
+                art.Id = (int)datos.Reader["Id"];
+                art.Nombre = (string)datos.Reader["Nombre"];
+                art.Codigo = (string)datos.Reader["Codigo"];
+                art.Descripcion = (string)datos.Reader["Descripcion"];
+                art.Precio = (float)(decimal)datos.Reader["Precio"];
+                art.Marca = new Marca();
+                art.Marca.Nombre = !(datos.Reader["Marca"] is DBNull) ? (string)datos.Reader["Marca"] : "";
+                art.Marca.Id = !(datos.Reader["IdMarca"] is DBNull) ? (int)datos.Reader["IdMarca"] : -1;
+                art.Categoria = new Categoria();
+                art.Categoria.Nombre = !(datos.Reader["Categoria"] is DBNull) ? (string)datos.Reader["Categoria"] : "";
+                art.Categoria.Id = !(datos.Reader["IdCategoria"] is DBNull) ? (int)datos.Reader["IdCategoria"] : -1;
+                art.Imagenes = new List<string>();
+                Database datosImagenes = new Database();
+                try
+                {
+                    datosImagenes.SetQuery("select ImagenUrl from IMAGENES where IdArticulo = " + art.Id);
+                    datosImagenes.ReadData();
+                    while (datosImagenes.Reader.Read())
+                    {
+                        art.Imagenes.Add((string)datosImagenes.Reader["ImagenUrl"]);
+                    }
+                }
+                catch (Exception)
+                {
+                    throw new Exception("Error al leer las imagenes");
+                }
+                finally
+                {
+                    datosImagenes.CloseConnection();
+                }
+                lista.Add(art);
+            }
+            return lista;
+        }
 
         private void InsertarImagenes(List<string> imagenes, Database dataAccess)
         {
@@ -174,7 +261,7 @@ namespace Negocio
                 dataAccess.ExecuteNonQuery();
             }
         }
-        private void ActualizarMarcaCategoria (Articulo articulo, Database dataAccess)
+        private void ActualizarMarcaCategoria(Articulo articulo, Database dataAccess)
         {
             dataAccess.SetQuery("update ARTICULOS set IdCategoria = CASE WHEN @IdCategoria = -1 THEN NULL ELSE @IdCategoria END, IdMarca = CASE WHEN @IdMarca = -1 THEN NULL ELSE @IdMarca END where Id = @IdArticulo");
             dataAccess.SetParameter("@IdCategoria", articulo.Categoria.Id);

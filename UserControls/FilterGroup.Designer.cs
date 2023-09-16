@@ -31,6 +31,7 @@
             this.btnAgregarFiltro = new System.Windows.Forms.Button();
             this.btnFiltrar = new System.Windows.Forms.Button();
             this.gbFiltros = new System.Windows.Forms.GroupBox();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.gbFiltros.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +49,7 @@
             // btnFiltrar
             // 
             this.btnFiltrar.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnFiltrar.Location = new System.Drawing.Point(446, 230);
+            this.btnFiltrar.Location = new System.Drawing.Point(442, 169);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(73, 23);
             this.btnFiltrar.TabIndex = 16;
@@ -58,15 +59,27 @@
             // 
             // gbFiltros
             // 
+            this.gbFiltros.Controls.Add(this.btnLimpiar);
             this.gbFiltros.Controls.Add(this.btnFiltrar);
             this.gbFiltros.Controls.Add(this.btnAgregarFiltro);
             this.gbFiltros.ForeColor = System.Drawing.SystemColors.Control;
             this.gbFiltros.Location = new System.Drawing.Point(3, 1);
             this.gbFiltros.Name = "gbFiltros";
-            this.gbFiltros.Size = new System.Drawing.Size(532, 275);
+            this.gbFiltros.Size = new System.Drawing.Size(532, 203);
             this.gbFiltros.TabIndex = 18;
             this.gbFiltros.TabStop = false;
             this.gbFiltros.Text = "Filtros";
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnLimpiar.Location = new System.Drawing.Point(17, 169);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(104, 23);
+            this.btnLimpiar.TabIndex = 17;
+            this.btnLimpiar.Text = "Lista completa";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // FilterGroup
             // 
@@ -75,7 +88,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.Controls.Add(this.gbFiltros);
             this.Name = "FilterGroup";
-            this.Size = new System.Drawing.Size(541, 339);
+            this.Size = new System.Drawing.Size(541, 209);
             this.gbFiltros.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -85,5 +98,6 @@
         private System.Windows.Forms.Button btnAgregarFiltro;
         private System.Windows.Forms.Button btnFiltrar;
         private System.Windows.Forms.GroupBox gbFiltros;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }
