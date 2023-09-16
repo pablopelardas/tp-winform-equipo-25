@@ -57,7 +57,7 @@
             // btnAgregar
             // 
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(68, 331);
+            this.btnAgregar.Location = new System.Drawing.Point(65, 341);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(43, 35);
             this.btnAgregar.TabIndex = 8;
@@ -68,7 +68,7 @@
             // btnEliminar
             // 
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Location = new System.Drawing.Point(137, 331);
+            this.btnEliminar.Location = new System.Drawing.Point(134, 341);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(43, 35);
             this.btnEliminar.TabIndex = 9;
@@ -79,7 +79,7 @@
             // btnEditar
             // 
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.Location = new System.Drawing.Point(205, 331);
+            this.btnEditar.Location = new System.Drawing.Point(202, 341);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(43, 35);
             this.btnEditar.TabIndex = 10;
@@ -156,16 +156,18 @@
             // 
             // frmMrcCtg
             // 
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(334, 461);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.btnCancelar);
+            this.ForeColor = System.Drawing.SystemColors.Desktop;
             this.MaximumSize = new System.Drawing.Size(350, 500);
             this.MinimumSize = new System.Drawing.Size(350, 500);
             this.Name = "frmMrcCtg";
-            this.Text = "Admin";
+            this.Text = "Administrador Marcas / Categorías";
             this.Load += new System.EventHandler(this.frmMrcCtg_Load);
             this.tabControl.ResumeLayout(false);
             this.tabCategorias.ResumeLayout(false);

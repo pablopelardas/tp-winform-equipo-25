@@ -37,24 +37,28 @@
             // lblNombreAux
             // 
             this.lblNombreAux.AutoSize = true;
-            this.lblNombreAux.Location = new System.Drawing.Point(29, 70);
+            this.lblNombreAux.Location = new System.Drawing.Point(22, 57);
+            this.lblNombreAux.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNombreAux.Name = "lblNombreAux";
-            this.lblNombreAux.Size = new System.Drawing.Size(56, 16);
+            this.lblNombreAux.Size = new System.Drawing.Size(44, 13);
             this.lblNombreAux.TabIndex = 1;
             this.lblNombreAux.Text = "Nombre";
             // 
             // txtNombreAux
             // 
-            this.txtNombreAux.Location = new System.Drawing.Point(117, 67);
+            this.txtNombreAux.Location = new System.Drawing.Point(88, 54);
+            this.txtNombreAux.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombreAux.Name = "txtNombreAux";
-            this.txtNombreAux.Size = new System.Drawing.Size(175, 22);
+            this.txtNombreAux.Size = new System.Drawing.Size(132, 20);
             this.txtNombreAux.TabIndex = 2;
             // 
             // btnGuardarAux
             // 
-            this.btnGuardarAux.Location = new System.Drawing.Point(219, 120);
+            this.btnGuardarAux.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btnGuardarAux.Location = new System.Drawing.Point(164, 98);
+            this.btnGuardarAux.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardarAux.Name = "btnGuardarAux";
-            this.btnGuardarAux.Size = new System.Drawing.Size(91, 33);
+            this.btnGuardarAux.Size = new System.Drawing.Size(68, 27);
             this.btnGuardarAux.TabIndex = 3;
             this.btnGuardarAux.Text = "Guardar";
             this.btnGuardarAux.UseVisualStyleBackColor = true;
@@ -64,23 +68,27 @@
             // 
             this.lblTituloAux.AutoSize = true;
             this.lblTituloAux.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloAux.Location = new System.Drawing.Point(29, 18);
+            this.lblTituloAux.Location = new System.Drawing.Point(22, 15);
+            this.lblTituloAux.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTituloAux.Name = "lblTituloAux";
-            this.lblTituloAux.Size = new System.Drawing.Size(56, 20);
+            this.lblTituloAux.Size = new System.Drawing.Size(49, 17);
             this.lblTituloAux.TabIndex = 0;
             this.lblTituloAux.Text = "Titulo";
             // 
             // frmMrcCtgAux
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(332, 173);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
+            this.ClientSize = new System.Drawing.Size(250, 147);
             this.Controls.Add(this.btnGuardarAux);
             this.Controls.Add(this.txtNombreAux);
             this.Controls.Add(this.lblNombreAux);
             this.Controls.Add(this.lblTituloAux);
-            this.MaximumSize = new System.Drawing.Size(350, 220);
-            this.MinimumSize = new System.Drawing.Size(350, 220);
+            this.ForeColor = System.Drawing.SystemColors.Window;
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(266, 186);
+            this.MinimumSize = new System.Drawing.Size(266, 186);
             this.Name = "frmMrcCtgAux";
             this.ResumeLayout(false);
             this.PerformLayout();
