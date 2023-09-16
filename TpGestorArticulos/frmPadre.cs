@@ -15,6 +15,15 @@ namespace TpGestorArticulos
         public frmPadre()
         {
             InitializeComponent();
+            this.MaximizeBox = false;
+        }
+
+        private void frmPadre_Load(object sender, EventArgs e)
+        {
+            FrmPrincipal frmPrincipal = new FrmPrincipal();
+            frmPrincipal.MdiParent = this;
+            frmPrincipal.Show();
+            frmPrincipal.WindowState = FormWindowState.Maximized;
         }
     }
 }

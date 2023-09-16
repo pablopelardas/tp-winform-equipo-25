@@ -35,7 +35,7 @@ namespace App
 
 
 
-            Application.Run(new FrmPrincipal());
+            Application.Run(new frmPadre());
         }
     }
 }

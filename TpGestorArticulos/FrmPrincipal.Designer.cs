@@ -203,7 +203,7 @@
             this.txtBuscador.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBuscador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscador.Location = new System.Drawing.Point(208, 28);
+            this.txtBuscador.Location = new System.Drawing.Point(231, 32);
             this.txtBuscador.Margin = new System.Windows.Forms.Padding(2);
             this.txtBuscador.Name = "txtBuscador";
             this.txtBuscador.Size = new System.Drawing.Size(249, 22);
@@ -217,7 +217,7 @@
             this.lblBuscador.AutoSize = true;
             this.lblBuscador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBuscador.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblBuscador.Location = new System.Drawing.Point(135, 28);
+            this.lblBuscador.Location = new System.Drawing.Point(158, 32);
             this.lblBuscador.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBuscador.Name = "lblBuscador";
             this.lblBuscador.Size = new System.Drawing.Size(55, 16);
@@ -236,7 +236,7 @@
             this.dgvArticulos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvArticulos.Location = new System.Drawing.Point(54, 59);
+            this.dgvArticulos.Location = new System.Drawing.Point(54, 80);
             this.dgvArticulos.Margin = new System.Windows.Forms.Padding(2);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
@@ -244,7 +244,7 @@
             this.dgvArticulos.RowHeadersWidth = 62;
             this.dgvArticulos.RowTemplate.Height = 28;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(536, 274);
+            this.dgvArticulos.Size = new System.Drawing.Size(536, 225);
             this.dgvArticulos.StandardTab = true;
             this.dgvArticulos.TabIndex = 6;
             this.dgvArticulos.DoubleClick += new System.EventHandler(this.dgvArticulos_AbrirDetalle);
@@ -272,7 +272,9 @@
             this.MaximumSize = new System.Drawing.Size(800, 597);
             this.MinimumSize = new System.Drawing.Size(800, 597);
             this.Name = "FrmPrincipal";
-            this.Text = "FrmPrincipal";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.Text = "Artículos";
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.panelMenuVertical.ResumeLayout(false);
             this.panelContenedor.ResumeLayout(false);
