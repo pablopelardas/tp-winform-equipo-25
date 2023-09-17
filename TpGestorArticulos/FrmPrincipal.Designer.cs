@@ -197,7 +197,6 @@
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(641, 558);
             this.panelContenedor.TabIndex = 0;
-            this.panelContenedor.SizeChanged += new System.EventHandler(this.panelContenedor_SizeChanged);
             // 
             // filterGroup
             // 

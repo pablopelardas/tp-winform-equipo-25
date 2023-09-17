@@ -118,11 +118,6 @@ namespace TpGestorArticulos
             cargarGrilla(listaFiltrada);
         }
 
-        private void panelContenedor_SizeChanged(object sender, EventArgs e)
-        {
-            acomodarColumnas();
-        }
-
         private void acomodarColumnas()
         {
             dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "C";
